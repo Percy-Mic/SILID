@@ -1,0 +1,1616 @@
+{
+ "downA": [
+  {
+   "to": [
+    18,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 17.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.6,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    23,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 22.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 2.1,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    28,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 27.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 2.1,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    32,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 31.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    36,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 35.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    40,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 39.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    44,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 43.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    47.3,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 46.92,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.4,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    48.4,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 48,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 0.4,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    50.5,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 50.12,
+   "z": 6,
+   "y": -3.11,
+   "yMin": -3.4,
+   "yMax": -3.11,
+   "jump": 0.027,
+   "surface": "stone",
+   "t": 0.9,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    53,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 52.6,
+   "z": 6,
+   "y": -2.41,
+   "yMin": -3.09,
+   "yMax": -2.41,
+   "jump": 0.026,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    55.3,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 54.92,
+   "z": 6,
+   "y": -1.8,
+   "yMin": -2.4,
+   "yMax": -1.8,
+   "jump": 0.026,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "down"
+  }
+ ],
+ "downB": [
+  {
+   "to": [
+    60.2,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 59.8,
+   "z": 6,
+   "y": -1.44,
+   "yMin": -1.44,
+   "yMax": -1.44,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.1,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    60.8,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 60.64,
+   "z": 7.53,
+   "y": -1.44,
+   "yMin": -1.44,
+   "yMax": -1.44,
+   "jump": 0,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    62.6,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 62.22,
+   "z": 7.86,
+   "y": -1.27,
+   "yMin": -1.44,
+   "yMax": -1.27,
+   "jump": 0.029,
+   "surface": "stone",
+   "t": 0.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    64.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 64.09,
+   "z": 7.9,
+   "y": -0.44,
+   "yMin": -1.24,
+   "yMax": -0.44,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    66.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 66.09,
+   "z": 7.9,
+   "y": 0.45,
+   "yMin": -0.43,
+   "yMax": 0.45,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    68.2,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 67.81,
+   "z": 7.9,
+   "y": 0.85,
+   "yMin": 0.46,
+   "yMax": 0.85,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    70.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 70.09,
+   "z": 7.9,
+   "y": 0.78,
+   "yMin": 0.78,
+   "yMax": 0.85,
+   "jump": 0.002,
+   "surface": "dirt",
+   "t": 1,
+   "stuck": null,
+   "dir": "down"
+  }
+ ],
+ "back": [
+  {
+   "to": [
+    70.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 70.09,
+   "z": 7.9,
+   "y": 0.78,
+   "yMin": null,
+   "yMax": null,
+   "jump": 0,
+   "surface": "dirt",
+   "t": 0,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    68.2,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 68.61,
+   "z": 7.9,
+   "y": 0.84,
+   "yMin": 0.78,
+   "yMax": 0.84,
+   "jump": 0.004,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    66.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 66.89,
+   "z": 7.9,
+   "y": 0.85,
+   "yMin": 0.84,
+   "yMax": 0.85,
+   "jump": 0.001,
+   "surface": "stone",
+   "t": 0.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    64.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 64.89,
+   "z": 7.9,
+   "y": 0.1,
+   "yMin": 0.1,
+   "yMax": 0.85,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    62.6,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 63.01,
+   "z": 7.9,
+   "y": -0.74,
+   "yMin": -0.74,
+   "yMax": 0.07,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    60.8,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 61.21,
+   "z": 7.9,
+   "y": -1.43,
+   "yMin": -1.43,
+   "yMax": -0.76,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    60.2,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 60.3,
+   "z": 6.4,
+   "y": -1.44,
+   "yMin": -1.44,
+   "yMax": -1.43,
+   "jump": 0.002,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    57.6,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 57.99,
+   "z": 6.03,
+   "y": -1.44,
+   "yMin": -1.44,
+   "yMax": -1.44,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    55.95,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 56.35,
+   "z": 6,
+   "y": -1.44,
+   "yMin": -1.44,
+   "yMax": -1.44,
+   "jump": 0,
+   "surface": "stone",
+   "t": 0.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    55.3,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 55.71,
+   "z": 6,
+   "y": -1.52,
+   "yMin": -1.52,
+   "yMax": -1.44,
+   "jump": 0.024,
+   "surface": "stone",
+   "t": 0.3,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    53,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 53.39,
+   "z": 6,
+   "y": -2.12,
+   "yMin": -2.12,
+   "yMax": -1.53,
+   "jump": 0.026,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    50.5,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 50.91,
+   "z": 6,
+   "y": -2.77,
+   "yMin": -2.77,
+   "yMax": -2.13,
+   "jump": 0.026,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    48.4,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 48.79,
+   "z": 6,
+   "y": -3.36,
+   "yMin": -3.36,
+   "yMax": -2.77,
+   "jump": 0.027,
+   "surface": "stone",
+   "t": 0.9,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    47.3,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 47.71,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.36,
+   "jump": 0.007,
+   "surface": "stone",
+   "t": 0.4,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    44,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 44.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.4,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    40,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 40.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    36,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 36.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    32,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 32.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    28,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 28.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    23,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 23.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 2.1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    18,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 18.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 2.1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    14.2,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 14.59,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.6,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    11,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 11.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.3,
+   "stuck": null,
+   "dir": "back"
+  }
+ ],
+ "doorInfo": {
+  "kind": "tunnelDoor",
+  "label": "E open the service door",
+  "dist": 1.01,
+  "openBefore": false,
+  "promptedWhileClosed": true,
+  "openAfter": true,
+  "colliderDisabled": true
+ },
+ "out": {
+  "x": 70.09,
+  "z": 7.9,
+  "y": 0.78,
+  "surface": "dirt"
+ },
+ "end": {
+  "x": 11.39,
+  "z": 6,
+  "y": -3.4
+ },
+ "blockedPoints": [],
+ "trace": [
+  {
+   "to": [
+    14.2,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 13.8,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.2,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    18,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 17.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.6,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    23,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 22.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 2.1,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    28,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 27.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 2.1,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    32,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 31.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    36,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 35.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    40,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 39.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    44,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 43.6,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    47.3,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 46.92,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.4,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    48.4,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 48,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 0.4,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    50.5,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 50.12,
+   "z": 6,
+   "y": -3.11,
+   "yMin": -3.4,
+   "yMax": -3.11,
+   "jump": 0.027,
+   "surface": "stone",
+   "t": 0.9,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    53,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 52.6,
+   "z": 6,
+   "y": -2.41,
+   "yMin": -3.09,
+   "yMax": -2.41,
+   "jump": 0.026,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    55.3,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 54.92,
+   "z": 6,
+   "y": -1.8,
+   "yMin": -2.4,
+   "yMax": -1.8,
+   "jump": 0.026,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    55.95,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 55.56,
+   "z": 6,
+   "y": -1.63,
+   "yMin": -1.79,
+   "yMax": -1.63,
+   "jump": 0.026,
+   "surface": "stone",
+   "t": 0.3,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    57.6,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 57.2,
+   "z": 6,
+   "y": -1.44,
+   "yMin": -1.63,
+   "yMax": -1.44,
+   "jump": 0.026,
+   "surface": "stone",
+   "t": 0.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    60.2,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 59.8,
+   "z": 6,
+   "y": -1.44,
+   "yMin": -1.44,
+   "yMax": -1.44,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.1,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    60.8,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 60.64,
+   "z": 7.53,
+   "y": -1.44,
+   "yMin": -1.44,
+   "yMax": -1.44,
+   "jump": 0,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    62.6,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 62.22,
+   "z": 7.86,
+   "y": -1.27,
+   "yMin": -1.44,
+   "yMax": -1.27,
+   "jump": 0.029,
+   "surface": "stone",
+   "t": 0.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    64.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 64.09,
+   "z": 7.9,
+   "y": -0.44,
+   "yMin": -1.24,
+   "yMax": -0.44,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    66.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 66.09,
+   "z": 7.9,
+   "y": 0.45,
+   "yMin": -0.43,
+   "yMax": 0.45,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    68.2,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 67.81,
+   "z": 7.9,
+   "y": 0.85,
+   "yMin": 0.46,
+   "yMax": 0.85,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.7,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    70.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 70.09,
+   "z": 7.9,
+   "y": 0.78,
+   "yMin": 0.78,
+   "yMax": 0.85,
+   "jump": 0.002,
+   "surface": "dirt",
+   "t": 1,
+   "stuck": null,
+   "dir": "down"
+  },
+  {
+   "to": [
+    70.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 70.09,
+   "z": 7.9,
+   "y": 0.78,
+   "yMin": null,
+   "yMax": null,
+   "jump": 0,
+   "surface": "dirt",
+   "t": 0,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    68.2,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 68.61,
+   "z": 7.9,
+   "y": 0.84,
+   "yMin": 0.78,
+   "yMax": 0.84,
+   "jump": 0.004,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    66.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 66.89,
+   "z": 7.9,
+   "y": 0.85,
+   "yMin": 0.84,
+   "yMax": 0.85,
+   "jump": 0.001,
+   "surface": "stone",
+   "t": 0.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    64.5,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 64.89,
+   "z": 7.9,
+   "y": 0.1,
+   "yMin": 0.1,
+   "yMax": 0.85,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    62.6,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 63.01,
+   "z": 7.9,
+   "y": -0.74,
+   "yMin": -0.74,
+   "yMax": 0.07,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    60.8,
+    7.9
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 61.21,
+   "z": 7.9,
+   "y": -1.43,
+   "yMin": -1.43,
+   "yMax": -0.76,
+   "jump": 0.032,
+   "surface": "stone",
+   "t": 0.8,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    60.2,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 60.3,
+   "z": 6.4,
+   "y": -1.44,
+   "yMin": -1.44,
+   "yMax": -1.43,
+   "jump": 0.002,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    57.6,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 57.99,
+   "z": 6.03,
+   "y": -1.44,
+   "yMin": -1.44,
+   "yMax": -1.44,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    55.95,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 56.35,
+   "z": 6,
+   "y": -1.44,
+   "yMin": -1.44,
+   "yMax": -1.44,
+   "jump": 0,
+   "surface": "stone",
+   "t": 0.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    55.3,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 55.71,
+   "z": 6,
+   "y": -1.52,
+   "yMin": -1.52,
+   "yMax": -1.44,
+   "jump": 0.024,
+   "surface": "stone",
+   "t": 0.3,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    53,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 53.39,
+   "z": 6,
+   "y": -2.12,
+   "yMin": -2.12,
+   "yMax": -1.53,
+   "jump": 0.026,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    50.5,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 50.91,
+   "z": 6,
+   "y": -2.77,
+   "yMin": -2.77,
+   "yMax": -2.13,
+   "jump": 0.026,
+   "surface": "stone",
+   "t": 1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    48.4,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 48.79,
+   "z": 6,
+   "y": -3.36,
+   "yMin": -3.36,
+   "yMax": -2.77,
+   "jump": 0.027,
+   "surface": "stone",
+   "t": 0.9,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    47.3,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 47.71,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.36,
+   "jump": 0.007,
+   "surface": "stone",
+   "t": 0.4,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    44,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 44.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.4,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    40,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 40.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    36,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 36.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    32,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 32.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    28,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 28.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.7,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    23,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 23.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 2.1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    18,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 18.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 2.1,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    14.2,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 14.59,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.6,
+   "stuck": null,
+   "dir": "back"
+  },
+  {
+   "to": [
+    11,
+    6
+   ],
+   "reached": true,
+   "wedged": false,
+   "x": 11.39,
+   "z": 6,
+   "y": -3.4,
+   "yMin": -3.4,
+   "yMax": -3.4,
+   "jump": 0,
+   "surface": "stone",
+   "t": 1.3,
+   "stuck": null,
+   "dir": "back"
+  }
+ ],
+ "logs": [
+  "basement east door prompt=true kind=door open=true colliderCleared=true"
+ ],
+ "metrics": {
+  "calls": 493,
+  "triangles": 1231854,
+  "geometries": 412,
+  "textures": 101,
+  "programs": 40,
+  "fps": 58,
+  "objects": 305,
+  "doors": 64,
+  "props": 181,
+  "missingDoors": [],
+  "colliders": 1127
+ },
+ "errors": [
+  "pageerror: A user gesture is required to request Pointer Lock."
+ ]
+}

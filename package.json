@@ -1,0 +1,32 @@
+{
+  "name": "silid",
+  "private": true,
+  "version": "0.3.0",
+  "description": "SILID — Act I: the breakdown. Tuluyan road, the car, the walk, the house.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "qa:audit": "node scripts/audit_mansion.cjs",
+    "qa:traverse": "node scripts/traverse_mansion.cjs",
+    "qa:story": "node scripts/story_test.cjs",
+    "qa:drawers": "node scripts/drawer_test.cjs",
+    "qa:apparatus": "node scripts/apparatus_test.cjs",
+    "qa:shots": "node scripts/shoot_mansion.cjs",
+    "qa:docs": "node scripts/dump_rooms.cjs && node scripts/dump_catalog.cjs && python scripts/gen_docs.py",
+    "qc": "node Blender/AssetLibrary/Working/House/_qc/act1_pass.cjs",
+    "corridor": "node scripts/corridor_graph.cjs",
+    "logic": "node scripts/mansion_logic.mjs",
+    "logic:strict": "node scripts/mansion_logic.mjs --strict",
+    "smoke:paint": "node scripts/paint_smoke.mjs",
+    "smoke:rite": "node scripts/rite_smoke.mjs",
+    "build:house": "\"blender\" -b --factory-startup --python Blender/AssetLibrary/Working/House/_build/build_house.py"
+  },
+  "dependencies": {
+    "three": "0.160.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.1",
+    "vite": "5.4.21"
+  }
+}

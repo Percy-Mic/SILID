@@ -1,0 +1,49 @@
+﻿# Node.js dependencies
+node_modules/
+
+# Local environment secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Vite and test artifacts
+.vite/
+playwright-report/
+test-results/
+
+# Unreal generated files
+ue5/Binaries/
+ue5/Intermediate/
+ue5/DerivedDataCache/
+ue5/.vs/
+.vs/
+
+# Operating system / editor files
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------- Blender
+# The pipeline's sources are code (the _build/*.py scripts), not binaries.
+# Everything below is generated or re-fetchable, and on this machine it is
+# hundreds of MB - far past GitHub's 100 MB per-file limit without LFS:
+#
+#   Blender/AssetLibrary/Source/PolyHaven   232 MB  re-fetch: fetch_polyhaven.py
+#   .recovery/charmorph                     140 MB  re-fetch: fetch_charmorph.sh
+#   Working/**.blend (scene builds)         ~600 MB  rebuild: _build/*.py
+Blender/AssetLibrary/Source/PolyHaven/
+.recovery/
+*.blend1
+*.blend@
+Blender/AssetLibrary/Working/**/*.blend
+Blender/AssetLibrary/Working/**/preview_*.png
+Blender/AssetLibrary/Working/**/render_*.log
+Blender/project/
+
+# Vite build output
+dist/

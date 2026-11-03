@@ -1,0 +1,23 @@
+import unreal, os
+ROOT = r"C:\Users\Admin\Downloads\SILID-main"
+PREPARED_ROOT = os.path.join(ROOT, "ue5", "Saved", "ImportReady")
+DEST = "/Game/SILID/Furniture"
+tools = unreal.AssetToolsHelpers.get_asset_tools()
+
+source = os.path.join(PREPARED_ROOT, "SILID_bookshelf.glb")
+task = unreal.AssetImportTask()
+task.filename = source
+task.destination_path = DEST
+task.destination_name = "SM_DEBUG_BOOKSHELF6"
+task.automated = False  # try non-automated
+task.replace_existing = True
+task.save = True
+try:
+    tools.import_asset_tasks([task])
+    print("imported_object_paths:", list(task.imported_object_paths or []))
+    assets = unreal.EditorAssetLibrary.list_assets(DEST, recursive=True)
+    for a in assets:
+        if "BOOKSHELF" in a.upper():
+            print("FOUND:", a)
+except Exception as e:
+    print("ERR", e)

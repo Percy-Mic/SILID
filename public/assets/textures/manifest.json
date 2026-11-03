@@ -1,0 +1,919 @@
+{
+ "generated": "2026-10-19T09:09:52.693Z",
+ "source": "Poly Haven (https://polyhaven.com/)",
+ "licence": "CC0 1.0 Universal — no attribution required, commercial use and redistribution allowed",
+ "licenceUrl": "https://polyhaven.com/license",
+ "resolution": "1k",
+ "materials": {
+  "wallPaintBlue": {
+   "role": "wallPaintBlue",
+   "slug": "blue_plaster_weathered",
+   "note": "interior walls: blue-green paint that has given up",
+   "tile": 2.4,
+   "roughness": 0.85,
+   "metalness": 0,
+   "dir": "blue_plaster_weathered/",
+   "source": "blue_plaster_weathered/",
+   "maps": {
+    "map": "blue_plaster_weathered_diff_2k.jpg",
+    "normalMap": "blue_plaster_weathered_nor_gl_2k.jpg",
+    "roughnessMap": "blue_plaster_weathered_rough_2k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "blue_plaster_weathered_diff_2k.jpg",
+     "source": "blue_plaster_weathered/blue_plaster_weathered_diff_2k.jpg",
+     "bytes": 2736265,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "blue_plaster_weathered_nor_gl_2k.jpg",
+     "source": "blue_plaster_weathered/blue_plaster_weathered_nor_gl_2k.jpg",
+     "bytes": 2984372,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "blue_plaster_weathered_rough_2k.jpg",
+     "source": "blue_plaster_weathered/blue_plaster_weathered_rough_2k.jpg",
+     "bytes": 1083651,
+     "cached": true
+    }
+   }
+  },
+  "wallPaintCrack": {
+   "role": "wallPaintCrack",
+   "slug": "blue_plaster_wall",
+   "note": "the sala walls: cracking paint over plaster",
+   "tile": 2.2,
+   "roughness": 0.82,
+   "metalness": 0,
+   "dir": "blue_plaster_wall/",
+   "source": "blue_plaster_wall/",
+   "maps": {
+    "map": "blue_plaster_wall_diff_2k.jpg",
+    "normalMap": "blue_plaster_wall_nor_gl_2k.jpg",
+    "roughnessMap": "blue_plaster_wall_rough_2k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "blue_plaster_wall_diff_2k.jpg",
+     "source": "blue_plaster_wall/blue_plaster_wall_diff_2k.jpg",
+     "bytes": 2483333,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "blue_plaster_wall_nor_gl_2k.jpg",
+     "source": "blue_plaster_wall/blue_plaster_wall_nor_gl_2k.jpg",
+     "bytes": 3366847,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "blue_plaster_wall_rough_2k.jpg",
+     "source": "blue_plaster_wall/blue_plaster_wall_rough_2k.jpg",
+     "bytes": 1231817,
+     "cached": true
+    }
+   }
+  },
+  "wallPlaster": {
+   "role": "wallPlaster",
+   "slug": "damaged_plaster",
+   "note": "bare cracked plaster where the paint has fallen",
+   "tile": 2,
+   "roughness": 0.92,
+   "metalness": 0,
+   "dir": "damaged_plaster/",
+   "source": "damaged_plaster/",
+   "maps": {
+    "map": "damaged_plaster_diff_2k.jpg",
+    "normalMap": "damaged_plaster_nor_gl_2k.jpg",
+    "roughnessMap": "damaged_plaster_rough_2k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "damaged_plaster_diff_2k.jpg",
+     "source": "damaged_plaster/damaged_plaster_diff_2k.jpg",
+     "bytes": 3392885,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "damaged_plaster_nor_gl_2k.jpg",
+     "source": "damaged_plaster/damaged_plaster_nor_gl_2k.jpg",
+     "bytes": 3665302,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "damaged_plaster_rough_2k.jpg",
+     "source": "damaged_plaster/damaged_plaster_rough_2k.jpg",
+     "bytes": 1639547,
+     "cached": true
+    }
+   }
+  },
+  "wallPaintedWorn": {
+   "role": "wallPaintedWorn",
+   "slug": "concrete_wall_003",
+   "note": "worn painted concrete: the kusina, the bodega, the silong",
+   "tile": 2.6,
+   "roughness": 0.9,
+   "metalness": 0,
+   "dir": "concrete_wall_003/",
+   "source": "concrete_wall_003/",
+   "maps": {
+    "map": "concrete_wall_003_diff_1k.jpg",
+    "normalMap": "concrete_wall_003_nor_gl_1k.jpg",
+    "roughnessMap": "concrete_wall_003_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "concrete_wall_003_diff_1k.jpg",
+     "source": "concrete_wall_003/concrete_wall_003_diff_1k.jpg",
+     "bytes": 264756,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "concrete_wall_003_nor_gl_1k.jpg",
+     "source": "concrete_wall_003/concrete_wall_003_nor_gl_1k.jpg",
+     "bytes": 228062,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "concrete_wall_003_rough_1k.jpg",
+     "source": "concrete_wall_003/concrete_wall_003_rough_1k.jpg",
+     "bytes": 258206,
+     "cached": true
+    }
+   }
+  },
+  "wallDamp": {
+   "role": "wallDamp",
+   "slug": "concrete_wall_007",
+   "note": "old roughened concrete where water has been coming through",
+   "tile": 2.2,
+   "roughness": 0.94,
+   "metalness": 0,
+   "dir": "concrete_wall_007/",
+   "source": "concrete_wall_007/",
+   "maps": {
+    "map": "concrete_wall_007_diff_1k.jpg",
+    "normalMap": "concrete_wall_007_nor_gl_1k.jpg",
+    "roughnessMap": "concrete_wall_007_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "concrete_wall_007_diff_1k.jpg",
+     "source": "concrete_wall_007/concrete_wall_007_diff_1k.jpg",
+     "bytes": 654485,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "concrete_wall_007_nor_gl_1k.jpg",
+     "source": "concrete_wall_007/concrete_wall_007_nor_gl_1k.jpg",
+     "bytes": 602349,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "concrete_wall_007_rough_1k.jpg",
+     "source": "concrete_wall_007/concrete_wall_007_rough_1k.jpg",
+     "bytes": 563812,
+     "cached": true
+    }
+   }
+  },
+  "wallpaper": {
+   "role": "wallpaper",
+   "slug": "decrepit_wallpaper",
+   "note": "the kwarto and the bulwagan: paper that is losing its grip",
+   "tile": 2,
+   "roughness": 0.88,
+   "metalness": 0,
+   "dir": "decrepit_wallpaper/",
+   "source": "decrepit_wallpaper/",
+   "maps": {
+    "map": "decrepit_wallpaper_diff_1k.jpg",
+    "normalMap": "decrepit_wallpaper_nor_gl_1k.jpg",
+    "roughnessMap": "decrepit_wallpaper_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "decrepit_wallpaper_diff_1k.jpg",
+     "source": "decrepit_wallpaper/decrepit_wallpaper_diff_1k.jpg",
+     "bytes": 814172,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "decrepit_wallpaper_nor_gl_1k.jpg",
+     "source": "decrepit_wallpaper/decrepit_wallpaper_nor_gl_1k.jpg",
+     "bytes": 691701,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "decrepit_wallpaper_rough_1k.jpg",
+     "source": "decrepit_wallpaper/decrepit_wallpaper_rough_1k.jpg",
+     "bytes": 402582,
+     "cached": true
+    }
+   }
+  },
+  "wallBrick": {
+   "role": "wallBrick",
+   "slug": "brick_wall_006",
+   "note": "the exposed 1900s brick under the plaster, seen in the basement",
+   "tile": 2.4,
+   "roughness": 0.95,
+   "metalness": 0,
+   "dir": "brick_wall_006/",
+   "source": "brick_wall_006/",
+   "maps": {
+    "map": "brick_wall_006_diff_1k.jpg",
+    "normalMap": "brick_wall_006_nor_gl_1k.jpg",
+    "roughnessMap": "brick_wall_006_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "brick_wall_006_diff_1k.jpg",
+     "source": "brick_wall_006/brick_wall_006_diff_1k.jpg",
+     "bytes": 1107155,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "brick_wall_006_nor_gl_1k.jpg",
+     "source": "brick_wall_006/brick_wall_006_nor_gl_1k.jpg",
+     "bytes": 1052217,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "brick_wall_006_rough_1k.jpg",
+     "source": "brick_wall_006/brick_wall_006_rough_1k.jpg",
+     "bytes": 441815,
+     "cached": true
+    }
+   }
+  },
+  "woodFloor": {
+   "role": "woodFloor",
+   "slug": "wooden_floor_02",
+   "note": "the narra floorboards of the whole second storey",
+   "tile": 3,
+   "roughness": 0.62,
+   "metalness": 0,
+   "dir": "wooden_floor_02/",
+   "source": "wooden_floor_02/",
+   "maps": {
+    "map": "wooden_floor_02_diff_2k.jpg",
+    "normalMap": "wooden_floor_02_nor_gl_2k.jpg",
+    "roughnessMap": "wooden_floor_02_rough_2k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "wooden_floor_02_diff_2k.jpg",
+     "source": "wooden_floor_02/wooden_floor_02_diff_2k.jpg",
+     "bytes": 3023675,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "wooden_floor_02_nor_gl_2k.jpg",
+     "source": "wooden_floor_02/wooden_floor_02_nor_gl_2k.jpg",
+     "bytes": 2314571,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "wooden_floor_02_rough_2k.jpg",
+     "source": "wooden_floor_02/wooden_floor_02_rough_2k.jpg",
+     "bytes": 2549743,
+     "cached": true
+    }
+   }
+  },
+  "woodFloorOld": {
+   "role": "woodFloorOld",
+   "slug": "old_wooden_floor_01",
+   "note": "the ground-floor boards: sun-bleached, scrubbed, grey",
+   "tile": 3,
+   "roughness": 0.72,
+   "metalness": 0,
+   "dir": "old_wooden_floor_01/",
+   "source": "old_wooden_floor_01/",
+   "maps": {
+    "map": "old_wooden_floor_01_diff_1k.jpg",
+    "normalMap": "old_wooden_floor_01_nor_gl_1k.jpg",
+    "roughnessMap": "old_wooden_floor_01_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "old_wooden_floor_01_diff_1k.jpg",
+     "source": "old_wooden_floor_01/old_wooden_floor_01_diff_1k.jpg",
+     "bytes": 606736,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "old_wooden_floor_01_nor_gl_1k.jpg",
+     "source": "old_wooden_floor_01/old_wooden_floor_01_nor_gl_1k.jpg",
+     "bytes": 818192,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "old_wooden_floor_01_rough_1k.jpg",
+     "source": "old_wooden_floor_01/old_wooden_floor_01_rough_1k.jpg",
+     "bytes": 346874,
+     "cached": true
+    }
+   }
+  },
+  "woodPlanks": {
+   "role": "woodPlanks",
+   "slug": "wood_planks_dirt",
+   "note": "plank walls, door leaves, furniture carcasses",
+   "tile": 2.4,
+   "roughness": 0.74,
+   "metalness": 0,
+   "dir": "wood_planks_dirt/",
+   "source": "wood_planks_dirt/",
+   "maps": {
+    "map": "wood_planks_dirt_diff_1k.jpg",
+    "normalMap": "wood_planks_dirt_nor_gl_1k.jpg",
+    "roughnessMap": "wood_planks_dirt_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "wood_planks_dirt_diff_1k.jpg",
+     "source": "wood_planks_dirt/wood_planks_dirt_diff_1k.jpg",
+     "bytes": 918123,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "wood_planks_dirt_nor_gl_1k.jpg",
+     "source": "wood_planks_dirt/wood_planks_dirt_nor_gl_1k.jpg",
+     "bytes": 515002,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "wood_planks_dirt_rough_1k.jpg",
+     "source": "wood_planks_dirt/wood_planks_dirt_rough_1k.jpg",
+     "bytes": 523014,
+     "cached": true
+    }
+   }
+  },
+  "woodDeck": {
+   "role": "woodDeck",
+   "slug": "wood_planks_grey",
+   "note": "the azotea and the balustrade walk",
+   "tile": 2.4,
+   "roughness": 0.8,
+   "metalness": 0,
+   "dir": "wood_planks_grey/",
+   "source": "wood_planks_grey/",
+   "maps": {
+    "map": "wood_planks_grey_diff_1k.jpg",
+    "normalMap": "wood_planks_grey_nor_gl_1k.jpg",
+    "roughnessMap": "wood_planks_grey_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "wood_planks_grey_diff_1k.jpg",
+     "source": "wood_planks_grey/wood_planks_grey_diff_1k.jpg",
+     "bytes": 228279,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "wood_planks_grey_nor_gl_1k.jpg",
+     "source": "wood_planks_grey/wood_planks_grey_nor_gl_1k.jpg",
+     "bytes": 157419,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "wood_planks_grey_rough_1k.jpg",
+     "source": "wood_planks_grey/wood_planks_grey_rough_1k.jpg",
+     "bytes": 186804,
+     "cached": true
+    }
+   }
+  },
+  "tileFloor": {
+   "role": "tileFloor",
+   "slug": "interior_tiles",
+   "note": "the sala and the kusina: real glazed tile",
+   "tile": 1.8,
+   "roughness": 0.38,
+   "metalness": 0,
+   "dir": "interior_tiles/",
+   "source": "interior_tiles/",
+   "maps": {
+    "map": "interior_tiles_diff_2k.jpg",
+    "normalMap": "interior_tiles_nor_gl_2k.jpg",
+    "roughnessMap": "interior_tiles_rough_2k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "interior_tiles_diff_2k.jpg",
+     "source": "interior_tiles/interior_tiles_diff_2k.jpg",
+     "bytes": 2879908,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "interior_tiles_nor_gl_2k.jpg",
+     "source": "interior_tiles/interior_tiles_nor_gl_2k.jpg",
+     "bytes": 1924372,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "interior_tiles_rough_2k.jpg",
+     "source": "interior_tiles/interior_tiles_rough_2k.jpg",
+     "bytes": 2272667,
+     "cached": true
+    }
+   }
+  },
+  "tileDirty": {
+   "role": "tileDirty",
+   "slug": "dirty_tiles",
+   "note": "the banyo tiles nobody has cleaned since 1994",
+   "tile": 1.6,
+   "roughness": 0.55,
+   "metalness": 0,
+   "dir": "dirty_tiles/",
+   "source": "dirty_tiles/",
+   "maps": {
+    "map": "dirty_tiles_diff_1k.jpg",
+    "normalMap": "dirty_tiles_nor_gl_1k.jpg",
+    "roughnessMap": "dirty_tiles_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "dirty_tiles_diff_1k.jpg",
+     "source": "dirty_tiles/dirty_tiles_diff_1k.jpg",
+     "bytes": 585084,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "dirty_tiles_nor_gl_1k.jpg",
+     "source": "dirty_tiles/dirty_tiles_nor_gl_1k.jpg",
+     "bytes": 543981,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "dirty_tiles_rough_1k.jpg",
+     "source": "dirty_tiles/dirty_tiles_rough_1k.jpg",
+     "bytes": 555155,
+     "cached": true
+    }
+   }
+  },
+  "concrete": {
+   "role": "concrete",
+   "slug": "concrete_floor_worn_001",
+   "note": "the silong, the basement, the slabs",
+   "tile": 2.6,
+   "roughness": 0.9,
+   "metalness": 0,
+   "dir": "concrete_floor_worn_001/",
+   "source": "concrete_floor_worn_001/",
+   "maps": {
+    "map": "concrete_floor_worn_001_diff_1k.jpg",
+    "normalMap": "concrete_floor_worn_001_nor_gl_1k.jpg",
+    "roughnessMap": "concrete_floor_worn_001_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "concrete_floor_worn_001_diff_1k.jpg",
+     "source": "concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg",
+     "bytes": 118806,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "concrete_floor_worn_001_nor_gl_1k.jpg",
+     "source": "concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.jpg",
+     "bytes": 110906,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "concrete_floor_worn_001_rough_1k.jpg",
+     "source": "concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg",
+     "bytes": 181942,
+     "cached": true
+    }
+   }
+  },
+  "stoneFloor": {
+   "role": "stoneFloor",
+   "slug": "herringbone_concrete_tile",
+   "note": "the zaguan: herringbone tile at the front door",
+   "tile": 2.2,
+   "roughness": 0.7,
+   "metalness": 0,
+   "dir": "herringbone_concrete_tile/",
+   "source": "herringbone_concrete_tile/",
+   "maps": {
+    "map": "herringbone_concrete_tile_diff_1k.jpg",
+    "normalMap": "herringbone_concrete_tile_nor_gl_1k.jpg",
+    "roughnessMap": "herringbone_concrete_tile_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "herringbone_concrete_tile_diff_1k.jpg",
+     "source": "herringbone_concrete_tile/herringbone_concrete_tile_diff_1k.jpg",
+     "bytes": 595920,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "herringbone_concrete_tile_nor_gl_1k.jpg",
+     "source": "herringbone_concrete_tile/herringbone_concrete_tile_nor_gl_1k.jpg",
+     "bytes": 543539,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "herringbone_concrete_tile_rough_1k.jpg",
+     "source": "herringbone_concrete_tile/herringbone_concrete_tile_rough_1k.jpg",
+     "bytes": 108039,
+     "cached": true
+    }
+   }
+  },
+  "marble": {
+   "role": "marble",
+   "slug": "marble_tiles",
+   "note": "the altar and the escaparate shelf",
+   "tile": 2.4,
+   "roughness": 0.22,
+   "metalness": 0,
+   "dir": "marble_tiles/",
+   "source": "marble_tiles/",
+   "maps": {
+    "map": "marble_tiles_diff_1k.jpg",
+    "normalMap": "marble_tiles_nor_gl_1k.jpg",
+    "roughnessMap": "marble_tiles_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "marble_tiles_diff_1k.jpg",
+     "source": "marble_tiles/marble_tiles_diff_1k.jpg",
+     "bytes": 957660,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "marble_tiles_nor_gl_1k.jpg",
+     "source": "marble_tiles/marble_tiles_nor_gl_1k.jpg",
+     "bytes": 601407,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "marble_tiles_rough_1k.jpg",
+     "source": "marble_tiles/marble_tiles_rough_1k.jpg",
+     "bytes": 759292,
+     "cached": true
+    }
+   }
+  },
+  "roofMetal": {
+   "role": "roofMetal",
+   "slug": "corrugated_iron_02",
+   "note": "galvanised iron roof, gutters, downpipes",
+   "tile": 2,
+   "roughness": 0.55,
+   "metalness": 0.25,
+   "dir": "corrugated_iron_02/",
+   "source": "corrugated_iron_02/",
+   "maps": {
+    "map": "corrugated_iron_02_diff_2k.jpg",
+    "normalMap": "corrugated_iron_02_nor_gl_2k.jpg",
+    "roughnessMap": "corrugated_iron_02_rough_2k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "corrugated_iron_02_diff_2k.jpg",
+     "source": "corrugated_iron_02/corrugated_iron_02_diff_2k.jpg",
+     "bytes": 2325335,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "corrugated_iron_02_nor_gl_2k.jpg",
+     "source": "corrugated_iron_02/corrugated_iron_02_nor_gl_2k.jpg",
+     "bytes": 2178443,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "corrugated_iron_02_rough_2k.jpg",
+     "source": "corrugated_iron_02/corrugated_iron_02_rough_2k.jpg",
+     "bytes": 3492646,
+     "cached": true
+    }
+   }
+  },
+  "rustIron": {
+   "role": "rustIron",
+   "slug": "rusty_metal_sheet",
+   "note": "the rusted sheets on the well cover and the gate",
+   "tile": 1.6,
+   "roughness": 0.75,
+   "metalness": 0.6,
+   "dir": "rusty_metal_sheet/",
+   "source": "rusty_metal_sheet/",
+   "maps": {
+    "map": "rusty_metal_sheet_diff_1k.jpg",
+    "normalMap": "rusty_metal_sheet_nor_gl_1k.jpg",
+    "roughnessMap": "rusty_metal_sheet_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "rusty_metal_sheet_diff_1k.jpg",
+     "source": "rusty_metal_sheet/rusty_metal_sheet_diff_1k.jpg",
+     "bytes": 793031,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "rusty_metal_sheet_nor_gl_1k.jpg",
+     "source": "rusty_metal_sheet/rusty_metal_sheet_nor_gl_1k.jpg",
+     "bytes": 409291,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "rusty_metal_sheet_rough_1k.jpg",
+     "source": "rusty_metal_sheet/rusty_metal_sheet_rough_1k.jpg",
+     "bytes": 626838,
+     "cached": true
+    }
+   }
+  },
+  "shutterMetal": {
+   "role": "shutterMetal",
+   "slug": "painted_metal_shutter",
+   "note": "the painted steel window shutters",
+   "tile": 1.8,
+   "roughness": 0.6,
+   "metalness": 0.1,
+   "dir": "painted_metal_shutter/",
+   "source": "painted_metal_shutter/",
+   "maps": {
+    "map": "painted_metal_shutter_diff_1k.jpg",
+    "normalMap": "painted_metal_shutter_nor_gl_1k.jpg",
+    "roughnessMap": "painted_metal_shutter_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "painted_metal_shutter_diff_1k.jpg",
+     "source": "painted_metal_shutter/painted_metal_shutter_diff_1k.jpg",
+     "bytes": 627333,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "painted_metal_shutter_nor_gl_1k.jpg",
+     "source": "painted_metal_shutter/painted_metal_shutter_nor_gl_1k.jpg",
+     "bytes": 730726,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "painted_metal_shutter_rough_1k.jpg",
+     "source": "painted_metal_shutter/painted_metal_shutter_rough_1k.jpg",
+     "bytes": 547880,
+     "cached": true
+    }
+   }
+  },
+  "fabricLinen": {
+   "role": "fabricLinen",
+   "slug": "rough_linen",
+   "note": "curtains, bedsheets, the dust sheets over the furniture",
+   "tile": 1.2,
+   "roughness": 0.95,
+   "metalness": 0,
+   "dir": "rough_linen/",
+   "source": "rough_linen/",
+   "maps": {
+    "map": "rough_linen_diff_1k.jpg",
+    "normalMap": "rough_linen_nor_gl_1k.jpg",
+    "roughnessMap": "rough_linen_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "rough_linen_diff_1k.jpg",
+     "source": "rough_linen/rough_linen_diff_1k.jpg",
+     "bytes": 835801,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "rough_linen_nor_gl_1k.jpg",
+     "source": "rough_linen/rough_linen_nor_gl_1k.jpg",
+     "bytes": 916843,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "rough_linen_rough_1k.jpg",
+     "source": "rough_linen/rough_linen_rough_1k.jpg",
+     "bytes": 1083725,
+     "cached": true
+    }
+   }
+  },
+  "fabricVelvet": {
+   "role": "fabricVelvet",
+   "slug": "velour_velvet",
+   "note": "the upholstery: sofá, dining chair seats, the old confessional kneeler",
+   "tile": 1,
+   "roughness": 0.9,
+   "metalness": 0,
+   "dir": "velour_velvet/",
+   "source": "velour_velvet/",
+   "maps": {
+    "map": "velour_velvet_diff_1k.jpg",
+    "normalMap": "velour_velvet_nor_gl_1k.jpg",
+    "roughnessMap": "velour_velvet_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "velour_velvet_diff_1k.jpg",
+     "source": "velour_velvet/velour_velvet_diff_1k.jpg",
+     "bytes": 735556,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "velour_velvet_nor_gl_1k.jpg",
+     "source": "velour_velvet/velour_velvet_nor_gl_1k.jpg",
+     "bytes": 695985,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "velour_velvet_rough_1k.jpg",
+     "source": "velour_velvet/velour_velvet_rough_1k.jpg",
+     "bytes": 943960,
+     "cached": true
+    }
+   }
+  },
+  "leather": {
+   "role": "leather",
+   "slug": "brown_leather",
+   "note": "the escritorio top, the trunk, the old armchair",
+   "tile": 1,
+   "roughness": 0.55,
+   "metalness": 0,
+   "dir": "brown_leather/",
+   "source": "brown_leather/",
+   "maps": {
+    "map": "brown_leather_diff_1k.jpg",
+    "normalMap": "brown_leather_nor_gl_1k.jpg",
+    "roughnessMap": "brown_leather_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "brown_leather_diff_1k.jpg",
+     "source": "brown_leather/brown_leather_diff_1k.jpg",
+     "bytes": 503348,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "brown_leather_nor_gl_1k.jpg",
+     "source": "brown_leather/brown_leather_nor_gl_1k.jpg",
+     "bytes": 863280,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "brown_leather_rough_1k.jpg",
+     "source": "brown_leather/brown_leather_rough_1k.jpg",
+     "bytes": 686142,
+     "cached": true
+    }
+   }
+  },
+  "groundDirt": {
+   "role": "groundDirt",
+   "slug": "brown_mud",
+   "note": "packed dirt: the driveway and the road shoulder",
+   "tile": 4,
+   "roughness": 0.95,
+   "metalness": 0,
+   "dir": "brown_mud/",
+   "source": "brown_mud/",
+   "maps": {
+    "map": "brown_mud_diff_1k.jpg",
+    "normalMap": "brown_mud_nor_gl_1k.jpg",
+    "roughnessMap": "brown_mud_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "brown_mud_diff_1k.jpg",
+     "source": "brown_mud/brown_mud_diff_1k.jpg",
+     "bytes": 501955,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "brown_mud_nor_gl_1k.jpg",
+     "source": "brown_mud/brown_mud_nor_gl_1k.jpg",
+     "bytes": 1011780,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "brown_mud_rough_1k.jpg",
+     "source": "brown_mud/brown_mud_rough_1k.jpg",
+     "bytes": 340815,
+     "cached": true
+    }
+   }
+  },
+  "groundGrass": {
+   "role": "groundGrass",
+   "slug": "grass_ground",
+   "note": "the yard the fences divide",
+   "tile": 4,
+   "roughness": 0.9,
+   "metalness": 0,
+   "dir": "grass_ground/",
+   "source": "grass_ground/",
+   "maps": {
+    "map": "grass_ground_diff_1k.jpg",
+    "normalMap": "grass_ground_nor_gl_1k.jpg",
+    "roughnessMap": "grass_ground_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "grass_ground_diff_1k.jpg",
+     "source": "grass_ground/grass_ground_diff_1k.jpg",
+     "bytes": 876584,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "grass_ground_nor_gl_1k.jpg",
+     "source": "grass_ground/grass_ground_nor_gl_1k.jpg",
+     "bytes": 1310516,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "grass_ground_rough_1k.jpg",
+     "source": "grass_ground/grass_ground_rough_1k.jpg",
+     "bytes": 328190,
+     "cached": true
+    }
+   }
+  },
+  "groundForest": {
+   "role": "groundForest",
+   "slug": "forrest_ground_01",
+   "note": "the forest floor under the approach road",
+   "tile": 5,
+   "roughness": 0.92,
+   "metalness": 0,
+   "dir": "forrest_ground_01/",
+   "source": "forrest_ground_01/",
+   "maps": {
+    "map": "forrest_ground_01_diff_1k.jpg",
+    "normalMap": "forrest_ground_01_nor_gl_1k.jpg",
+    "roughnessMap": "forrest_ground_01_rough_1k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "forrest_ground_01_diff_1k.jpg",
+     "source": "forrest_ground_01/forrest_ground_01_diff_1k.jpg",
+     "bytes": 833711,
+     "cached": true
+    },
+    "normalMap": {
+     "map": "forrest_ground_01_nor_gl_1k.jpg",
+     "source": "forrest_ground_01/forrest_ground_01_nor_gl_1k.jpg",
+     "bytes": 1428763,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "forrest_ground_01_rough_1k.jpg",
+     "source": "forrest_ground_01/forrest_ground_01_rough_1k.jpg",
+     "bytes": 257165,
+     "cached": true
+    }
+   }
+  },
+  "roadAsphalt": {
+   "role": "roadAsphalt",
+   "slug": "asphalt_02",
+   "note": "the Tuluyan blacktop, and the shoulder it gives up on",
+   "tile": 3.2,
+   "roughness": 0.9,
+   "metalness": 0,
+   "dir": "asphalt_02/",
+   "source": "asphalt_02/",
+   "maps": {
+    "map": "asphalt_02_diff_2k.jpg",
+    "normalMap": "asphalt_02_nor_gl_2k.jpg",
+    "roughnessMap": "asphalt_02_rough_2k.jpg"
+   },
+   "files": {
+    "map": {
+     "map": "asphalt_02_diff_2k.jpg",
+     "source": "asphalt_02/asphalt_02_diff_2k.jpg",
+     "bytes": 3075676,
+     "cached": false
+    },
+    "normalMap": {
+     "map": "asphalt_02_nor_gl_2k.jpg",
+     "source": "asphalt_02/asphalt_02_nor_gl_2k.jpg",
+     "bytes": 4943950,
+     "cached": true
+    },
+    "roughnessMap": {
+     "map": "asphalt_02_rough_2k.jpg",
+     "source": "asphalt_02/asphalt_02_rough_2k.jpg",
+     "bytes": 2230457,
+     "cached": false
+    }
+   }
+  }
+ }
+}

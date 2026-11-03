@@ -1,0 +1,1133 @@
+# BUILD FURNITURE — the mansion's furniture and fixtures, modelled in Blender.
+#
+# Run headless:
+#   "C:/Program Files/Blender Foundation/Blender 4.2/blender.exe" -b \
+#       --factory-startup -P scripts/build_furniture.py
+#
+# Output: public/assets/models/furniture.glb — one node per piece, named after
+# the registry key in src/world/furniture.js.
+#
+# Why Blender rather than more boxes in JS: every piece here has real joinery
+# detail — bevelled edges, turned legs, raised door panels, rolled arms, a
+# recessed sink bowl, cistern mouldings. A BoxGeometry with a texture cannot
+# produce those silhouettes, and the silhouette is what tells a player they are
+# looking at a wardrobe and not a crate.
+#
+# Conventions (must match the game's placement code):
+#   * X is width, Y is depth, Z is up, origin at the floor, centred in X.
+#   * A piece FACES -Y (its front is at negative Y). glTF converts Blender
+#     (x,y,z) to (x, z, -y), so the front becomes +Z in the game, which is what
+#     furniture.js assumes.
+#   * UVs are box-projected in metres, so the game's 1-repeat-per-metre
+#     material convention tiles every piece consistently.
+#   * Material slots are named after src/world/materials.js keys; the loader
+#     swaps Blender's placeholder shaders for the game's real ones.
+#
+# Geometry is built into plain vertex/face lists rather than through bpy.ops:
+# in background mode operators depend on context (active object, mode, area)
+# and fail silently. bmesh primitives plus explicit lists do not.
+
+import bpy
+import bmesh
+import math
+import os
+from mathutils import Matrix, Vector, Euler
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(ROOT, 'public', 'assets', 'models', 'furniture.glb')
+
+# Names must exist in src/world/materials.js. Colours here are only for the
+# Blender preview; the game replaces every material by name.
+MATERIALS = {
+    'wood':      ((0.42, 0.28, 0.17, 1), 0.62, 0.0),
+    'woodDark':  ((0.20, 0.13, 0.08, 1), 0.55, 0.0),
+    'woodGrey':  ((0.46, 0.43, 0.38, 1), 0.78, 0.0),
+    'paint':     ((0.74, 0.72, 0.64, 1), 0.42, 0.0),
+    'velvet':    ((0.24, 0.07, 0.06, 1), 0.92, 0.0),
+    'linen':     ((0.70, 0.67, 0.58, 1), 0.95, 0.0),
+    'leather':   ((0.26, 0.15, 0.09, 1), 0.66, 0.0),
+    'iron':      ((0.13, 0.13, 0.13, 1), 0.48, 0.7),
+    'ironDark':  ((0.08, 0.08, 0.085, 1), 0.55, 0.6),
+    'rust':      ((0.30, 0.17, 0.11, 1), 0.85, 0.3),
+    'brass':     ((0.55, 0.40, 0.16, 1), 0.34, 0.9),
+    'porcelain': ((0.90, 0.89, 0.85, 1), 0.16, 0.0),
+    'marble':    ((0.70, 0.68, 0.62, 1), 0.30, 0.0),
+    'tile':      ((0.62, 0.60, 0.53, 1), 0.45, 0.0),
+    'tileDirty': ((0.48, 0.46, 0.40, 1), 0.66, 0.0),
+    'glass':     ((0.30, 0.36, 0.36, 1), 0.06, 0.0),
+    'ceramic':   ((0.91, 0.90, 0.86, 1), 0.28, 0.0),
+}
+
+
+# --------------------------------------------------------------------------
+# primitive construction
+# --------------------------------------------------------------------------
+class Part:
+    """One mesh under construction: flat vertex/face lists, per-face material."""
+
+    def __init__(self, name):
+        self.name = name
+        self.verts = []
+        self.faces = []      # (tuple_of_indices, material_index, smooth)
+
+    def _emit(self, bm, mat, smooth=False, flip=False):
+        bm.verts.ensure_lookup_table()
+        base = len(self.verts)
+        for v in bm.verts:
+            self.verts.append((v.co.x, v.co.y, v.co.z))
+        idx = MATERIALS_ORDER.index(mat)
+        for f in bm.faces:
+            vs = [v.index + base for v in f.verts]
+            if flip:
+                vs.reverse()
+            self.faces.append((tuple(vs), idx, smooth))
+        bm.free()
+
+    def box(self, w, h, d, x=0, y=0, z=0, mat='wood', bevel=0.008, seg=2,
+            rot=(0, 0, 0), smooth=False):
+        """A beveled box. bevel is the chamfer/round radius in metres; seg 2
+        gives a joiner's chamfer, seg 4 with a 4 cm offset gives upholstery."""
+        bm = bmesh.new()
+        ret = bmesh.ops.create_cube(bm, size=1.0)
+        verts = ret['verts']
+        bmesh.ops.scale(bm, vec=(w, h, d), verts=verts)
+        if bevel > 0:
+            edges = list({e for v in verts for e in v.link_edges})
+            bmesh.ops.bevel(bm, geom=edges, offset=bevel, offset_type='OFFSET',
+                            segments=seg, profile=0.5, affect='EDGES',
+                            clamp_overlap=True)
+        m = Euler(rot, 'XYZ').to_matrix().to_4x4()
+        bmesh.ops.transform(bm, matrix=m, verts=bm.verts[:])
+        bmesh.ops.translate(bm, vec=(x, y, z), verts=bm.verts[:])
+        self._emit(bm, mat, smooth)
+        return self
+
+    def cyl(self, r1, r2, depth, x=0, y=0, z=0, mat='wood', seg=14,
+            rot=(0, 0, 0), smooth=True, caps=True, scale=(1, 1)):
+        """A tapered cylinder — legs, pipes, burners, taps. `scale` squashes it
+        in plan, which is how a round pan becomes an oval one."""
+        bm = bmesh.new()
+        bmesh.ops.create_cone(bm, cap_ends=caps, cap_tris=False, segments=seg,
+                              radius1=r1, radius2=r2, depth=depth)
+        if scale != (1, 1):
+            bmesh.ops.scale(bm, vec=(scale[0], scale[1], 1.0), verts=bm.verts[:])
+        m = Euler(rot, 'XYZ').to_matrix().to_4x4()
+        bmesh.ops.transform(bm, matrix=m, verts=bm.verts[:])
+        bmesh.ops.translate(bm, vec=(x, y, z), verts=bm.verts[:])
+        self._emit(bm, mat, smooth)
+        return self
+
+    def sphere(self, r, x=0, y=0, z=0, mat='brass', sub=2, scale=(1, 1, 1),
+               smooth=True):
+        bm = bmesh.new()
+        ret = bmesh.ops.create_icosphere(bm, subdivisions=sub, radius=r)
+        bmesh.ops.scale(bm, vec=scale, verts=ret['verts'])
+        bmesh.ops.translate(bm, vec=(x, y, z), verts=bm.verts[:])
+        self._emit(bm, mat, smooth)
+        return self
+
+    def lathe(self, profile, x=0, y=0, z=0, mat='wood', seg=16,
+              scale=(1, 1), smooth=True, closed=False):
+        """Revolve a (radius, height) profile around Z. Turned legs, basins,
+        pedestals and the tub's rolled rim are lathes, not stacks of cones."""
+        rings = []
+        bm = bmesh.new()
+        for r, h in profile:
+            ring = []
+            if r <= 1e-6:
+                v = bm.verts.new((0, 0, h))
+                ring = [v] * seg
+            else:
+                for i in range(seg):
+                    a = (i / seg) * math.tau
+                    ring.append(bm.verts.new((math.cos(a) * r * scale[0],
+                                              math.sin(a) * r * scale[1], h)))
+            rings.append(ring)
+        for i in range(len(rings) - 1):
+            a, b = rings[i], rings[i + 1]
+            for j in range(seg):
+                k = (j + 1) % seg
+                if a[j] is a[k]:
+                    bm.faces.new((a[j], b[k], b[j]))
+                elif b[j] is b[k]:
+                    bm.faces.new((a[j], a[k], b[j]))
+                else:
+                    bm.faces.new((a[j], a[k], b[k], b[j]))
+        if closed:
+            for ring in (rings[0], rings[-1]):
+                if ring[0] is not ring[1]:
+                    bm.faces.new(list(reversed(ring)))
+        bmesh.ops.translate(bm, vec=(x, y, z), verts=bm.verts[:])
+        bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+        self._emit(bm, mat, smooth)
+        return self
+
+    def torus(self, major, minor, x=0, y=0, z=0, mat='brass', seg=18,
+              sides=8, scale=(1, 1, 1), rot=(0, 0, 0), smooth=True, arc=math.tau):
+        """Ring — knobs, tap collars, toilet seats, towel rails, tub rims."""
+        bm = bmesh.new()
+        closed = abs(arc - math.tau) < 1e-6
+        n = seg if closed else seg + 1
+        ring_rows = []
+        for i in range(n):
+            a = (i / seg) * arc
+            ca, sa = math.cos(a), math.sin(a)
+            row = []
+            for j in range(sides):
+                b = (j / sides) * math.tau
+                rr = major + math.cos(b) * minor
+                row.append(bm.verts.new((ca * rr, sa * rr, math.sin(b) * minor)))
+            ring_rows.append(row)
+        for i in range(n if closed else n - 1):
+            a, b = ring_rows[i], ring_rows[(i + 1) % n]
+            for j in range(sides):
+                k = (j + 1) % sides
+                bm.faces.new((a[j], a[k], b[k], b[j]))
+        bmesh.ops.scale(bm, vec=scale, verts=bm.verts[:])
+        m = Euler(rot, 'XYZ').to_matrix().to_4x4()
+        bmesh.ops.transform(bm, matrix=m, verts=bm.verts[:])
+        bmesh.ops.translate(bm, vec=(x, y, z), verts=bm.verts[:])
+        bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+        self._emit(bm, mat, smooth)
+        return self
+
+    def bar(self, a, b, r, mat='brass', seg=8, smooth=True):
+        """A cylinder between two points — handles, rails, towel bars."""
+        a, b = Vector(a), Vector(b)
+        d = b - a
+        length = d.length
+        if length < 1e-6:
+            return self
+        rot = Vector((0, 0, 1)).rotation_difference(d.normalized()).to_euler()
+        return self.cyl(r, r, length, (a.x + b.x) / 2, (a.y + b.y) / 2,
+                        (a.z + b.z) / 2, mat=mat, seg=seg, rot=rot, smooth=smooth)
+
+    def piece(self, other, x=0, y=0, z=0, rot_z=0.0):
+        """Merge another Part, offset and optionally turned about Z."""
+        base = len(self.verts)
+        m = Matrix.Rotation(rot_z, 3, 'Z')
+        for (vx, vy, vz) in other.verts:
+            v = m @ Vector((vx, vy, vz))
+            self.verts.append((v.x + x, v.y + y, v.z + z))
+        self.faces.extend((tuple(i + base for i in f), m2, s) for f, m2, s in other.faces)
+        return self
+
+
+MATERIALS_ORDER = list(MATERIALS.keys())
+
+
+# --------------------------------------------------------------------------
+# shared sub-assemblies
+# --------------------------------------------------------------------------
+def turned_leg(part, height, r0=0.024, mat='wood', x=0, y=0, taper=0.85):
+    """A Victorian-ish turned leg: square-ish foot, two beads, a tapered shaft."""
+    unit = height / 0.44
+    profile = [
+        (0.0, 0.0), (r0 * 1.15, 0.0), (r0 * 1.15, 0.025 * unit),
+        (r0 * 0.82, 0.045 * unit), (r0 * 1.05, 0.075 * unit),
+        (r0 * 0.95, 0.12 * unit), (r0 * 0.72, 0.16 * unit),
+        (r0 * 0.72, 0.28 * unit), (r0 * 1.0, 0.31 * unit),
+        (r0 * 1.0, 0.35 * unit), (r0 * 0.8, 0.38 * unit),
+        (r0 * taper, 0.41 * unit), (r0 * taper, height - 0.004),
+        (0.0, height),
+    ]
+    part.lathe(profile, x=x, y=y, mat=mat, seg=12)
+
+
+def tapered_leg(part, height, top=0.026, bottom=0.014, mat='wood', x=0, y=0):
+    part.cyl(bottom, top, height, x, y, height / 2, mat=mat, seg=8)
+
+
+def recessed_panel(part, w, h, x, y, z, mat='wood', frame=0.075):
+    """A raised-and-fielded door face: outer slab plus a proud centre panel.
+    Real cabinet doors are not flat boxes, and the shadow line of the frame is
+    most of what the eye reads. Arguments are (width, height, centre x, front
+    face y, centre z) — the panel is the only thing proud of the face."""
+    part.box(w, 0.020, h, x, y, z, mat=mat, bevel=0.004)
+    part.box(w - frame * 2, 0.014, h - frame * 2, x, y - 0.010, z,
+             mat=mat, bevel=0.008, seg=3)
+
+
+def knob(part, x, y, z, mat='brass', r=0.018):
+    part.cyl(r * 0.55, r * 0.55, 0.022, x, y, z, mat=mat, seg=10, rot=(math.pi / 2, 0, 0))
+    part.sphere(r, x, y - 0.018, z, mat=mat, sub=2, scale=(1, 0.8, 1))
+
+
+def drawer(part, w, h, x, y, z, mat='wood', pulls=1):
+    part.box(w, 0.020, h, x, y, z, mat=mat, bevel=0.005)
+    part.box(w - 0.09, 0.010, h - 0.07, x, y - 0.010, z, mat=mat, bevel=0.006, seg=3)
+    if pulls == 1:
+        knob(part, x, y - 0.014, z)
+    else:
+        for off in (-w * 0.28, w * 0.28):
+            part.bar((x + off, y - 0.02, z), (x + off, y - 0.05, z), 0.007, mat='brass')
+
+
+# --------------------------------------------------------------------------
+# seating
+# --------------------------------------------------------------------------
+def make_sofa(part):
+    W, D = 2.06, 0.90
+    for sx in (-1, 1):
+        turned_leg(part, 0.16, r0=0.028, mat='woodDark', x=sx * (W / 2 - 0.10), y=-D / 2 + 0.10)
+        part.cyl(0.018, 0.026, 0.16, sx * (W / 2 - 0.10), D / 2 - 0.10, 0.08,
+                 mat='woodDark', seg=8, rot=(0.10, 0, 0))
+    part.box(W - 0.04, D - 0.06, 0.28, 0, 0, 0.30, mat='velvet', bevel=0.03, seg=3, smooth=True)
+    for sx in (-1, 1):
+        part.box(0.19, D - 0.10, 0.36, sx * (W / 2 - 0.095), 0, 0.38,
+                 mat='velvet', bevel=0.04, seg=3, smooth=True)
+        part.cyl(0.115, 0.115, D - 0.12, sx * (W / 2 - 0.095), 0, 0.56,
+                 mat='velvet', seg=16, rot=(math.pi / 2, 0, 0), smooth=True)
+        part.cyl(0.038, 0.030, 0.06, sx * (W / 2 - 0.095), -D / 2 + 0.05, 0.64,
+                 mat='woodDark', seg=10, rot=(math.pi / 2, 0, 0))
+    part.box(W - 0.34, 0.20, 0.52, 0, D / 2 - 0.13, 0.56, mat='velvet',
+             bevel=0.03, seg=3, smooth=True)
+    for sx in (-1, 1):
+        part.box((W - 0.40) / 2 - 0.02, 0.17, 0.42,
+                 sx * ((W - 0.40) / 4 + 0.01), D / 2 - 0.245, 0.70,
+                 mat='velvet', bevel=0.045, seg=4, smooth=True, rot=(-0.10, 0, 0))
+        part.box((W - 0.42) / 2 - 0.015, D - 0.24, 0.17,
+                 sx * ((W - 0.42) / 4 + 0.007), -0.035, 0.505,
+                 mat='velvet', bevel=0.045, seg=4, smooth=True)
+    part.bar((-W / 2 + 0.12, -D / 2 + 0.02, 0.44), (W / 2 - 0.12, -D / 2 + 0.02, 0.44),
+             0.008, mat='velvet')
+
+
+def make_armchair(part):
+    W, D = 0.94, 0.90
+    for sx in (-1, 1):
+        turned_leg(part, 0.15, r0=0.024, mat='woodDark', x=sx * (W / 2 - 0.08), y=-D / 2 + 0.09)
+        part.cyl(0.015, 0.022, 0.15, sx * (W / 2 - 0.08), D / 2 - 0.09, 0.075,
+                 mat='woodDark', seg=8, rot=(0.10, 0, 0))
+    part.box(W - 0.04, D - 0.06, 0.28, 0, 0, 0.29, mat='velvet', bevel=0.03, seg=3, smooth=True)
+    for sx in (-1, 1):
+        part.box(0.17, D - 0.10, 0.34, sx * (W / 2 - 0.085), 0, 0.37, mat='velvet',
+                 bevel=0.04, seg=3, smooth=True)
+        part.cyl(0.10, 0.10, D - 0.12, sx * (W / 2 - 0.085), 0, 0.54, mat='velvet',
+                 seg=16, rot=(math.pi / 2, 0, 0), smooth=True)
+    part.box(W - 0.30, 0.19, 0.50, 0, D / 2 - 0.12, 0.55, mat='velvet',
+             bevel=0.03, seg=3, smooth=True)
+    part.box(W - 0.36, 0.16, 0.40, 0, D / 2 - 0.235, 0.69, mat='velvet',
+             bevel=0.045, seg=4, smooth=True, rot=(-0.10, 0, 0))
+    part.box(W - 0.38, D - 0.24, 0.16, 0, -0.035, 0.495, mat='velvet',
+             bevel=0.045, seg=4, smooth=True)
+
+
+def make_dining_chair(part):
+    W, D, H = 0.47, 0.52, 0.95
+    for sx in (-1, 1):
+        turned_leg(part, 0.45, r0=0.021, mat='woodDark', x=sx * (W / 2 - 0.045), y=-D / 2 + 0.05)
+        part.cyl(0.019, 0.022, 0.50, sx * (W / 2 - 0.045), D / 2 - 0.055, 0.70,
+                 mat='woodDark', seg=10, rot=(-0.06, 0, 0))
+    part.box(W, D, 0.045, 0, 0.01, 0.455, mat='wood', bevel=0.012, seg=3)
+    part.box(W - 0.06, D - 0.07, 0.012, 0, 0.01, 0.472, mat='leather', bevel=0.006)
+    part.box(W - 0.10, D - 0.12, 0.07, 0, 0.01, 0.395, mat='woodDark', bevel=0.006)
+    part.box(W - 0.055, 0.045, 0.075, 0, D / 2 - 0.048, 0.905, mat='woodDark',
+             bevel=0.012, seg=3)
+    part.box(0.075, 0.015, 0.36, 0, D / 2 - 0.035, 0.70, mat='wood', bevel=0.006)
+    part.bar((-W / 2 + 0.055, D / 2 - 0.045, 0.60), (W / 2 - 0.055, D / 2 - 0.045, 0.60),
+             0.010, mat='woodDark')
+
+
+def make_bench(part):
+    W, D = 1.32, 0.40
+    part.box(W, D, 0.055, 0, 0, 0.44, mat='wood', bevel=0.010, seg=3)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            part.box(0.05, 0.05, 0.44, sx * (W / 2 - 0.07), sy * (D / 2 - 0.06), 0.22,
+                     mat='woodDark', bevel=0.006)
+        part.box(0.04, D - 0.14, 0.055, sx * (W / 2 - 0.07), 0, 0.13, mat='woodDark', bevel=0.005)
+
+
+# --------------------------------------------------------------------------
+# tables
+# --------------------------------------------------------------------------
+def make_dining_table(part):
+    W, D, H = 2.20, 1.06, 0.76
+    part.box(W, D, 0.042, 0, 0, H - 0.021, mat='wood', bevel=0.010, seg=3)
+    part.box(W - 0.005, D - 0.005, 0.016, 0, 0, H - 0.052, mat='woodDark', bevel=0.004)
+    # apron with a shallow arch, in three pieces so the belly is real
+    for sx in (-1, 1):
+        part.box(0.032, D - 0.20, 0.09, sx * (W / 2 - 0.07), 0, H - 0.10, mat='woodDark', bevel=0.004)
+        part.box(W - 0.20, 0.032, 0.09, 0, sx * (D / 2 - 0.07), H - 0.10, mat='woodDark', bevel=0.004)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            turned_leg(part, H - 0.055, r0=0.040, mat='wood',
+                       x=sx * (W / 2 - 0.11), y=sy * (D / 2 - 0.11))
+
+
+def make_coffee_table(part):
+    W, D, H = 1.16, 0.62, 0.43
+    part.box(W, D, 0.035, 0, 0, H - 0.017, mat='wood', bevel=0.008, seg=3)
+    part.box(W - 0.12, D - 0.10, 0.022, 0, 0, 0.15, mat='woodDark', bevel=0.004)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            tapered_leg(part, H - 0.034, top=0.026, bottom=0.016, mat='woodDark',
+                        x=sx * (W / 2 - 0.075), y=sy * (D / 2 - 0.07))
+
+
+def make_side_table(part):
+    W, H = 0.52, 0.62
+    part.box(W, W, 0.030, 0, 0, H - 0.015, mat='wood', bevel=0.007, seg=3)
+    part.lathe([(0.0, 0.0), (0.16, 0.0), (0.17, 0.03), (0.10, 0.06),
+                (0.055, 0.12), (0.048, 0.30), (0.07, 0.40), (0.055, 0.50),
+                (0.11, 0.54), (0.11, 0.58), (0.0, 0.58)], mat='woodDark', seg=14)
+    for i in range(3):
+        a = i / 3 * math.tau + 0.4
+        part.box(0.30, 0.06, 0.05, math.cos(a) * 0.075, math.sin(a) * 0.075, 0.025,
+                 mat='woodDark', bevel=0.008, rot=(0, 0, a))
+
+
+def make_desk(part):
+    W, D, H = 1.52, 0.76, 0.76
+    part.box(W, D, 0.038, 0, 0, H - 0.019, mat='wood', bevel=0.008, seg=3)
+    part.box(W - 0.10, 0.03, 0.30, 0, D / 2 - 0.09, H - 0.20, mat='woodDark', bevel=0.004)
+    for sx in (-1, 1):
+        px = sx * (W / 2 - 0.23)
+        part.box(0.42, D - 0.09, 0.62, px, 0.01, 0.33, mat='woodDark', bevel=0.006)
+        for i in range(3):
+            drawer(part, 0.38, 0.17, px, -D / 2 + 0.035, 0.20 + i * 0.19, mat='wood', pulls=1)
+        tapered_leg(part, 0.12, top=0.028, bottom=0.020, mat='woodDark', x=px, y=D / 2 - 0.10)
+    part.box(W - 0.60, 0.04, 0.10, 0, D / 2 - 0.06, 0.14, mat='woodDark', bevel=0.004)
+    part.box(0.52, 0.36, 0.008, -0.10, -0.06, H + 0.004, mat='leather', bevel=0.003)
+    part.box(0.24, 0.17, 0.035, 0.34, 0.10, H + 0.018, mat='woodDark', bevel=0.004)
+
+
+def make_console(part):
+    W, D, H = 1.30, 0.42, 0.82
+    part.box(W, D, 0.032, 0, 0, H - 0.016, mat='wood', bevel=0.008, seg=3)
+    part.box(W - 0.04, D - 0.04, 0.10, 0, 0, H - 0.075, mat='woodDark', bevel=0.005)
+    for sx in (-1, 1):
+        part.cyl(0.022, 0.030, H - 0.10, sx * (W / 2 - 0.09), 0, (H - 0.10) / 2,
+                 mat='woodDark', seg=10)
+    part.box(W - 0.18, 0.024, 0.10, 0, 0, 0.20, mat='woodDark', bevel=0.004)
+    # interior there is no cavity; keep the console as a solid plinth.
+
+
+# --------------------------------------------------------------------------
+# storage
+# --------------------------------------------------------------------------
+def make_wardrobe(part):
+    W, D, H = 1.32, 0.64, 2.14
+    part.box(W - 0.06, D - 0.06, 0.09, 0, 0.02, 0.045, mat='woodDark', bevel=0.005)
+    part.box(W, D, 0.030, 0, 0, H - 0.10, mat='woodDark', bevel=0.005)
+    part.box(W, D, 0.030, 0, 0, 0.105, mat='woodDark', bevel=0.005)
+    for sx in (-1, 1):
+        part.box(0.030, D, H - 0.13, sx * (W / 2 - 0.015), 0, H / 2 + 0.01,
+                 mat='woodDark', bevel=0.004)
+    part.box(W - 0.06, 0.020, H - 0.16, 0, D / 2 - 0.012, H / 2 + 0.01, mat='woodDark', bevel=0.002)
+    for sx in (-1, 1):
+        cx = sx * W / 4
+        part.box(W / 2 - 0.020, 0.026, H - 0.20, cx, -D / 2 + 0.020, H / 2 + 0.01,
+                 mat='wood', bevel=0.004)
+        for dz in (-0.42, 0.38):
+            part.box(W / 2 - 0.13, 0.016, 0.66, cx, -D / 2 + 0.008, H / 2 + 0.01 + dz,
+                     mat='wood', bevel=0.012, seg=3)
+        knob(part, cx - sx * 0.075, -D / 2 + 0.006, 1.06)
+    part.box(W + 0.04, D + 0.04, 0.030, 0, 0, H - 0.06, mat='woodDark', bevel=0.006)
+    part.box(W + 0.08, D + 0.08, 0.026, 0, 0, H - 0.032, mat='woodDark', bevel=0.010, seg=3)
+    part.box(W + 0.02, D + 0.02, 0.022, 0, 0, H - 0.010, mat='woodDark', bevel=0.008, seg=3)
+
+
+# --------------------------------------------------------------------------
+# hiding furniture and the Resident
+# --------------------------------------------------------------------------
+# The static wardrobe in this set is one merged mesh: its doors are part of
+# the carcass, which is fine for scenery and useless for hiding. This armoire
+# is authored in three nodes so the two leaves can swing on their hinges:
+#
+#   armoire_body        carcass with a real empty interior, shelf and rail
+#   armoire_door_left   panel from x=0..+w, hinge at the origin
+#   armoire_door_right  panel from x=-w..0, hinge at the origin
+#
+# The interior is 1.28 m wide by 0.55 m deep and 2.02 m high, which is the
+# space a person actually needs; the shelf is above head height so the camera
+# never clips it. Doors are 25 mm thick with raised fields, a brass knob and a
+# real shadow gap, so a closed armoire still reads as joinery.
+def make_armoire_body(part):
+    W, D, H = 1.36, 0.66, 2.22
+    # plinth, floor panel and top
+    part.box(W - 0.08, D - 0.06, 0.10, 0, 0.01, 0.05, mat='woodDark', bevel=0.005)
+    part.box(W, D, 0.045, 0, 0, 0.125, mat='woodDark', bevel=0.005)
+    part.box(W, D, 0.050, 0, 0, H - 0.075, mat='woodDark', bevel=0.006)
+    # sides and back
+    for sx in (-1, 1):
+        part.box(0.035, D - 0.02, H - 0.22, sx * (W / 2 - 0.0175), 0, H / 2,
+                 mat='woodDark', bevel=0.004)
+    part.box(W - 0.07, 0.022, H - 0.20, 0, D / 2 - 0.012, H / 2,
+             mat='woodDark', bevel=0.002)
+    # interior floor, high shelf and a brass hanging rail behind it
+    part.box(W - 0.09, D - 0.09, 0.018, 0, 0.01, 0.163, mat='wood', bevel=0.003)
+    part.box(W - 0.09, D - 0.11, 0.022, 0, 0.02, 1.94, mat='wood', bevel=0.004)
+    part.bar((-W / 2 + 0.09, 0.07, 1.84), (W / 2 - 0.09, 0.07, 1.84),
+             0.014, mat='brass')
+    for sx in (-1, 1):
+        part.cyl(0.018, 0.018, 0.05, sx * (W / 2 - 0.085), 0.07, 1.87,
+                 mat='brass', seg=10)
+    # the three hangers that remain: pushed to one end, not across the door
+    for i in range(3):
+        hx = -W / 2 + 0.20 + i * 0.055
+        part.bar((hx, 0.07, 1.83), (hx - 0.05, 0.07, 1.66), 0.006, mat='ironDark', seg=5)
+        part.bar((hx - 0.05, 0.07, 1.66), (hx + 0.06, 0.07, 1.66), 0.006, mat='ironDark', seg=5)
+        part.bar((hx + 0.06, 0.07, 1.66), (hx + 0.10, 0.07, 1.75), 0.006, mat='ironDark', seg=5)
+    # face frame: two stiles, a head rail and a centre bead
+    for sx in (-1, 1):
+        part.box(0.065, 0.030, H - 0.26, sx * (W / 2 - 0.0325), -D / 2 + 0.015,
+                 H / 2, mat='wood', bevel=0.004)
+    part.box(W, 0.030, 0.095, 0, -D / 2 + 0.015, H - 0.20, mat='wood', bevel=0.004)
+    part.box(0.028, 0.028, H - 0.30, 0, -D / 2 + 0.014, H / 2, mat='wood', bevel=0.003)
+    # crown and feet
+    part.box(W + 0.06, D + 0.04, 0.055, 0, 0, H - 0.028, mat='woodDark', bevel=0.006)
+    part.box(W + 0.11, D + 0.08, 0.035, 0, 0, H + 0.014, mat='woodDark', bevel=0.008, seg=3)
+    for sx in (-1, 1):
+        part.box(0.10, 0.09, 0.11, sx * (W / 2 - 0.09), -D / 2 + 0.075, 0.055,
+                 mat='woodDark', bevel=0.006)
+
+
+def make_armoire_door_left(part):
+    W, D, H = 1.36, 0.66, 2.22
+    dw = W / 2 - 0.012
+    dh = H - 0.34
+    zc = 0.16 + dh / 2
+    # hinge stile at x=0, panel behind it
+    part.box(dw, 0.025, dh, dw / 2, -D / 2 - 0.012, zc, mat='wood', bevel=0.004)
+    for dz in (dh / 4, -dh / 4):
+        part.box(dw - 0.10, 0.012, dh / 2 - 0.10, dw / 2, -D / 2 - 0.026,
+                 zc + dz, mat='wood', bevel=0.008, seg=3)
+    # knobs and hinges
+    knob(part, dw - 0.075, -D / 2 - 0.030, 1.10)
+    for z in (0.42, 1.95):
+        part.box(0.018, 0.055, 0.09, 0.010, -D / 2 - 0.004, z, mat='brass', bevel=0.002)
+
+
+def make_armoire_door_right(part):
+    W, D, H = 1.36, 0.66, 2.22
+    dw = W / 2 - 0.012
+    dh = H - 0.34
+    zc = 0.16 + dh / 2
+    part.box(dw, 0.025, dh, -dw / 2, -D / 2 - 0.012, zc, mat='wood', bevel=0.004)
+    for dz in (dh / 4, -dh / 4):
+        part.box(dw - 0.10, 0.012, dh / 2 - 0.10, -dw / 2, -D / 2 - 0.026,
+                 zc + dz, mat='wood', bevel=0.008, seg=3)
+    knob(part, -dw + 0.075, -D / 2 - 0.030, 1.10)
+    for z in (0.42, 1.95):
+        part.box(0.018, 0.055, 0.09, -0.010, -D / 2 - 0.004, z, mat='brass', bevel=0.002)
+
+
+# An old iron bed with 0.49 m of genuine clearance under the frame: enough for
+# a person to crawl under, and the reason under-bed hiding is enabled here and
+# not on the joinery beds, whose frame sits 0.17 m off the floor.
+def make_iron_bed(part):
+    W, L = 1.42, 1.98
+    leg_h = 0.54
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            turned_leg(part, leg_h, r0=0.030, mat='ironDark',
+                       x=sx * (W / 2 - 0.075), y=sy * (L / 2 - 0.09))
+    # side and end rails
+    for sx in (-1, 1):
+        part.box(0.052, L - 0.14, 0.065, sx * (W / 2 - 0.060), 0, leg_h - 0.035,
+                 mat='ironDark', bevel=0.006)
+    for sy in (-1, 1):
+        part.box(W - 0.12, 0.052, 0.065, 0, sy * (L / 2 - 0.060), leg_h - 0.035,
+                 mat='ironDark', bevel=0.006)
+    # slats, mattress, pillow, folded blanket
+    for i in range(8):
+        part.box(W - 0.15, 0.042, 0.025, 0, -L / 2 + 0.20 + i * (L - 0.38) / 7,
+                 leg_h - 0.08, mat='woodDark', bevel=0.003)
+    part.box(W - 0.06, L - 0.08, 0.17, 0, -0.01, leg_h + 0.095, mat='linen',
+             bevel=0.035, seg=4, smooth=True)
+    part.box(0.62, 0.38, 0.13, 0, L / 2 - 0.31, leg_h + 0.225, mat='linen',
+             bevel=0.05, seg=4, smooth=True, rot=(-0.10, 0, 0))
+    part.box(W - 0.02, L - 0.70, 0.06, 0, -0.18, leg_h + 0.185, mat='velvet',
+             bevel=0.02, seg=3, smooth=True)
+    # headboard: posts, finials and three rails
+    for sx in (-1, 1):
+        part.cyl(0.026, 0.030, 1.30, sx * (W / 2 - 0.05), L / 2 - 0.03, 0.65,
+                 mat='ironDark', seg=10)
+        part.sphere(0.042, sx * (W / 2 - 0.05), L / 2 - 0.03, 1.32, mat='brass', sub=2)
+    for z in (0.86, 1.06, 1.24):
+        part.bar((-W / 2 + 0.05, L / 2 - 0.03, z), (W / 2 - 0.05, L / 2 - 0.03, z),
+                 0.020, mat='ironDark', seg=8)
+    # footboard: lower, so the bed reads from both ends
+    for sx in (-1, 1):
+        part.cyl(0.024, 0.028, 0.92, sx * (W / 2 - 0.05), -L / 2 + 0.03, 0.46,
+                 mat='ironDark', seg=10)
+        part.sphere(0.036, sx * (W / 2 - 0.05), -L / 2 + 0.03, 0.94, mat='brass', sub=2)
+    for z in (0.66, 0.84):
+        part.bar((-W / 2 + 0.05, -L / 2 + 0.03, z), (W / 2 - 0.05, -L / 2 + 0.03, z),
+                 0.018, mat='ironDark', seg=8)
+
+
+def make_resident(part):
+    """The Resident: a tall figure in a soiled housedress.
+
+    Not a stack of boxes: the body is a lathed dress with a real waist and
+    hem, the head is a shaped sphere, and the hair is a cap plus nine falling
+    strands. It is deliberately low-poly (about 2 k triangles) because it is
+    seen at the end of a corridor, and its silhouette is what the player reads.
+    """
+    dress = [
+        (0.0, 0.0), (0.30, 0.0), (0.32, 0.045), (0.28, 0.10),
+        (0.26, 0.28), (0.245, 0.52), (0.225, 0.80), (0.21, 1.02),
+        (0.215, 1.18), (0.19, 1.30), (0.145, 1.38), (0.105, 1.43),
+        (0.0, 1.44),
+    ]
+    part.lathe(dress, mat='linen', seg=20, smooth=True)
+    # shoulders and neck
+    part.sphere(0.165, 0, 0, 1.40, mat='linen', sub=2, scale=(1.15, 0.85, 0.55))
+    part.cyl(0.055, 0.050, 0.12, 0, 0, 1.46, mat='porcelain', seg=10)
+    # head, jaw, hair cap
+    part.sphere(0.115, 0, -0.005, 1.575, mat='porcelain', sub=3, scale=(0.92, 0.88, 1.12))
+    part.sphere(0.122, 0, 0.012, 1.61, mat='woodDark', sub=3, scale=(1.02, 1.02, 1.06))
+    # long hair: a back mass and falling strands, not a helmet
+    part.box(0.21, 0.075, 0.52, 0, 0.095, 1.36, mat='woodDark', bevel=0.025, seg=3, smooth=True)
+    for i in range(9):
+        hx = -0.10 + i * 0.025
+        part.cyl(0.016, 0.010, 0.55 + (i % 3) * 0.05, hx, 0.125, 1.10,
+                 mat='woodDark', seg=6, smooth=True, rot=(0.06, 0, 0))
+    # arms hanging, hands, feet
+    for sx in (-1, 1):
+        part.cyl(0.047, 0.034, 0.52, sx * 0.205, -0.015, 1.12,
+                 mat='linen', seg=10, rot=(0.05, 0, sx * 0.05))
+        part.sphere(0.038, sx * 0.215, -0.035, 0.845, mat='porcelain', sub=2,
+                    scale=(0.8, 0.9, 1.25))
+        part.box(0.105, 0.19, 0.055, sx * 0.085, -0.045, 0.028, mat='woodDark',
+                 bevel=0.02, seg=3)
+    # eyes: two dark hollows, no mouth
+    for sx in (-1, 1):
+        part.sphere(0.014, sx * 0.042, -0.100, 1.585, mat='ironDark', sub=1,
+                    scale=(1.0, 0.5, 1.0))
+
+
+def make_nightstand(part):
+    W, D, H = 0.54, 0.44, 0.62
+    part.box(W, D, 0.030, 0, 0, H - 0.015, mat='wood', bevel=0.006)
+    part.box(W - 0.03, D - 0.03, 0.36, 0, 0, 0.36, mat='woodDark', bevel=0.005)
+    drawer(part, W - 0.07, 0.20, 0, -D / 2 - 0.008, 0.46, mat='wood')
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            tapered_leg(part, 0.18, top=0.020, bottom=0.013, mat='woodDark',
+                        x=sx * (W / 2 - 0.055), y=sy * (D / 2 - 0.05))
+
+
+def make_dresser(part):
+    W, D, H = 1.26, 0.52, 0.94
+    part.box(W, D, 0.032, 0, 0, H - 0.016, mat='wood', bevel=0.008, seg=3)
+    part.box(W - 0.04, D - 0.04, 0.62, 0, 0, 0.52, mat='woodDark', bevel=0.005)
+    for i in range(3):
+        drawer(part, W - 0.10, 0.175, 0, -D / 2 - 0.008, 0.30 + i * 0.195, mat='wood', pulls=2)
+    part.box(W - 0.10, 0.03, 0.06, 0, D / 2 - 0.03, H + 0.015, mat='woodDark', bevel=0.004)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            tapered_leg(part, 0.20, top=0.024, bottom=0.014, mat='woodDark',
+                        x=sx * (W / 2 - 0.07), y=sy * (D / 2 - 0.06))
+
+
+def make_bookshelf(part):
+    W, D, H = 1.36, 0.36, 2.06
+    part.box(W, D, 0.030, 0, 0, H - 0.015, mat='woodDark', bevel=0.005)
+    part.box(W, D, 0.026, 0, 0, 0.075, mat='woodDark', bevel=0.005)
+    part.box(W - 0.05, D - 0.05, 0.062, 0, 0, 0.031, mat='woodDark', bevel=0.004)
+    part.box(W - 0.02, 0.018, H - 0.10, 0, D / 2 - 0.010, H / 2, mat='woodDark', bevel=0.002)
+    for sx in (-1, 1):
+        part.box(0.030, D, H - 0.09, sx * (W / 2 - 0.015), 0, H / 2 + 0.01,
+                 mat='woodDark', bevel=0.004)
+    part.box(W + 0.03, D + 0.02, 0.026, 0, 0, H + 0.005, mat='woodDark', bevel=0.008, seg=3)
+    shelves = [0.09, 0.52, 0.95, 1.38, 1.81]
+    for i, z in enumerate(shelves):
+        part.box(W - 0.07, D - 0.03, 0.022, 0, -0.005, z, mat='wood', bevel=0.003)
+    import random
+    rnd = random.Random(7)
+    for i, z in enumerate(shelves[:-1]):
+        x = -W / 2 + 0.09
+        while x < W / 2 - 0.12:
+            bw = rnd.uniform(0.028, 0.055)
+            bh = rnd.uniform(0.19, 0.29)
+            lean = 0.0 if rnd.random() > 0.12 else rnd.uniform(-0.10, 0.10)
+            part.box(bw, rnd.uniform(0.16, 0.23), bh, x + bw / 2, -0.01,
+                     z + 0.011 + bh / 2, mat='leather' if i % 2 else 'velvet',
+                     bevel=0.0, rot=(0, 0, lean))
+            x += bw + rnd.uniform(0.003, 0.012)
+
+
+# --------------------------------------------------------------------------
+# bed
+# --------------------------------------------------------------------------
+def make_bed(part):
+    W, L = 1.62, 2.06
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            turned_leg(part, 0.17, r0=0.032, mat='woodDark',
+                       x=sx * (W / 2 - 0.09), y=sy * (L / 2 - 0.09))
+    part.box(W, L, 0.20, 0, 0, 0.27, mat='woodDark', bevel=0.012, seg=3)
+    part.box(W, 0.055, 0.72, 0, L / 2 - 0.03, 0.72, mat='woodDark', bevel=0.008, seg=3)
+    part.box(W - 0.16, 0.020, 0.54, 0, L / 2 - 0.065, 0.72, mat='wood', bevel=0.012, seg=3)
+    for sx in (-1, 1):
+        part.cyl(0.042, 0.048, 0.10, sx * (W / 2 - 0.02), L / 2 - 0.05, 1.10,
+                 mat='woodDark', seg=12)
+    part.box(W - 0.06, 0.10, 0.06, 0, L / 2 - 0.06, 1.11, mat='woodDark', bevel=0.018, seg=4)
+    part.box(W - 0.08, L - 0.10, 0.25, 0, -0.02, 0.50, mat='linen',
+             bevel=0.055, seg=4, smooth=True)
+    part.box(W + 0.02, L - 0.62, 0.11, 0, -0.28, 0.63, mat='linen',
+             bevel=0.045, seg=4, smooth=True)
+    part.box(W + 0.03, 0.12, 0.09, 0, -0.02, 0.645, mat='linen', bevel=0.035, seg=3, smooth=True)
+    for sx in (-1, 1):
+        part.box(0.62, 0.36, 0.15, sx * 0.37, L / 2 - 0.34, 0.70, mat='linen',
+                 bevel=0.06, seg=4, smooth=True, rot=(-0.18, 0, 0))
+    part.box(W - 0.02, 0.46, 0.06, 0, -L / 2 + 0.36, 0.635, mat='velvet',
+             bevel=0.025, seg=3, smooth=True)
+
+
+# --------------------------------------------------------------------------
+# kitchen
+# --------------------------------------------------------------------------
+def make_cabinet_base(part):
+    """600 mm base unit: recessed toe kick, carcass, fielded door, knob."""
+    W, D, H = 0.60, 0.60, 0.90
+    part.box(W - 0.02, D - 0.07, 0.10, 0, -0.035, 0.05, mat='woodDark', bevel=0.004)
+    part.box(W, D, 0.78, 0, 0, 0.49, mat='paint', bevel=0.005)
+    recessed_panel(part, W - 0.03, 0.72, 0, -D / 2 - 0.004, 0.50, mat='paint', frame=0.072)
+    knob(part, 0, -D / 2 - 0.016, 0.82)
+    # interior vertical divider so the cabinet reads as a carcass, not a blank
+    part.box(0.012, D - 0.06, 0.70, 0, 0, 0.45, mat='woodDark', bevel=0.002)
+    # interior shelf visible at the top when the door is ajar? keep closed.
+
+
+def make_counter_top(part):
+    """1.2 m of worktop with a 100 mm upstand, modelled from its own base so it
+    sits exactly on a 0.88 m carcase: placed at floor + 0.88 the slab runs
+    0.88..0.918, the same top surface the sink unit's built-in slab uses."""
+    W = 1.20
+    part.box(W, 0.64, 0.038, 0, 0, 0.019, mat='marble', bevel=0.004, seg=3)
+    part.box(W, 0.020, 0.10, 0, 0.31, 0.088, mat='marble', bevel=0.004)
+    # edge nosing
+    part.bar((-W / 2 + 0.005, -0.318, 0.020), (W / 2 - 0.005, -0.318, 0.020),
+             0.008, mat='marble')
+
+
+def make_sink_unit(part):
+    """800 mm sink base: bowl is four inner walls and a bottom, so the rim is a
+    real edge rather than a texture drawn on a flat top."""
+    W, D, H = 0.80, 0.62, 0.90
+    part.box(W - 0.02, D - 0.07, 0.10, 0, -0.030, 0.05, mat='woodDark', bevel=0.004)
+    part.box(W, D, 0.78, 0, 0.01, 0.49, mat='paint', bevel=0.005)
+    for sx in (-1, 1):
+        recessed_panel(part, W / 2 - 0.02, 0.66, sx * W / 4, -D / 2 - 0.004, 0.50,
+                       mat='paint', frame=0.07)
+        knob(part, sx * 0.06, -D / 2 - 0.016, 0.82)
+    # carcass divider so the two doors read against a real structure
+    part.box(0.014, D - 0.06, 0.70, 0, 0, 0.44, mat='woodDark', bevel=0.002)
+    # worktop built around the bowl. The cabinet carcase tops out at 0.88, so
+    # the slab is 0.88..0.918 — at 0.919 it hovered 2 cm above the cabinets,
+    # which is exactly the kind of gap that reads as "floating".
+    tz = 0.899
+    bx0, bx1 = -0.29, 0.29
+    by0, by1 = -0.20, 0.20
+    # front strip (from front edge to bowl front)
+    part.box(W, by0 + 0.32, 0.038, 0, (-0.32 + by0) / 2, tz, mat='marble', bevel=0.004)
+    # back strip
+    part.box(W, 0.32 - by1, 0.038, 0, (0.32 + by1) / 2, tz, mat='marble', bevel=0.004)
+    # side strips
+    part.box((W / 2 + bx0), 0.40, 0.038, (-W / 2 + bx0) / 2, 0, tz, mat='marble', bevel=0.004)
+    part.box((W / 2 - bx1), 0.40, 0.038, (W / 2 + bx1) / 2, 0, tz, mat='marble', bevel=0.004)
+    # bowl: bottom, four sides, all inside the opening and flush with the slab
+    part.box(0.56, 0.38, 0.02, 0, 0, 0.78, mat='porcelain', bevel=0.006)
+    for sx in (-1, 1):
+        part.box(0.022, 0.40, 0.128, sx * 0.289, 0, 0.854, mat='porcelain', bevel=0.004)
+    for sy in (-1, 1):
+        part.box(0.58, 0.022, 0.128, 0, sy * 0.199, 0.854, mat='porcelain', bevel=0.004)
+    # drain and trap
+    part.cyl(0.035, 0.035, 0.006, 0, 0, 0.795, mat='brass', seg=12)
+    # gooseneck tap: riser standing on the slab, arc, spout
+    part.cyl(0.022, 0.026, 0.06, 0, 0.255, 0.948, mat='brass', seg=12)
+    part.cyl(0.016, 0.016, 0.26, 0, 0.255, 1.077, mat='brass', seg=12)
+    part.torus(0.075, 0.014, 0, 0.255, 1.202, mat='brass', seg=12, sides=6,
+               arc=math.pi, rot=(math.pi / 2, 0, 0))
+    part.cyl(0.014, 0.012, 0.075, 0, 0.180, 1.202, mat='brass', seg=10,
+             rot=(math.pi / 2, 0, 0))
+    part.cyl(0.020, 0.020, 0.012, 0, 0.142, 1.202, mat='brass', seg=10,
+             rot=(math.pi / 2, 0, 0))
+    # lever handle
+    part.bar((0, 0.275, 1.007), (0.10, 0.30, 1.047), 0.010, mat='brass')
+
+
+def make_cooker(part):
+    W, D, H = 0.76, 0.66, 0.90
+    part.box(W - 0.03, D - 0.08, 0.09, 0, -0.03, 0.045, mat='woodDark', bevel=0.004)
+    part.box(W, D, 0.72, 0, 0, 0.50, mat='porcelain', bevel=0.006)
+    # oven door with a dark glass panel and a brass rail
+    part.box(W - 0.05, 0.022, 0.42, 0, -D / 2 + 0.012, 0.34, mat='porcelain', bevel=0.006, seg=3)
+    part.box(W - 0.16, 0.010, 0.26, 0, -D / 2 + 0.000, 0.34, mat='glass', bevel=0.008, seg=3)
+    part.bar((-W / 2 + 0.10, -D / 2 - 0.035, 0.585), (W / 2 - 0.10, -D / 2 - 0.035, 0.585),
+             0.011, mat='brass')
+    for sx in (-1, 1):
+        part.bar((sx * (W / 2 - 0.10), -D / 2 - 0.035, 0.585),
+                 (sx * (W / 2 - 0.10), -D / 2 + 0.005, 0.585), 0.010, mat='brass')
+    # control panel and knobs
+    part.box(W - 0.04, 0.020, 0.11, 0, -D / 2 + 0.010, 0.825, mat='porcelain', bevel=0.004)
+    for i in range(4):
+        part.cyl(0.022, 0.022, 0.026, -0.24 + i * 0.16, -D / 2 - 0.008, 0.825,
+                 mat='brass', seg=10, rot=(math.pi / 2, 0, 0))
+    # hob top and four burners
+    part.box(W, D, 0.020, 0, 0, H - 0.010, mat='iron', bevel=0.004)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            bx, by = sx * 0.185, sy * 0.155
+            part.cyl(0.070, 0.060, 0.024, bx, by, H + 0.002, mat='brass', seg=14)
+            part.torus(0.086, 0.008, bx, by, H + 0.014, mat='iron', seg=14, sides=6)
+            for k in range(4):
+                a = k / 4 * math.tau + 0.3
+                part.box(0.15, 0.016, 0.012, bx + math.cos(a) * 0.042,
+                         by + math.sin(a) * 0.042, H + 0.012, mat='iron',
+                         bevel=0.003, rot=(0, 0, a))
+    # splash guard
+    part.box(W, 0.040, 0.16, 0, D / 2 - 0.02, H + 0.09, mat='porcelain', bevel=0.005)
+
+
+def make_hood(part):
+    """Chimney hood. Origin at the canopy underside, so it is placed by height."""
+    W = 0.82
+    part.box(W, 0.52, 0.10, 0, 0, 0.05, mat='iron', bevel=0.012, seg=3)
+    part.box(W - 0.10, 0.40, 0.10, 0, 0, 0.15, mat='iron', bevel=0.012, seg=3)
+    part.box(0.34, 0.30, 0.52, 0, 0.06, 0.46, mat='iron', bevel=0.008)
+    part.box(0.38, 0.34, 0.03, 0, 0.06, 0.235, mat='iron', bevel=0.006)
+    # grease filter, seen from below
+    part.box(0.70, 0.40, 0.010, 0, 0, 0.004, mat='rust', bevel=0.002)
+    # switch strip and lamp
+    part.box(0.12, 0.02, 0.045, 0, -0.25, 0.07, mat='brass', bevel=0.004)
+    part.cyl(0.035, 0.030, 0.020, 0.24, -0.05, 0.008, mat='linen', seg=12)
+
+
+def make_wall_cabinet(part):
+    W, D, H = 0.60, 0.34, 0.72
+    part.box(W, D, H, 0, 0, H / 2, mat='paint', bevel=0.005)
+    recessed_panel(part, W - 0.03, H - 0.06, 0, -D / 2 - 0.004, H / 2, mat='paint', frame=0.065)
+    knob(part, 0.0, -D / 2 - 0.016, 0.12)
+    for sx in (-1, 1):
+        part.box(0.020, 0.020, H - 0.04, sx * (W / 2 - 0.01), -D / 2 + 0.01, H / 2,
+                 mat='paint', bevel=0.003)
+
+
+def make_fridge(part):
+    W, D, H = 0.74, 0.70, 1.80
+    part.box(W - 0.04, D - 0.06, 0.08, 0, -0.02, 0.04, mat='iron', bevel=0.004)
+    part.box(W, D, H - 0.08, 0, 0, (H + 0.08) / 2, mat='porcelain', bevel=0.010, seg=3)
+    # two doors with a gasket shadow line and vertical bar handles
+    part.box(W - 0.02, 0.030, 1.12, 0, -D / 2 + 0.012, 1.16, mat='porcelain', bevel=0.008, seg=3)
+    part.box(W - 0.02, 0.030, 0.58, 0, -D / 2 + 0.012, 0.44, mat='porcelain', bevel=0.008, seg=3)
+    part.box(W - 0.03, 0.004, 0.010, 0, -D / 2 + 0.000, 0.735, mat='iron', bevel=0.001)
+    part.box(W - 0.03, 0.004, 0.010, 0, -D / 2 + 0.000, 1.735, mat='iron', bevel=0.001)
+    for sx in (-1, 1):
+        z0, z1 = (0.80, 1.28) if sx < 0 else (0.52, 0.70)
+        part.bar((sx * (W / 2 - 0.09), -D / 2 - 0.035, z0),
+                 (sx * (W / 2 - 0.09), -D / 2 - 0.035, z1), 0.010, mat='brass')
+        for z in (z0, z1):
+            part.bar((sx * (W / 2 - 0.09), -D / 2 - 0.035, z),
+                     (sx * (W / 2 - 0.09), -D / 2 + 0.005, z), 0.009, mat='brass')
+    # badge
+    part.box(0.10, 0.010, 0.018, 0.16, -D / 2 - 0.004, 1.26, mat='brass', bevel=0.002)
+
+
+def make_washer(part):
+    W, D, H = 0.60, 0.62, 0.88
+    part.box(W, D, H, 0, 0, H / 2, mat='porcelain', bevel=0.008, seg=3)
+    part.box(W - 0.02, 0.030, 0.08, 0, D / 2 - 0.010, H - 0.05, mat='porcelain', bevel=0.006)
+    # door and drum
+    part.torus(0.185, 0.035, 0, -D / 2 + 0.010, 0.44, mat='iron', seg=18, sides=8,
+               rot=(math.pi / 2, 0, 0))
+    part.cyl(0.165, 0.165, 0.020, 0, -D / 2 + 0.005, 0.44, mat='glass', seg=18,
+             rot=(math.pi / 2, 0, 0))
+    part.box(0.40, 0.020, 0.055, 0, -D / 2 + 0.005, 0.80, mat='iron', bevel=0.006)
+    for i in range(3):
+        part.cyl(0.020, 0.020, 0.020, -0.12 + i * 0.11, -D / 2 - 0.004, 0.80,
+                 mat='brass', seg=10, rot=(math.pi / 2, 0, 0))
+    part.box(0.20, 0.010, 0.030, 0.12, -D / 2 - 0.004, 0.66, mat='linen', bevel=0.003)
+    # hoses at the back
+    part.cyl(0.014, 0.014, 0.30, 0.18, D / 2 + 0.02, 0.35, mat='iron', seg=8,
+             rot=(0.4, 0, 0))
+    part.cyl(0.014, 0.014, 0.30, -0.18, D / 2 + 0.02, 0.35, mat='iron', seg=8,
+             rot=(0.4, 0, 0))
+
+
+# --------------------------------------------------------------------------
+# bathroom
+# --------------------------------------------------------------------------
+def make_wc(part):
+    """Close-coupled pan and cistern. Origin at the wall side (+Y is the wall)."""
+    part.cyl(0.145, 0.175, 0.34, 0, -0.03, 0.18, mat='porcelain', seg=18,
+             scale=(1.0, 1.35))
+    part.box(0.36, 0.50, 0.06, 0, -0.05, 0.375, mat='porcelain', bevel=0.025, seg=3)
+    part.torus(0.135, 0.026, 0, -0.05, 0.415, mat='porcelain', seg=20, sides=8,
+               scale=(1.0, 1.28, 1.0), rot=(math.pi / 2, 0, 0))
+    # cistern
+    part.box(0.40, 0.19, 0.36, 0, 0.245, 0.60, mat='porcelain', bevel=0.022, seg=3)
+    part.box(0.43, 0.22, 0.035, 0, 0.245, 0.795, mat='porcelain', bevel=0.012, seg=3)
+    part.cyl(0.026, 0.026, 0.020, 0, 0.245, 0.818, mat='brass', seg=12)
+    # flush lever on the side of the cistern
+    part.bar((0.205, 0.245, 0.66), (0.255, 0.245, 0.70), 0.008, mat='brass')
+    # soil pipe and water supply
+    part.cyl(0.058, 0.058, 0.44, 0, 0.33, 0.22, mat='porcelain', seg=12)
+    part.cyl(0.012, 0.012, 0.26, 0.20, 0.33, 0.42, mat='brass', seg=8)
+    part.bar((0.20, 0.33, 0.55), (0.20, 0.26, 0.55), 0.012, mat='brass')
+    # seat hinges
+    for sx in (-1, 1):
+        part.cyl(0.016, 0.016, 0.020, sx * 0.09, 0.12, 0.432, mat='brass', seg=8)
+
+
+def make_basin(part):
+    """Pedestal basin with a real bowl, trap and pair of taps."""
+    W = 0.58
+    part.lathe([(0.0, 0.0), (0.115, 0.0), (0.115, 0.02), (0.070, 0.05),
+                (0.062, 0.30), (0.078, 0.42), (0.090, 0.52), (0.105, 0.56),
+                (0.10, 0.575), (0.0, 0.575)], mat='porcelain', seg=16)
+    # bowl: outer shell + inner depression
+    part.box(W, 0.46, 0.09, 0, -0.03, 0.735, mat='porcelain', bevel=0.045, seg=4, smooth=True)
+    part.box(W - 0.10, 0.36, 0.05, 0, -0.03, 0.800, mat='porcelain', bevel=0.020, seg=3)
+    # overflow and waste
+    part.cyl(0.030, 0.030, 0.006, 0, -0.03, 0.774, mat='brass', seg=12)
+    part.torus(0.030, 0.007, 0, -0.03, 0.778, mat='brass', seg=14, sides=6)
+    part.cyl(0.028, 0.028, 0.24, 0, -0.03, 0.62, mat='brass', seg=10)
+    # pair of pillar taps
+    for sx in (-1, 1):
+        part.cyl(0.024, 0.028, 0.04, sx * 0.19, 0.11, 0.795, mat='brass', seg=12)
+        part.cyl(0.014, 0.014, 0.13, sx * 0.19, 0.11, 0.875, mat='brass', seg=10)
+        part.bar((sx * 0.19, 0.11, 0.94), (sx * 0.19, 0.045, 0.94), 0.013, mat='brass')
+        part.bar((sx * 0.19, 0.11, 0.905), (sx * 0.26, 0.11, 0.905), 0.008, mat='brass')
+    # wall waste
+    part.cyl(0.030, 0.030, 0.10, 0, 0.19, 0.55, mat='brass', seg=10,
+             rot=(math.pi / 2, 0, 0))
+
+
+def make_bath_tub(part):
+    W, D, H = 1.72, 0.80, 0.60
+    """Cast-iron tub: outer shell, inner basin, rolled rim, four feet, taps."""
+    part.box(W, D, H - 0.06, 0, 0, (H - 0.06) / 2 + 0.12, mat='porcelain',
+             bevel=0.075, seg=4, smooth=True)
+    # inner basin
+    part.box(W - 0.14, D - 0.14, 0.05, 0, 0, 0.16, mat='porcelain', bevel=0.020, seg=3)
+    for sx in (-1, 1):
+        part.box(0.06, D - 0.14, H - 0.18, sx * (W / 2 - 0.09), 0, H / 2 + 0.08,
+                 mat='porcelain', bevel=0.02, seg=3)
+    for sy in (-1, 1):
+        part.box(W - 0.14, 0.06, H - 0.18, 0, sy * (D / 2 - 0.06), H / 2 + 0.08,
+                 mat='porcelain', bevel=0.02, seg=3)
+    # rolled rim
+    part.box(W + 0.02, D + 0.02, 0.03, 0, 0, H + 0.075, mat='porcelain', bevel=0.014, seg=3)
+    # feet
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            part.sphere(0.075, sx * (W / 2 - 0.16), sy * (D / 2 - 0.14), 0.094,
+                        mat='brass', sub=2, scale=(1, 1, 1.25))
+            part.cyl(0.055, 0.075, 0.10, sx * (W / 2 - 0.16), sy * (D / 2 - 0.14), 0.16,
+                     mat='brass', seg=10)
+    # taps at the head end
+    for sy in (-1, 1):
+        part.cyl(0.020, 0.026, 0.06, W / 2 - 0.10, sy * 0.11, H + 0.02,
+                 mat='brass', seg=10)
+        part.cyl(0.013, 0.013, 0.11, W / 2 - 0.10, sy * 0.11, H + 0.09,
+                 mat='brass', seg=10)
+        part.bar((W / 2 - 0.10, sy * 0.11, H + 0.14), (W / 2 - 0.16, sy * 0.11, H + 0.14),
+                 0.012, mat='brass')
+    part.cyl(0.030, 0.030, 0.008, -W / 2 + 0.30, 0, 0.17, mat='brass', seg=12)
+    part.cyl(0.032, 0.032, 0.16, -W / 2 + 0.30, 0, 0.09, mat='brass', seg=10)
+
+
+def make_shower(part):
+    S, H = 0.92, 2.05
+    part.box(S, S, 0.10, 0, 0, 0.05, mat='porcelain', bevel=0.012, seg=3)
+    part.box(S - 0.12, S - 0.12, 0.03, 0, 0, 0.085, mat='porcelain', bevel=0.010, seg=3)
+    part.cyl(0.045, 0.045, 0.008, 0, 0, 0.100, mat='brass', seg=12)
+    # glass screen on two sides, brass channel
+    for (x, y, w, d) in [(S / 2 - 0.01, 0, 0.008, S), (0, S / 2 - 0.01, S, 0.008)]:
+        part.box(w, d, H - 0.35, x, y, 0.10 + (H - 0.35) / 2, mat='glass', bevel=0.001)
+        part.box(w + 0.02, d + 0.02, 0.030, x, y, 0.10, mat='brass', bevel=0.004)
+        part.box(w + 0.02, d + 0.02, 0.030, x, y, H - 0.22, mat='brass', bevel=0.004)
+    # riser and rain head
+    part.cyl(0.014, 0.014, 1.05, 0, -S / 2 + 0.06, 0.62, mat='brass', seg=10)
+    part.bar((0, -S / 2 + 0.06, 1.14), (0, -S / 2 + 0.26, 1.14), 0.014, mat='brass')
+    part.cyl(0.12, 0.10, 0.035, 0, -S / 2 + 0.26, 1.12, mat='brass', seg=16)
+    part.bar((-0.09, -S / 2 + 0.02, 1.00), (0.09, -S / 2 + 0.02, 1.00), 0.012, mat='brass')
+    # shower valve and handset
+    part.cyl(0.045, 0.045, 0.045, 0, -S / 2 + 0.02, 0.95, mat='brass', seg=12,
+             rot=(math.pi / 2, 0, 0))
+
+
+# --------------------------------------------------------------------------
+# aparador
+# --------------------------------------------------------------------------
+def make_aparador(part):
+    """The narra aparador: the sideboard every principal Filipino sala had.
+
+    Four turned legs, a fielded-door cupboard, two drawers over the doors, a
+    moulded cornice and a slab of marble on top. It is built as a carcass with
+    a face frame, not a box: the doors stand proud of the stiles and the
+    drawers stand proud of the frame, so the front carries three shadow lines
+    instead of one flat plane — which is what reads from across a dark room.
+    """
+    W, D, H = 2.05, 0.56, 1.02
+    LEG = 0.30
+    # legs: the front pair turned, the back pair square and ignored by the eye
+    for sx in (-1, 1):
+        turned_leg(part, LEG, r0=0.042, mat='woodDark',
+                   x=sx * (W / 2 - 0.11), y=-D / 2 + 0.11)
+        part.box(0.085, 0.085, LEG, sx * (W / 2 - 0.11), D / 2 - 0.11, LEG / 2,
+                 mat='woodDark', bevel=0.004)
+    # stretcher and plinth band under the carcass
+    part.box(W - 0.16, 0.05, 0.07, 0, -D / 2 + 0.11, LEG + 0.035, mat='woodDark', bevel=0.006)
+    part.box(W - 0.10, D - 0.10, 0.055, 0, 0, LEG + 0.075, mat='woodDark', bevel=0.005)
+    # carcass
+    part.box(W - 0.10, D, 0.62, 0, 0, LEG + 0.10 + 0.31, mat='woodDark', bevel=0.006)
+    # write a vertical divider so the cupboard is two real cavities
+    part.box(0.026, D - 0.06, 0.55, 0, 0, LEG + 0.10 + 0.31, mat='woodDark', bevel=0.003)
+    part.box(W - 0.16, D - 0.06, 0.022, 0, 0, LEG + 0.24, mat='woodDark', bevel=0.003)
+    # face frame: two stiles and the rail between cupboard and drawers
+    for sx in (-1, 1):
+        part.box(0.075, 0.028, 0.66, sx * (W / 2 - 0.09), -D / 2 - 0.014,
+                 LEG + 0.10 + 0.33, mat='wood', bevel=0.004)
+    part.box(W - 0.18, 0.028, 0.055, 0, -D / 2 - 0.014, LEG + 0.10 + 0.44, mat='wood', bevel=0.004)
+    part.box(W - 0.18, 0.028, 0.055, 0, -D / 2 - 0.014, LEG + 0.10 + 0.015, mat='wood', bevel=0.004)
+    # two fielded doors, standing 16 mm proud of the frame
+    dw = (W - 0.18) / 2 - 0.012
+    for sx in (-1, 1):
+        dx = sx * (dw / 2 + 0.012)
+        part.box(dw, 0.020, 0.40, dx, -D / 2 - 0.036, LEG + 0.10 + 0.245, mat='wood', bevel=0.006, seg=3)
+        recessed_panel(part, dw - 0.05, 0.34, dx, -D / 2 - 0.050, LEG + 0.10 + 0.245, mat='wood', frame=0.058)
+        knob(part, dx - sx * (dw / 2 - 0.035), -D / 2 - 0.062, LEG + 0.10 + 0.245)
+    # two drawers over the doors, each with a pair of brass pulls
+    for sx in (-1, 1):
+        drawer(part, dw, 0.165, sx * (dw / 2 + 0.012), -D / 2 - 0.008,
+               LEG + 0.10 + 0.565, mat='wood', pulls=2)
+    # moulded cornice: a fillet, a cavetto and a projecting cap
+    part.box(W - 0.06, D + 0.01, 0.045, 0, 0, H - 0.012, mat='wood', bevel=0.005, seg=3)
+    part.box(W + 0.02, D + 0.05, 0.028, 0, 0, H + 0.022, mat='woodDark', bevel=0.008, seg=3)
+    # marble slab, ground and polished, projecting over the cornice
+    part.box(W + 0.04, D + 0.07, 0.030, 0, 0, H + 0.050, mat='marble', bevel=0.005, seg=3)
+
+
+# --------------------------------------------------------------------------
+# registry
+# --------------------------------------------------------------------------
+BUILD = {
+    'sofa': make_sofa,
+    'armchair': make_armchair,
+    'dining_chair': make_dining_chair,
+    'bench': make_bench,
+    'dining_table': make_dining_table,
+    'coffee_table': make_coffee_table,
+    'side_table': make_side_table,
+    'desk': make_desk,
+    'console': make_console,
+    'wardrobe': make_wardrobe,
+    'nightstand': make_nightstand,
+    'dresser': make_dresser,
+    'aparador': make_aparador,
+    'bookshelf': make_bookshelf,
+    'bed': make_bed,
+    'iron_bed': make_iron_bed,
+    'armoire_body': make_armoire_body,
+    'armoire_door_left': make_armoire_door_left,
+    'armoire_door_right': make_armoire_door_right,
+    'resident': make_resident,
+    'cabinet_base': make_cabinet_base,
+    'counter_top': make_counter_top,
+    'sink_unit': make_sink_unit,
+    'cooker': make_cooker,
+    'hood': make_hood,
+    'wall_cabinet': make_wall_cabinet,
+    'fridge': make_fridge,
+    'washer': make_washer,
+    'wc': make_wc,
+    'basin': make_basin,
+    'bath_tub': make_bath_tub,
+    'shower': make_shower,
+}
+
+
+def box_project_uv(me, scale=1.0):
+    """UVs in metres, box-projected per face. The game's materials tile one
+    repeat per UV unit, so a metre of tabletop is a metre of grain."""
+    layer = me.uv_layers.new(name='UVMap')
+    for poly in me.polygons:
+        n = poly.normal
+        ax = max(range(3), key=lambda i: abs(n[i]))
+        if ax == 2:
+            ua, va = 0, 1
+        elif ax == 0:
+            ua, va = 1, 2
+        else:
+            ua, va = 0, 2
+        for li in poly.loop_indices:
+            co = me.vertices[me.loops[li].vertex_index].co
+            layer.data[li].uv = (co[ua] / scale, co[va] / scale)
+
+
+def build():
+    # clear the factory scene
+    for ob in list(bpy.data.objects):
+        bpy.data.objects.remove(ob, do_unlink=True)
+    scene = bpy.context.scene
+
+    bl_mats = {}
+    for name, (col, rough, metal) in MATERIALS.items():
+        m = bpy.data.materials.new(name)
+        m.use_nodes = True
+        bsdf = m.node_tree.nodes.get('Principled BSDF')
+        bsdf.inputs['Base Color'].default_value = col
+        bsdf.inputs['Roughness'].default_value = rough
+        bsdf.inputs['Metallic'].default_value = metal
+        bl_mats[name] = m
+
+    report = []
+    for name, fn in BUILD.items():
+        part = Part(name)
+        fn(part)
+        me = bpy.data.meshes.new(name)
+        me.from_pydata(part.verts, [], [f[0] for f in part.faces])
+        me.validate(verbose=False)
+        for m in MATERIALS_ORDER:
+            me.materials.append(bl_mats[m])
+        for poly, (_, mi, smooth) in zip(me.polygons, part.faces):
+            poly.material_index = mi
+            poly.use_smooth = smooth
+        box_project_uv(me, 1.0)
+        me.update()
+        ob = bpy.data.objects.new(name, me)
+        scene.collection.objects.link(ob)
+        ob.location = (0, 0, 0)
+        tris = sum(len(p.vertices) - 2 for p in me.polygons)
+        bb = [Vector(c) for c in ob.bound_box]
+        mn = Vector((min(v.x for v in bb), min(v.y for v in bb), min(v.z for v in bb)))
+        mx = Vector((max(v.x for v in bb), max(v.y for v in bb), max(v.z for v in bb)))
+        report.append((name, tris, mn, mx))
+
+    bpy.ops.object.select_all(action='SELECT')
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    bpy.ops.export_scene.gltf(
+        filepath=OUT,
+        export_format='GLB',
+        use_selection=True,
+        export_apply=True,
+        export_yup=True,
+        export_normals=True,
+        export_texcoords=True,
+        export_tangents=False,
+        export_materials='EXPORT',
+        export_cameras=False,
+        export_lights=False,
+        export_extras=False,
+        export_animations=False,
+    )
+
+    total = 0
+    print('\n=== FURNITURE BUILD ===')
+    for (name, tris, mn, mx) in report:
+        total += tris
+        print(f'{name:14s} {tris:6d} tris  '
+              f'W{mx.x - mn.x:5.2f} D{mx.y - mn.y:5.2f} H{mx.z - mn.z:5.2f}  '
+              f'z {mn.z:+.3f}..{mx.z:+.3f}')
+    print(f'{"TOTAL":14s} {total:6d} tris, {len(report)} pieces')
+    print('wrote', OUT, os.path.getsize(OUT), 'bytes')
+
+
+build()

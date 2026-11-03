@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SILID — the breakdown</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; background: #050505; overflow: hidden;
+    font-family: Georgia, 'Times New Roman', serif; color: #d8d2c4; }
+  canvas { display: block; }
+  #hud { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
+  #cross { position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; margin: -2.5px;
+    border-radius: 50%; background: rgba(255,255,255,0.55); }
+  #room { position: absolute; left: 1.4rem; top: 1.2rem; font-style: italic;
+    font-size: 0.82rem; letter-spacing: 0.14em; color: rgba(216,210,196,0.5); }
+  #level { position: absolute; left: 1.4rem; top: 2.6rem; font-size: 0.68rem;
+    letter-spacing: 0.24em; color: rgba(176,48,48,0.65); }
+  #stats { position: absolute; right: 1.4rem; top: 1.2rem; text-align: right;
+    font-size: 0.66rem; letter-spacing: 0.12em; color: rgba(216,210,196,0.35); line-height: 1.7; }
+  #keys { position: absolute; left: 50%; bottom: 1.4rem; transform: translateX(-50%);
+    font-size: 0.7rem; letter-spacing: 0.16em; color: rgba(216,210,196,0.4); white-space: nowrap; }
+  #msg { position: absolute; left: 50%; bottom: 3.1rem; transform: translateX(-50%);
+    font-size: 0.86rem; font-style: italic; letter-spacing: 0.08em;
+    color: rgba(235,225,205,0.92); white-space: nowrap; opacity: 0;
+    transition: opacity 0.25s; text-shadow: 0 1px 6px #000; }
+  #msg.on { opacity: 1; }
+  #bag { position: absolute; right: 1.4rem; top: 5.6rem; text-align: right;
+    font-size: 0.66rem; letter-spacing: 0.12em; color: rgba(214,186,120,0.75); line-height: 1.8; }
+  #look { position: absolute; left: 1.4rem; bottom: 1.4rem; font-size: 0.62rem;
+    letter-spacing: 0.12em; color: rgba(216,210,196,0.42); line-height: 1.7;
+    text-transform: none; }
+  #look b { color: rgba(214,186,120,0.8); font-weight: 400; }
+  #hint { position: absolute; left: 50%; bottom: 5.0rem; transform: translateX(-50%);
+    font-size: 0.70rem; letter-spacing: 0.12em; color: rgba(180,160,120,0.6);
+    font-style: italic; white-space: nowrap; opacity: 0; transition: opacity 0.4s; text-align: center; }
+  #hint.on { opacity: 1; }
+  /* what E will do, named before the key is pressed. The old walker only said
+     something AFTER you pressed, so there was no way to learn its reach. */
+  #prompt { position: absolute; left: 50%; top: 56%; transform: translateX(-50%);
+    font-size: 0.86rem; letter-spacing: 0.1em; color: rgba(232,222,200,0.9);
+    white-space: nowrap; opacity: 0; transition: opacity 0.18s; text-shadow: 0 1px 8px #000; }
+  #prompt.on { opacity: 1; }
+  #prompt b { color: #d8b45c; font-weight: 400; border: 1px solid rgba(216,180,92,0.5);
+    padding: 0.05em 0.4em; margin-right: 0.55em; border-radius: 2px; font-size: 0.9em; }
+  #vignette { position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 52%, rgba(0,0,0,0.86) 100%); }
+  #boot { position: fixed; inset: 0; z-index: 20; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 1.1rem; text-align: center;
+    background: radial-gradient(ellipse at center, #101010 0%, #050505 72%); }
+  #boot h1 { font-size: clamp(2.6rem, 11vw, 6rem); letter-spacing: 0.42em; text-indent: 0.42em;
+    font-weight: 400; color: #cfc9bb; }
+  #boot .sub { color: #8d8778; font-style: italic; letter-spacing: 0.1em; font-size: 0.9rem; }
+  #boot .bar { width: min(24rem, 70vw); height: 2px; background: #1c1a16; }
+  #boot .bar i { display: block; height: 100%; width: 0%; background: #b03030; transition: width 0.25s; }
+  #boot .go { margin-top: 0.6rem; border: 1px solid #3a362d; background: transparent;
+    color: #d8d2c4; font-family: inherit; font-size: 0.85rem; letter-spacing: 0.3em;
+    text-indent: 0.3em; padding: 0.8rem 2.4rem; cursor: pointer; display: none; }
+  #boot .go:hover { border-color: #b03030; color: #fff; background: rgba(176,48,48,0.08); }
+  #boot .msg { font-size: 0.72rem; color: #6b6553; letter-spacing: 0.1em; }
+  #boot .err { color: #b03030; font-size: 0.74rem; max-width: 34rem; line-height: 1.6; }
+  #boot.hidden { display: none; }
+</style>
+</head>
+<body>
+<div id="hud">
+  <div id="vignette"></div>
+  <div id="cross"></div>
+  <div id="room"></div>
+  <div id="level"></div>
+  <div id="stats"></div>
+  <div id="bag"></div>
+  <div id="msg"></div>
+  <div id="look"></div>
+  <div id="hint"></div>
+  <div id="prompt"></div>
+  <div id="keys">WASD move · SHIFT run · C crouch · E open / take / knock · P phone · F torch · L light · G graphics quality · R back to the door</div>
+</div>
+
+<div id="boot">
+  <h1>SILID</h1>
+  <div class="sub">tuluyan road · act i — the breakdown</div>
+  <div class="bar"><i id="boot-bar"></i></div>
+  <div class="msg" id="boot-msg">opening the door…</div>
+  <button class="go" id="boot-go">PASOK — ENTER</button>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

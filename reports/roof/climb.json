@@ -1,0 +1,78 @@
+{
+  "legs": {
+    "far": {
+      "foot": 0,
+      "pos": [
+        -13.3,
+        1.68,
+        -15.6
+      ],
+      "climbing": false,
+      "prompt": null
+    },
+    "base": {
+      "foot": 0,
+      "pos": [
+        -13.3,
+        1.68,
+        -12.35
+      ],
+      "climbing": false,
+      "prompt": "ladder:up"
+    },
+    "started": {
+      "foot": 0,
+      "pos": [
+        -13.3,
+        1.68,
+        -11.42
+      ],
+      "climbing": true,
+      "prompt": null
+    },
+    "top": null,
+    "aim_door": {
+      "foot": 4.2,
+      "pos": [
+        -13.3,
+        5.88,
+        -11.42
+      ],
+      "climbing": true,
+      "prompt": null
+    },
+    "door": {
+      "open": false,
+      "at": -12.2,
+      "w": 1,
+      "y": 11.6
+    },
+    "deck": null,
+    "back": null,
+    "aim_ladder": {
+      "foot": 11.6,
+      "pos": [
+        -12.2,
+        13.28,
+        -11.75
+      ],
+      "climbing": false,
+      "prompt": "ladder:down"
+    },
+    "down_start": {
+      "foot": 11.6,
+      "pos": [
+        -13.3,
+        13.28,
+        -11.42
+      ],
+      "climbing": true,
+      "prompt": "door:"
+    },
+    "bottom": null
+  },
+  "errors": [
+    "pageerror A user gesture is required to request Pointer Lock."
+  ],
+  "ok": false
+}

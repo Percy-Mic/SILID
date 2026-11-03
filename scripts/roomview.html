@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>room preview</title>
+<style>html,body{margin:0;height:100%;background:#111;overflow:hidden}#hud{position:fixed;left:8px;top:8px;color:#ccc;font:12px monospace;white-space:pre;z-index:9}</style>
+</head>
+<body>
+<div id="hud">loading…</div>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.0;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x141416);
+const cam = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.05, 400);
+scene.add(new THREE.HemisphereLight(0xbfc7d4, 0x40382c, 1.2));
+const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(4, 8, 6); scene.add(key);
+const fill = new THREE.DirectionalLight(0x99a8c0, 0.8); fill.position.set(-6, 4, -5); scene.add(fill);
+
+const hud = document.getElementById('hud');
+const api = { ready: false, info: null, setCam: null, bbox: null, materials: null, grid: null };
+window.__room = api;
+
+const params = new URLSearchParams(location.search);
+const file = params.get('f');
+const loader = new GLTFLoader();
+const SCALE = parseFloat(params.get('s') || '1');
+const ROT = (parseFloat(params.get('r') || '0') * Math.PI) / 180;
+loader.load(file, (gltf) => {
+  const root = gltf.scene;
+  if (SCALE !== 1) root.scale.setScalar(SCALE);
+  if (ROT) root.rotation.y = ROT;
+  root.updateMatrixWorld(true);
+  scene.add(root);
+  const box = new THREE.Box3().setFromObject(root);
+  const size = box.getSize(new THREE.Vector3());
+  const center = box.getCenter(new THREE.Vector3());
+  let meshes = 0, tris = 0;
+  const mats = new Map();
+  const imgs = new Map();
+  root.traverse((o) => {
+    if (!o.isMesh) return;
+    meshes++;
+    const g = o.geometry;
+    tris += (g.index ? g.index.count : g.attributes.position.count) / 3;
+    for (const m of (Array.isArray(o.material) ? o.material : [o.material])) {
+      if (!m) continue;
+      if (!mats.has(m.uuid)) mats.set(m.uuid, { name: m.name, type: m.type, side: m.side, transparent: m.transparent, opacity: m.opacity, maps: [] });
+      const rec = mats.get(m.uuid);
+      for (const k of ['map', 'normalMap', 'roughnessMap', 'metalnessMap', 'emissiveMap', 'aoMap']) {
+        const t = m[k];
+        if (!t) continue;
+        const im = t.image;
+        rec.maps.push(`${k}:${t.colorSpace}/${im ? im.width + 'x' + im.height : '?'}/${t.flipY ? 'flipY' : 'noflip'}`);
+        if (im) imgs.set((im.src || '').slice(-40) || im.width + 'x' + im.height, `${im.width}x${im.height}`);
+      }
+    }
+  });
+  api.bbox = { min: box.min.toArray(), max: box.max.toArray(), size: size.toArray(), center: center.toArray() };
+  api.materials = [...mats.values()];
+  api.info = { meshes, tris: Math.round(tris), materials: mats.size, images: imgs.size, size: size.toArray().map((v) => +v.toFixed(2)) };
+  hud.textContent = `${file}\nmeshes ${meshes} tris ${Math.round(tris)} mats ${mats.size}\nsize ${size.toArray().map((v) => v.toFixed(2)).join(' x ')}\nmin ${box.min.toArray().map((v) => v.toFixed(2)).join(',')}`;
+
+  // top-down occupancy: how high the first surface under each grid point is,
+  // which is how the furniture's footprint is measured instead of guessed at.
+  api.probeGrid = (step) => {
+    const rc = new THREE.Raycaster();
+    const out = [];
+    for (let x = box.min.x; x <= box.max.x; x += step) {
+      for (let z = box.min.z; z <= box.max.z; z += step) {
+        rc.set(new THREE.Vector3(x, box.max.y + 0.5, z), new THREE.Vector3(0, -1, 0));
+        const hit = rc.intersectObject(root, true)[0];
+        if (hit) out.push([+x.toFixed(2), +z.toFixed(2), +hit.point.y.toFixed(2)]);
+      }
+    }
+    return out;
+  };
+  // is there a ceiling over this point, and how high is it?
+  api.rayUp = (x, z, y) => {
+    const rc = new THREE.Raycaster(new THREE.Vector3(x, y, z), new THREE.Vector3(0, 1, 0));
+    const hit = rc.intersectObject(root, true)[0];
+    return hit ? +hit.point.y.toFixed(2) : null;
+  };
+  // camera helper: look from `from` toward `at`
+  api.setCam = (from, at, fov) => {
+    cam.fov = fov || 60;
+    cam.updateProjectionMatrix();
+    cam.position.set(...from);
+    cam.lookAt(new THREE.Vector3(...at));
+    renderer.render(scene, cam);
+  };
+  // guides: world axes so rotation is readable, plus a 1 m floor grid
+  // a 1.7 m eye-height post at the centre: if it reads as waist-high beside the
+  // furniture, the imported scale is wrong; if it reads as a person, it is right
+  const post = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.7, 8), new THREE.MeshBasicMaterial({ color: 0x00ff88 }));
+  post.position.set(center.x, box.min.y + 0.85, center.z);
+  scene.add(post);
+
+  const axes = new THREE.AxesHelper(Math.max(size.x, size.z) * 0.6);
+  axes.position.set(center.x, box.min.y + 0.02, center.z);
+  scene.add(axes);
+  const grid = new THREE.GridHelper(Math.max(size.x, size.z) * 2, Math.round(Math.max(size.x, size.z) * 2), 0x335577, 0x223344);
+  grid.position.set(center.x, box.min.y + 0.01, center.z);
+  scene.add(grid);
+
+  api.setCam([center.x + size.x, center.y + size.y * 0.5, center.z + size.z], center.toArray(), 55);
+  api.ready = true;
+}, undefined, (e) => { hud.textContent = 'LOAD ERROR ' + (e?.message || e); api.error = String(e?.message || e); });
+
+function loop() { renderer.render(scene, cam); requestAnimationFrame(loop); }
+loop();
+</script>
+</body>
+</html>

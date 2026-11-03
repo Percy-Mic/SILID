@@ -1,0 +1,16 @@
+{
+  "route": [
+    "far {\"foot\":0,\"x\":-13.3,\"z\":-15.6,\"climbing\":false,\"prompt\":null}",
+    "base {\"foot\":0,\"x\":-13.3,\"z\":-12.35,\"climbing\":false,\"prompt\":\"ladder\"}",
+    "climb_start {\"foot\":0,\"x\":-13.3,\"z\":-11.42,\"climbing\":true,\"prompt\":\"ladder\",\"sameTarget\":true,\"faceYaw\":3.14}",
+    "top {\"foot\":11.6,\"x\":-12.2,\"z\":-11.75,\"climbing\":false,\"prompt\":\"door\",\"upFrames\":349,\"simSeconds\":5.82}",
+    "door {\"foot\":11.6,\"x\":-12.2,\"z\":-11.75,\"climbing\":false,\"prompt\":\"door\",\"open\":true,\"at\":-12.2,\"w\":1}",
+    "deck {\"foot\":11.6,\"x\":-12.2,\"z\":-10.39,\"climbing\":false,\"prompt\":null,\"inFrames\":38,\"floorY\":11.6}",
+    "outer_rail {\"foot\":11.6,\"x\":-13.6,\"z\":-11.95,\"climbing\":false,\"prompt\":null}",
+    "back {\"foot\":11.6,\"x\":-12.2,\"z\":-11.56,\"climbing\":false,\"prompt\":null,\"backFrames\":29}",
+    "aim_ladder {\"foot\":11.6,\"x\":-12.2,\"z\":-11.62,\"climbing\":false,\"prompt\":\"ladder\"}",
+    "down_start {\"foot\":11.6,\"x\":-13.3,\"z\":-11.42,\"climbing\":true,\"prompt\":\"ladder\",\"sameGround\":11.6}",
+    "bottom {\"foot\":0,\"x\":-13.3,\"z\":-12.15,\"climbing\":false,\"prompt\":null,\"downFrames\":349,\"simSeconds\":5.82}"
+  ],
+  "errors": []
+}

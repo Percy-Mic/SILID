@@ -1,0 +1,3836 @@
+{
+ "when": "2026-10-29T05:50:41.458Z",
+ "pageErrors": [],
+ "counts": {
+  "doors": 67,
+  "byStyle": {
+   "utility": 9,
+   "entrance": 1,
+   "formal": 28,
+   "service": 10,
+   "bedroom": 17,
+   "bath": 2
+  },
+  "byLevel": {
+   "B1": 9,
+   "GF": 24,
+   "F2": 14,
+   "F3": 11,
+   "F4": 9
+  },
+  "entrances": 1,
+  "arches": 4,
+  "colliderMismatch": [],
+  "blockedSwings": [],
+  "thinLeaves": [],
+  "duplicateKeys": []
+ },
+ "metrics": {
+  "calls": 160,
+  "triangles": 1070986,
+  "geometries": 502,
+  "textures": 124,
+  "programs": 47,
+  "fps": 23,
+  "objects": 346,
+  "doors": 67,
+  "props": 182,
+  "missingDoors": [],
+  "colliders": 902
+ },
+ "interaction": [
+  {
+   "label": "entrance outside",
+   "key": "GF_x_0_11",
+   "offered": "door",
+   "offeredName": "a door",
+   "same": true,
+   "blockedBefore": true,
+   "leafBefore": 0,
+   "opened": {
+    "open": true,
+    "rot": 1.35,
+    "rot2": -1.35,
+    "disabled": true,
+    "blockedCentre": false
+   },
+   "closed": {
+    "open": false,
+    "rot": 0.01,
+    "rot2": -0.01,
+    "disabled": false,
+    "blockedCentre": true
+   },
+   "locked": null
+  },
+  {
+   "label": "entrance inside",
+   "key": "GF_x_0_11",
+   "offered": "door",
+   "offeredName": "a door",
+   "same": true,
+   "blockedBefore": true,
+   "leafBefore": 0.01,
+   "opened": {
+    "open": true,
+    "rot": 1.35,
+    "rot2": -1.35,
+    "disabled": true,
+    "blockedCentre": false
+   },
+   "closed": {
+    "open": false,
+    "rot": 0.01,
+    "rot2": -0.01,
+    "disabled": false,
+    "blockedCentre": true
+   },
+   "locked": null
+  },
+  {
+   "label": "guest room 1 (bedroom)",
+   "key": "GF_z_9.5_-17",
+   "offered": "door",
+   "offeredName": "a door",
+   "same": true,
+   "blockedBefore": true,
+   "leafBefore": 0,
+   "opened": {
+    "open": true,
+    "rot": 1.35,
+    "rot2": null,
+    "disabled": true,
+    "blockedCentre": false
+   },
+   "closed": {
+    "open": false,
+    "rot": 0.01,
+    "rot2": null,
+    "disabled": false,
+    "blockedCentre": true
+   },
+   "locked": null
+  },
+  {
+   "label": "formal living",
+   "key": "GF_x_-10_2",
+   "offered": "door",
+   "offeredName": "a door",
+   "same": true,
+   "blockedBefore": true,
+   "leafBefore": 0,
+   "opened": {
+    "open": true,
+    "rot": 1.35,
+    "rot2": null,
+    "disabled": true,
+    "blockedCentre": false
+   },
+   "closed": {
+    "open": false,
+    "rot": 0.01,
+    "rot2": null,
+    "disabled": false,
+    "blockedCentre": true
+   },
+   "locked": null
+  },
+  {
+   "label": "basement cellar",
+   "key": "B1_x_-18_-5.4",
+   "offered": "door",
+   "offeredName": "a door",
+   "same": true,
+   "blockedBefore": true,
+   "leafBefore": 0,
+   "opened": {
+    "open": true,
+    "rot": 1.35,
+    "rot2": null,
+    "disabled": true,
+    "blockedCentre": false
+   },
+   "closed": {
+    "open": false,
+    "rot": 0.01,
+    "rot2": null,
+    "disabled": false,
+    "blockedCentre": true
+   },
+   "locked": null
+  },
+  {
+   "label": "locked study F3",
+   "key": "F3_x_13_4",
+   "offered": "door",
+   "offeredName": "a door",
+   "same": true,
+   "blockedBefore": true,
+   "leafBefore": 0,
+   "opened": null,
+   "closed": null,
+   "locked": {
+    "first": {
+     "open": false,
+     "line": "Locked. The brass key is upstairs, in the master bedroom."
+    },
+    "afterKey": {
+     "open": true,
+     "disabled": true
+    }
+   }
+  }
+ ],
+ "doors": [
+  {
+   "altSign": 0,
+   "key": "B1_x_-18_-5.4",
+   "level": "B1",
+   "axis": "x",
+   "at": -18,
+   "c": -5.4,
+   "w": 1.1,
+   "head": 2.15,
+   "y": -3.4,
+   "style": "utility",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.05,
+   "rooms": [
+    "Storage Cellar",
+    "Basement Landing"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -18.541,
+      -3.4,
+      -5.528
+     ],
+     "max": [
+      -17.469,
+      -1.28,
+      -5.272
+     ],
+     "size": [
+      1.072,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -18.3,
+      -6.42
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "B1_x_-16_2",
+   "level": "B1",
+   "axis": "x",
+   "at": -16,
+   "c": 2,
+   "w": 1,
+   "head": 2.15,
+   "y": -3.4,
+   "style": "utility",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Service Passage",
+    "Storage Cellar"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -16.491,
+      -3.4,
+      1.872
+     ],
+     "max": [
+      -15.519,
+      -1.28,
+      2.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -16.27,
+      1.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "B1_x_-4_2",
+   "level": "B1",
+   "axis": "x",
+   "at": -4,
+   "c": 2,
+   "w": 1,
+   "head": 2.15,
+   "y": -3.4,
+   "style": "utility",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Service Passage",
+    "Wine Cellar"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -4.491,
+      -3.4,
+      1.872
+     ],
+     "max": [
+      -3.519,
+      -1.28,
+      2.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -4.27,
+      1.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "B1_x_3_2",
+   "level": "B1",
+   "axis": "x",
+   "at": 3,
+   "c": 2,
+   "w": 1,
+   "head": 2.15,
+   "y": -3.4,
+   "style": "utility",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Service Passage",
+    "Generator Room"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      2.509,
+      -3.4,
+      1.872
+     ],
+     "max": [
+      3.481,
+      -1.28,
+      2.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      2.73,
+      1.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "B1_x_10.5_2",
+   "level": "B1",
+   "axis": "x",
+   "at": 10.5,
+   "c": 2,
+   "w": 1,
+   "head": 2.15,
+   "y": -3.4,
+   "style": "utility",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Service Passage",
+    "Workshop"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      10.009,
+      -3.4,
+      1.872
+     ],
+     "max": [
+      10.981,
+      -1.28,
+      2.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      10.23,
+      1.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "B1_x_3_4",
+   "level": "B1",
+   "axis": "x",
+   "at": 3,
+   "c": 4,
+   "w": 1,
+   "head": 2.15,
+   "y": -3.4,
+   "style": "utility",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Old Cellar",
+    "Service Passage"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      2.509,
+      -3.4,
+      3.872
+     ],
+     "max": [
+      3.481,
+      -1.28,
+      4.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      2.73,
+      3.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "B1_x_10.5_4",
+   "level": "B1",
+   "axis": "x",
+   "at": 10.5,
+   "c": 4,
+   "w": 1,
+   "head": 2.15,
+   "y": -3.4,
+   "style": "utility",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Tunnel Junction",
+    "Service Passage"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      10.009,
+      -3.4,
+      3.872
+     ],
+     "max": [
+      10.981,
+      -1.28,
+      4.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      10.23,
+      3.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "B1_z_-2_-8",
+   "level": "B1",
+   "axis": "z",
+   "at": -2,
+   "c": -8,
+   "w": 1,
+   "head": 2.15,
+   "y": -3.4,
+   "style": "utility",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Wine Cellar",
+    "Storage Cellar"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -8.128,
+      -3.4,
+      -2.491
+     ],
+     "max": [
+      -7.872,
+      -1.28,
+      -1.519
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -7.07,
+      -2.27
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "B1_z_6_16",
+   "level": "B1",
+   "axis": "z",
+   "at": 6,
+   "c": 16,
+   "w": 1.8,
+   "head": 2.15,
+   "y": -3.4,
+   "style": "utility",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.75,
+   "rooms": [
+    "Tunnel Junction"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      15.872,
+      -3.4,
+      5.109
+     ],
+     "max": [
+      16.128,
+      -1.28,
+      6.881
+     ],
+     "size": [
+      0.255,
+      2.12,
+      1.772
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      17.71,
+      5.51
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": null,
+   "key": "GF_x_0_11",
+   "level": "GF",
+   "axis": "x",
+   "at": 0,
+   "c": 11,
+   "w": 2.2,
+   "head": 2.15,
+   "y": 0,
+   "style": "entrance",
+   "entrance": true,
+   "arch": false,
+   "open": false,
+   "leafW": 1.094,
+   "rooms": [
+    "Foyer"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -1.116,
+      0,
+      10.921
+     ],
+     "max": [
+      0,
+      2.12,
+      11.079
+     ],
+     "size": [
+      1.116,
+      2.12,
+      0.157
+     ]
+    },
+    {
+     "min": [
+      0,
+      0,
+      10.921
+     ],
+     "max": [
+      1.116,
+      2.12,
+      11.079
+     ],
+     "size": [
+      1.116,
+      2.12,
+      0.157
+     ]
+    }
+   ],
+   "thickness": 0.157,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -0.86,
+      9.93
+     ]
+    },
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      0.86,
+      9.93
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_x_0_2",
+   "level": "GF",
+   "axis": "x",
+   "at": 0,
+   "c": 2,
+   "w": 2.8,
+   "head": 2.9,
+   "y": 0,
+   "style": "formal",
+   "entrance": false,
+   "arch": true,
+   "open": true,
+   "leafW": 2.75,
+   "rooms": [
+    "Foyer",
+    "Gallery / Reception Hall"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": false,
+   "leaves": [
+    {
+     "min": [
+      -1.391,
+      0,
+      1.872
+     ],
+     "max": [
+      1.381,
+      2.87,
+      2.128
+     ],
+     "size": [
+      2.772,
+      2.87,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -0.77,
+      -0.68
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_x_-10_2",
+   "level": "GF",
+   "axis": "x",
+   "at": -10,
+   "c": 2,
+   "w": 1.2,
+   "head": 2.15,
+   "y": 0,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.15,
+   "rooms": [
+    "Formal Living Room",
+    "Gallery / Reception Hall"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -10.591,
+      0,
+      1.872
+     ],
+     "max": [
+      -9.419,
+      2.12,
+      2.128
+     ],
+     "size": [
+      1.172,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -10.32,
+      0.88
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_x_6.5_2",
+   "level": "GF",
+   "axis": "x",
+   "at": 6.5,
+   "c": 2,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Sitting Room",
+    "Gallery / Reception Hall"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      6.009,
+      0,
+      1.872
+     ],
+     "max": [
+      6.981,
+      2.12,
+      2.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      6.23,
+      1.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_0_8",
+   "level": "GF",
+   "axis": "z",
+   "at": 0,
+   "c": 8,
+   "w": 2.6,
+   "head": 2.9,
+   "y": 0,
+   "style": "formal",
+   "entrance": false,
+   "arch": true,
+   "open": true,
+   "leafW": 2.55,
+   "rooms": [
+    "Inner Courtyard",
+    "Gallery / Reception Hall"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": false,
+   "leaves": [
+    {
+     "min": [
+      7.872,
+      0,
+      -1.291
+     ],
+     "max": [
+      8.128,
+      2.87,
+      1.281
+     ],
+     "size": [
+      0.255,
+      2.87,
+      2.572
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      5.51,
+      -0.72
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_0_-14",
+   "level": "GF",
+   "axis": "z",
+   "at": 0,
+   "c": -14,
+   "w": 2.2,
+   "head": 2.9,
+   "y": 0,
+   "style": "formal",
+   "entrance": false,
+   "arch": true,
+   "open": true,
+   "leafW": 2.15,
+   "rooms": [
+    "Gallery / Reception Hall",
+    "Service Hall"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": false,
+   "leaves": [
+    {
+     "min": [
+      -14.128,
+      0,
+      -1.091
+     ],
+     "max": [
+      -13.872,
+      2.87,
+      1.081
+     ],
+     "size": [
+      0.255,
+      2.87,
+      2.172
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -16.1,
+      -0.6
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_x_-10_-2",
+   "level": "GF",
+   "axis": "x",
+   "at": -10,
+   "c": -2,
+   "w": 1.2,
+   "head": 2.15,
+   "y": 0,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.15,
+   "rooms": [
+    "Gallery / Reception Hall",
+    "Library / Study"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -10.591,
+      0,
+      -2.128
+     ],
+     "max": [
+      -9.419,
+      2.12,
+      -1.872
+     ],
+     "size": [
+      1.172,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -10.32,
+      -3.12
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_x_-2.5_-2",
+   "level": "GF",
+   "axis": "x",
+   "at": -2.5,
+   "c": -2,
+   "w": 1.6,
+   "head": 2.9,
+   "y": 0,
+   "style": "formal",
+   "entrance": false,
+   "arch": true,
+   "open": true,
+   "leafW": 1.55,
+   "rooms": [
+    "Gallery / Reception Hall",
+    "Dining Room"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": false,
+   "leaves": [
+    {
+     "min": [
+      -3.291,
+      0,
+      -2.128
+     ],
+     "max": [
+      -1.719,
+      2.87,
+      -1.872
+     ],
+     "size": [
+      1.572,
+      2.87,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -2.94,
+      -3.51
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_x_5_-2",
+   "level": "GF",
+   "axis": "x",
+   "at": 5,
+   "c": -2,
+   "w": 1.2,
+   "head": 2.15,
+   "y": 0,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.15,
+   "rooms": [
+    "Gallery / Reception Hall",
+    "Family Lounge"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      4.409,
+      0,
+      -2.128
+     ],
+     "max": [
+      5.581,
+      2.12,
+      -1.872
+     ],
+     "size": [
+      1.172,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      4.68,
+      -3.12
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_-4.8_-17",
+   "level": "GF",
+   "axis": "z",
+   "at": -4.8,
+   "c": -17,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "service",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Service Hall",
+    "Kitchen"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -17.072,
+      0,
+      -5.291
+     ],
+     "max": [
+      -16.928,
+      2.12,
+      -4.319
+     ],
+     "size": [
+      0.145,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.145,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -16.07,
+      -5.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_-2_-17",
+   "level": "GF",
+   "axis": "z",
+   "at": -2,
+   "c": -17,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "service",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Service Hall",
+    "Pantry"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -17.072,
+      0,
+      -2.491
+     ],
+     "max": [
+      -16.928,
+      2.12,
+      -1.519
+     ],
+     "size": [
+      0.145,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.145,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -16.07,
+      -2.27
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_2_-17",
+   "level": "GF",
+   "axis": "z",
+   "at": 2,
+   "c": -17,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "service",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Service Hall",
+    "Laundry"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -17.072,
+      0,
+      1.509
+     ],
+     "max": [
+      -16.928,
+      2.12,
+      2.481
+     ],
+     "size": [
+      0.145,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.145,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -16.07,
+      1.73
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_6_-17",
+   "level": "GF",
+   "axis": "z",
+   "at": 6,
+   "c": -17,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Service Hall",
+    "Staff Room"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -17.128,
+      0,
+      5.509
+     ],
+     "max": [
+      -16.872,
+      2.12,
+      6.481
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -16.07,
+      5.73
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_9.5_-17",
+   "level": "GF",
+   "axis": "z",
+   "at": 9.5,
+   "c": -17,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Service Hall",
+    "Guest Room 1"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -17.128,
+      0,
+      9.009
+     ],
+     "max": [
+      -16.872,
+      2.12,
+      9.981
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -16.07,
+      9.23
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_-3.5_-14",
+   "level": "GF",
+   "axis": "z",
+   "at": -3.5,
+   "c": -14,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Library / Study",
+    "Service Hall"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -14.128,
+      0,
+      -3.991
+     ],
+     "max": [
+      -13.872,
+      2.12,
+      -3.019
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -13.07,
+      -3.77
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_6_-14",
+   "level": "GF",
+   "axis": "z",
+   "at": 6,
+   "c": -14,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Formal Living Room",
+    "Service Hall"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -14.128,
+      0,
+      5.509
+     ],
+     "max": [
+      -13.872,
+      2.12,
+      6.481
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -13.07,
+      5.73
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_6_-24",
+   "level": "GF",
+   "axis": "z",
+   "at": 6,
+   "c": -24,
+   "w": 1.2,
+   "head": 2.15,
+   "y": 0,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.15,
+   "rooms": [
+    "Staff Room"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -24.128,
+      0,
+      5.409
+     ],
+     "max": [
+      -23.872,
+      2.12,
+      6.581
+     ],
+     "size": [
+      0.255,
+      2.12,
+      1.172
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -22.88,
+      5.68
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_-3.5_8",
+   "level": "GF",
+   "axis": "z",
+   "at": -3.5,
+   "c": 8,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Inner Courtyard",
+    "Family Lounge"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      7.872,
+      0,
+      -3.991
+     ],
+     "max": [
+      8.128,
+      2.12,
+      -3.019
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      8.93,
+      -3.77
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_x_11.5_-5",
+   "level": "GF",
+   "axis": "x",
+   "at": 11.5,
+   "c": -5,
+   "w": 1.1,
+   "head": 2.15,
+   "y": 0,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.05,
+   "rooms": [
+    "Inner Courtyard",
+    "Guest Room 3"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      10.959,
+      0,
+      -5.128
+     ],
+     "max": [
+      12.031,
+      2.12,
+      -4.872
+     ],
+     "size": [
+      1.072,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      11.2,
+      -6.02
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_x_17_-5",
+   "level": "GF",
+   "axis": "x",
+   "at": 17,
+   "c": -5,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "service",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Inner Courtyard",
+    "Wine Room"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      16.509,
+      0,
+      -5.072
+     ],
+     "max": [
+      17.481,
+      2.12,
+      -4.928
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.145
+     ]
+    }
+   ],
+   "thickness": 0.145,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      16.73,
+      -5.93
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_x_15_2",
+   "level": "GF",
+   "axis": "x",
+   "at": 15,
+   "c": 2,
+   "w": 1.1,
+   "head": 2.15,
+   "y": 0,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.05,
+   "rooms": [
+    "Guest Room 4",
+    "Inner Courtyard"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      14.459,
+      0,
+      1.872
+     ],
+     "max": [
+      15.531,
+      2.12,
+      2.128
+     ],
+     "size": [
+      1.072,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      14.7,
+      0.98
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_-9_8",
+   "level": "GF",
+   "axis": "z",
+   "at": -9,
+   "c": 8,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Guest Room 3",
+    "Family Lounge"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      7.872,
+      0,
+      -9.491
+     ],
+     "max": [
+      8.128,
+      2.12,
+      -8.519
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      8.93,
+      -9.27
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_-9_14",
+   "level": "GF",
+   "axis": "z",
+   "at": -9,
+   "c": 14,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "service",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Wine Room",
+    "Guest Room 3"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      13.928,
+      0,
+      -9.491
+     ],
+     "max": [
+      14.072,
+      2.12,
+      -8.519
+     ],
+     "size": [
+      0.145,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.145,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      14.93,
+      -9.27
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "GF_z_8_8",
+   "level": "GF",
+   "axis": "z",
+   "at": 8,
+   "c": 8,
+   "w": 1,
+   "head": 2.15,
+   "y": 0,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Guest Room 4",
+    "Sitting Room"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      7.872,
+      0,
+      7.509
+     ],
+     "max": [
+      8.128,
+      2.12,
+      8.481
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      8.93,
+      7.73
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_x_-2_-2",
+   "level": "F2",
+   "axis": "x",
+   "at": -2,
+   "c": -2,
+   "w": 1.4,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.35,
+   "rooms": [
+    "Upper Landing",
+    "Master Bedroom"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -2.691,
+      4.2,
+      -2.128
+     ],
+     "max": [
+      -1.319,
+      6.32,
+      -1.872
+     ],
+     "size": [
+      1.372,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -2.38,
+      -3.32
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_x_-10.5_-2",
+   "level": "F2",
+   "axis": "x",
+   "at": -10.5,
+   "c": -2,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Upper Landing",
+    "Bedroom 3"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -10.991,
+      4.2,
+      -2.128
+     ],
+     "max": [
+      -10.019,
+      6.32,
+      -1.872
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -10.77,
+      -2.93
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_x_-18_-2",
+   "level": "F2",
+   "axis": "x",
+   "at": -18,
+   "c": -2,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Upper Landing",
+    "Prayer Room"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -18.491,
+      4.2,
+      -2.128
+     ],
+     "max": [
+      -17.519,
+      6.32,
+      -1.872
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -18.27,
+      -2.93
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_z_-8_2",
+   "level": "F2",
+   "axis": "z",
+   "at": -8,
+   "c": 2,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Her Dressing Room",
+    "Master Bedroom"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      1.872,
+      4.2,
+      -8.491
+     ],
+     "max": [
+      2.128,
+      6.32,
+      -7.519
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      2.93,
+      -8.27
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_z_-8_5",
+   "level": "F2",
+   "axis": "z",
+   "at": -8,
+   "c": 5,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "bath",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Master Bath",
+    "Her Dressing Room"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      4.88,
+      4.2,
+      -8.491
+     ],
+     "max": [
+      5.12,
+      6.32,
+      -7.519
+     ],
+     "size": [
+      0.24,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.24,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      5.93,
+      -8.27
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 31,
+   "key": "F2_x_5_-6",
+   "level": "F2",
+   "axis": "x",
+   "at": 5,
+   "c": -6,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "bath",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Linen Room",
+    "Her Dressing Room",
+    "Master Bath"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      4.509,
+      4.2,
+      -6.12
+     ],
+     "max": [
+      5.481,
+      6.32,
+      -5.88
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.24
+     ]
+    }
+   ],
+   "thickness": 0.24,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      4.73,
+      -5.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_x_-18_2",
+   "level": "F2",
+   "axis": "x",
+   "at": -18,
+   "c": 2,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "South Walkway",
+    "Upper Landing"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -18.491,
+      4.2,
+      1.872
+     ],
+     "max": [
+      -17.519,
+      6.32,
+      2.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -18.27,
+      1.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_x_-9_4",
+   "level": "F2",
+   "axis": "x",
+   "at": -9,
+   "c": 4,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Bedroom 2",
+    "South Walkway"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -9.491,
+      4.2,
+      3.872
+     ],
+     "max": [
+      -8.519,
+      6.32,
+      4.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -9.27,
+      3.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_x_7_4",
+   "level": "F2",
+   "axis": "x",
+   "at": 7,
+   "c": 4,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Bedroom 5",
+    "South Walkway"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      6.509,
+      4.2,
+      3.872
+     ],
+     "max": [
+      7.481,
+      6.32,
+      4.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      6.73,
+      3.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_x_14_4",
+   "level": "F2",
+   "axis": "x",
+   "at": 14,
+   "c": 4,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Study / Library",
+    "South Walkway"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      13.509,
+      4.2,
+      3.872
+     ],
+     "max": [
+      14.481,
+      6.32,
+      4.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      13.73,
+      3.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_z_6_10",
+   "level": "F2",
+   "axis": "z",
+   "at": 6,
+   "c": 10,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Bedroom 5"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      9.872,
+      4.2,
+      5.509
+     ],
+     "max": [
+      10.128,
+      6.32,
+      6.481
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      10.93,
+      5.73
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_z_6_5",
+   "level": "F2",
+   "axis": "z",
+   "at": 6,
+   "c": 5,
+   "w": 1.3,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.25,
+   "rooms": [
+    "Bedroom 5",
+    "Grand Stair Hall"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      4.872,
+      4.2,
+      5.359
+     ],
+     "max": [
+      5.128,
+      6.32,
+      6.631
+     ],
+     "size": [
+      0.255,
+      2.12,
+      1.272
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      6.22,
+      5.65
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_x_5.5_-2",
+   "level": "F2",
+   "axis": "x",
+   "at": 5.5,
+   "c": -2,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "service",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Upper Landing",
+    "Linen Room"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      5.009,
+      4.2,
+      -2.072
+     ],
+     "max": [
+      5.981,
+      6.32,
+      -1.928
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.145
+     ]
+    }
+   ],
+   "thickness": 0.145,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      5.23,
+      -2.93
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F2_x_-17_4",
+   "level": "F2",
+   "axis": "x",
+   "at": -17,
+   "c": 4,
+   "w": 1,
+   "head": 2.15,
+   "y": 4.2,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Family Sitting Room",
+    "South Walkway"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -17.491,
+      4.2,
+      3.872
+     ],
+     "max": [
+      -16.519,
+      6.32,
+      4.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -17.27,
+      3.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F3_x_-2_-2",
+   "level": "F3",
+   "axis": "x",
+   "at": -2,
+   "c": -2,
+   "w": 1.4,
+   "head": 2.15,
+   "y": 8,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.35,
+   "rooms": [
+    "Upper Gallery Walkway",
+    "Ancestral Portrait Gallery"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -2.691,
+      8,
+      -2.128
+     ],
+     "max": [
+      -1.319,
+      10.12,
+      -1.872
+     ],
+     "size": [
+      1.372,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -2.38,
+      -3.32
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F3_x_-10.5_-2",
+   "level": "F3",
+   "axis": "x",
+   "at": -10.5,
+   "c": -2,
+   "w": 1,
+   "head": 2.15,
+   "y": 8,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Upper Gallery Walkway",
+    "Music Room"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -10.991,
+      8,
+      -2.128
+     ],
+     "max": [
+      -10.019,
+      10.12,
+      -1.872
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -10.77,
+      -2.93
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F3_x_-18_-2",
+   "level": "F3",
+   "axis": "x",
+   "at": -18,
+   "c": -2,
+   "w": 1,
+   "head": 2.15,
+   "y": 8,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Upper Gallery Walkway",
+    "Guest Bedroom 2"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -18.491,
+      8,
+      -2.128
+     ],
+     "max": [
+      -17.519,
+      10.12,
+      -1.872
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -18.27,
+      -2.93
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F3_x_-18_2",
+   "level": "F3",
+   "axis": "x",
+   "at": -18,
+   "c": 2,
+   "w": 1.6,
+   "head": 2.15,
+   "y": 8,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.55,
+   "rooms": [
+    "South Walkway",
+    "Upper Gallery Walkway"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -18.791,
+      8,
+      1.872
+     ],
+     "max": [
+      -17.219,
+      10.12,
+      2.128
+     ],
+     "size": [
+      1.572,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -18.44,
+      0.49
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F3_x_6_2",
+   "level": "F3",
+   "axis": "x",
+   "at": 6,
+   "c": 2,
+   "w": 1.6,
+   "head": 2.15,
+   "y": 8,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.55,
+   "rooms": [
+    "South Walkway",
+    "Upper Gallery Walkway"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      5.209,
+      8,
+      1.872
+     ],
+     "max": [
+      6.781,
+      10.12,
+      2.128
+     ],
+     "size": [
+      1.572,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      5.56,
+      0.49
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F3_x_-18_4",
+   "level": "F3",
+   "axis": "x",
+   "at": -18,
+   "c": 4,
+   "w": 1,
+   "head": 2.15,
+   "y": 8,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Master Suite",
+    "South Walkway"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -18.491,
+      8,
+      3.872
+     ],
+     "max": [
+      -17.519,
+      10.12,
+      4.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -18.27,
+      3.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F3_x_-9_4",
+   "level": "F3",
+   "axis": "x",
+   "at": -9,
+   "c": 4,
+   "w": 1,
+   "head": 2.15,
+   "y": 8,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Family Room",
+    "South Walkway"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -9.491,
+      8,
+      3.872
+     ],
+     "max": [
+      -8.519,
+      10.12,
+      4.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -9.27,
+      3.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F3_x_13_4",
+   "level": "F3",
+   "axis": "x",
+   "at": 13,
+   "c": 4,
+   "w": 1,
+   "head": 2.15,
+   "y": 8,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Locked Historical Study",
+    "South Walkway"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      12.509,
+      8,
+      3.872
+     ],
+     "max": [
+      13.481,
+      10.12,
+      4.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      12.73,
+      3.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F3_x_3_4",
+   "level": "F3",
+   "axis": "x",
+   "at": 3,
+   "c": 4,
+   "w": 1.4,
+   "head": 2.15,
+   "y": 8,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.35,
+   "rooms": [
+    "Grand Stair Hall",
+    "South Walkway"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      2.309,
+      8,
+      3.872
+     ],
+     "max": [
+      3.681,
+      10.12,
+      4.128
+     ],
+     "size": [
+      1.372,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      2.62,
+      2.68
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F3_z_-8_2",
+   "level": "F3",
+   "axis": "z",
+   "at": -8,
+   "c": 2,
+   "w": 1,
+   "head": 2.15,
+   "y": 8,
+   "style": "service",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Sewing / Craft Room",
+    "Ancestral Portrait Gallery"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      1.928,
+      8,
+      -8.491
+     ],
+     "max": [
+      2.072,
+      10.12,
+      -7.519
+     ],
+     "size": [
+      0.145,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.145,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      2.93,
+      -8.27
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F3_z_-8_8",
+   "level": "F3",
+   "axis": "z",
+   "at": -8,
+   "c": 8,
+   "w": 1,
+   "head": 2.15,
+   "y": 8,
+   "style": "service",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Private Bedroom 3",
+    "Sewing / Craft Room"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      7.928,
+      8,
+      -8.491
+     ],
+     "max": [
+      8.072,
+      10.12,
+      -7.519
+     ],
+     "size": [
+      0.145,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.145,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      8.93,
+      -8.27
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F4_x_-18_0",
+   "level": "F4",
+   "axis": "x",
+   "at": -18,
+   "c": 0,
+   "w": 1,
+   "head": 2.15,
+   "y": 11.6,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Roof Deck",
+    "Archive / Library",
+    "Roof Deck"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -18.491,
+      11.6,
+      -0.128
+     ],
+     "max": [
+      -17.519,
+      13.72,
+      0.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -18.27,
+      -0.93
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F4_x_-7_-5",
+   "level": "F4",
+   "axis": "x",
+   "at": -7,
+   "c": -5,
+   "w": 1,
+   "head": 2.15,
+   "y": 11.6,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Roof Deck",
+    "Observatory",
+    "Roof Deck"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -7.491,
+      11.6,
+      -5.128
+     ],
+     "max": [
+      -6.519,
+      13.72,
+      -4.872
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -7.27,
+      -5.93
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F4_x_11_4",
+   "level": "F4",
+   "axis": "x",
+   "at": 11,
+   "c": 4,
+   "w": 1.2,
+   "head": 2.15,
+   "y": 11.6,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.15,
+   "rooms": [
+    "Bell / Clock Room",
+    "Roof Deck",
+    "Roof Deck"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      10.409,
+      11.6,
+      3.872
+     ],
+     "max": [
+      11.581,
+      13.72,
+      4.128
+     ],
+     "size": [
+      1.172,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      10.68,
+      2.88
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F4_z_7_8",
+   "level": "F4",
+   "axis": "z",
+   "at": 7,
+   "c": 8,
+   "w": 1,
+   "head": 2.15,
+   "y": 11.6,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Bell / Clock Room",
+    "Roof Deck",
+    "Roof Deck"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      7.872,
+      11.6,
+      6.509
+     ],
+     "max": [
+      8.128,
+      13.72,
+      7.481
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      8.93,
+      6.73
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F4_z_8_5",
+   "level": "F4",
+   "axis": "z",
+   "at": 8,
+   "c": 5,
+   "w": 1.2,
+   "head": 2.15,
+   "y": 11.6,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 1.15,
+   "rooms": [
+    "Roof Deck",
+    "Observation Gallery",
+    "Roof Deck"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      4.872,
+      11.6,
+      7.409
+     ],
+     "max": [
+      5.128,
+      13.72,
+      8.581
+     ],
+     "size": [
+      0.255,
+      2.12,
+      1.172
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      6.12,
+      7.68
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F4_x_-18_2",
+   "level": "F4",
+   "axis": "x",
+   "at": -18,
+   "c": 2,
+   "w": 1,
+   "head": 2.15,
+   "y": 11.6,
+   "style": "service",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Maintenance Room",
+    "Roof Deck",
+    "Roof Deck"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -18.491,
+      11.6,
+      1.928
+     ],
+     "max": [
+      -17.519,
+      13.72,
+      2.072
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.145
+     ]
+    }
+   ],
+   "thickness": 0.145,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -18.27,
+      1.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F4_x_-10_4",
+   "level": "F4",
+   "axis": "x",
+   "at": -10,
+   "c": 4,
+   "w": 1,
+   "head": 2.15,
+   "y": 11.6,
+   "style": "bedroom",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Caretaker's Room",
+    "Roof Deck",
+    "Roof Deck"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -10.491,
+      11.6,
+      3.872
+     ],
+     "max": [
+      -9.519,
+      13.72,
+      4.128
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.255
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -10.27,
+      3.07
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F4_z_6_-6",
+   "level": "F4",
+   "axis": "z",
+   "at": 6,
+   "c": -6,
+   "w": 1,
+   "head": 2.15,
+   "y": 11.6,
+   "style": "formal",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Observation Gallery",
+    "Roof Deck",
+    "Roof Deck"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      -6.128,
+      11.6,
+      5.509
+     ],
+     "max": [
+      -5.872,
+      13.72,
+      6.481
+     ],
+     "size": [
+      0.255,
+      2.12,
+      0.972
+     ]
+    }
+   ],
+   "thickness": 0.255,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      -5.07,
+      5.73
+     ]
+    }
+   ]
+  },
+  {
+   "altSign": 0,
+   "key": "F4_x_2_-6",
+   "level": "F4",
+   "axis": "x",
+   "at": 2,
+   "c": -6,
+   "w": 1,
+   "head": 2.15,
+   "y": 11.6,
+   "style": "service",
+   "entrance": false,
+   "arch": false,
+   "open": false,
+   "leafW": 0.95,
+   "rooms": [
+    "Roof Deck",
+    "Roof Lantern",
+    "Roof Deck"
+   ],
+   "colliderOk": true,
+   "colliderDisabled": false,
+   "hasCollider": true,
+   "leaves": [
+    {
+     "min": [
+      1.509,
+      11.6,
+      -6.072
+     ],
+     "max": [
+      2.481,
+      13.72,
+      -5.928
+     ],
+     "size": [
+      0.972,
+      2.12,
+      0.145
+     ]
+    }
+   ],
+   "thickness": 0.145,
+   "sweep": [
+    {
+     "blocked": 0,
+     "total": 42,
+     "pct": 0,
+     "openTip": [
+      1.73,
+      -6.93
+     ]
+    }
+   ]
+  }
+ ]
+}

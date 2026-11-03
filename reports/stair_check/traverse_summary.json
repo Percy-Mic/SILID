@@ -1,0 +1,85 @@
+{
+ "verdict": "ALL FLOORS REACHED: true  BASEMENT BOTH WAYS: true",
+ "rows": [
+  {
+   "leg": "gfToF2",
+   "foot": 4.2,
+   "level": "F2",
+   "room": "Grand Stair Hall",
+   "reached": true,
+   "stuck": null
+  },
+  {
+   "leg": "f2ToF3",
+   "foot": 8,
+   "level": "F3",
+   "room": "Grand Stair Hall",
+   "reached": true,
+   "stuck": null
+  },
+  {
+   "leg": "f3ToF4",
+   "foot": 11.6,
+   "level": "F4",
+   "room": "Observation Gallery",
+   "reached": true,
+   "stuck": null
+  },
+  {
+   "leg": "f4ToF3",
+   "foot": 8,
+   "level": "F3",
+   "room": "Grand Stair Hall",
+   "reached": true,
+   "stuck": null
+  },
+  {
+   "leg": "f3ToF2",
+   "foot": 4.2,
+   "level": "F2",
+   "room": "Grand Stair Hall",
+   "reached": true,
+   "stuck": null
+  },
+  {
+   "leg": "f2ToGF",
+   "foot": 0,
+   "level": "GF",
+   "room": "Foyer",
+   "reached": true,
+   "stuck": null
+  },
+  {
+   "leg": "landingF2",
+   "foot": 6.1,
+   "level": "F2",
+   "room": null,
+   "reached": true,
+   "stuck": null
+  },
+  {
+   "leg": "gfToB1",
+   "foot": -3.38,
+   "level": "B1",
+   "room": "Basement Landing",
+   "reached": null,
+   "stuck": {
+    "x": -15.7,
+    "z": -10.62,
+    "foot": -3.38
+   }
+  },
+  {
+   "leg": "b1ToGF",
+   "foot": 0,
+   "level": "GF",
+   "room": "Service Hall",
+   "reached": null,
+   "stuck": {
+    "x": -15.7,
+    "z": 10.58,
+    "foot": 0
+   }
+  }
+ ]
+}

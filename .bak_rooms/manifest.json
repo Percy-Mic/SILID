@@ -1,0 +1,218 @@
+[
+  {
+    "name": "interrogation_room",
+    "textureSizes": [
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ]
+    ],
+    "file": "public/assets/rooms/interrogation_room.glb",
+    "bytes": 14554148,
+    "trisBefore": 393681,
+    "tris": 130000,
+    "facesCutCeiling": 216,
+    "facesCulled": 0,
+    "facesCutDoor": 4,
+    "materialsLit": 0,
+    "texturesCapped": 31,
+    "bounds": {
+      "x": [
+        -2.33,
+        2.33
+      ],
+      "y": [
+        -0.2,
+        5.29
+      ],
+      "z": [
+        -0.0,
+        3.0
+      ]
+    }
+  },
+  {
+    "name": "the_great_drawing_room",
+    "textureSizes": [
+      [
+        1024,
+        1024
+      ]
+    ],
+    "file": "public/assets/rooms/the_great_drawing_room.glb",
+    "bytes": 12216716,
+    "trisBefore": 975058,
+    "tris": 200000,
+    "facesCutCeiling": 326,
+    "facesCulled": 0,
+    "facesCutDoor": 24615,
+    "materialsLit": 1,
+    "texturesCapped": 0,
+    "bounds": {
+      "x": [
+        -2.98,
+        2.98
+      ],
+      "y": [
+        -0.01,
+        8.82
+      ],
+      "z": [
+        -0.0,
+        4.17
+      ]
+    }
+  },
+  {
+    "name": "the_billiards_room",
+    "textureSizes": [
+      [
+        1024,
+        1024
+      ]
+    ],
+    "file": "public/assets/rooms/the_billiards_room.glb",
+    "bytes": 11257976,
+    "trisBefore": 525668,
+    "tris": 200000,
+    "facesCutCeiling": 213111,
+    "facesCulled": 246897,
+    "facesCutDoor": 14324,
+    "materialsLit": 1,
+    "texturesCapped": 0,
+    "bounds": {
+      "x": [
+        -2.56,
+        2.57
+      ],
+      "y": [
+        -0.0,
+        7.01
+      ],
+      "z": [
+        -0.0,
+        3.5
+      ]
+    }
+  }
+]

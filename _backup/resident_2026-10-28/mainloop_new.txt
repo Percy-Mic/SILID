@@ -1,0 +1,277 @@
+  // --- main loop -----------------------------------------------------------
+  // The states, and what moves each one:
+  //
+  //   dormant      no player in the house; nothing is simulated
+  //   patrol       its route; also where it decides to leave a trap
+  //   investigate  heard a noise; walks to the point, then looks around it
+  //   observe      has seen you at range and stopped — the player's window
+  //   stalk        closing on you, re-planning onto your position only while
+  //                it can actually see you
+  //   search       lost you; checks the last place it saw you and the hiding
+  //                places in that room, then gives up
+  //   setTrap      crouched over a wire it has just strung across a corridor
+  //   ambush       holding behind the corner where it lost sight of you
+  //   attack       windup / strike / recover — see stepAttack
+  //   recover      a beat after a strike, before it hunts again
+  //   stunned      a door shut in its face; it cannot act at all
+  //   return       walking back to its route
+  //
+  // Every transition is driven by a real event: a sight test against the same
+  // colliders the player's body uses, a noise radius, a timer one of those
+  // started, or the end of a path. Nothing here switches state at random.
+  update(dt, game) {
+    if (game) this.game = game;
+    if (!game || game.state.ended || game.state.gameOver) return;
+    // It does not exist outside the house, and it does not start walking
+    // until the player is inside the building.
+    if (!this.armed) {
+      const x = this.player.pos.x, z = this.player.pos.z;
+      const inside = x > -24.5 && x < 22.5 && z > -11.5 && z < 11.5 && this.player.footY > -0.6;
+      if (!inside) { this.group.visible = false; return; }
+      this.armed = true;
+      this.state = 'patrol';
+      this.planToPoint(this.waypoints.f_hall);
+    }
+    this.group.visible = true;
+    this.animT += dt;
+    this.attackCd = Math.max(0, this.attackCd - dt);
+    this.trapCd = Math.max(0, this.trapCd - dt);
+
+    // A stunned body does nothing at all: no sight update, no path, no swing.
+    if (this.state === 'stunned') {
+      this.stunT -= dt;
+      this.attackPhase = 'idle';
+      this.updateWeapon(dt);
+      this.placeBody(dt, game);
+      if (this.stunT <= 0) { this.state = 'recover'; this.recoverT = 0.8; }
+      return;
+    }
+
+    // Mid-swing the body is committed. It cannot walk, see, or re-plan.
+    if (this.attackPhase !== 'idle') {
+      this.stepAttack(game);
+      this.updateWeapon(dt);
+      this.placeBody(dt, game);
+      return;
+    }
+
+    if (this.state === 'recover') {
+      this.recoverT -= dt;
+      this.updateWeapon(dt);
+      this.placeBody(dt, game);
+      if (this.recoverT <= 0) {
+        if (this.lastKnown) {
+          this.state = 'search';
+          this.searchT = 6.5;
+          this.planToPoint(this.lastKnown);
+        } else {
+          this.state = 'return';
+          this.planToPoint(this.waypoints.f_hall);
+        }
+      }
+      return;
+    }
+
+    this.senseT -= dt;
+    if (this.senseT <= 0) {
+      this.senseT = 0.14;
+      this.sense(dt);
+    }
+    this.searchSpots(dt);
+    this.doorsNear();
+
+    const pd = Math.hypot(this.player.pos.x - this.pos.x, this.player.pos.z - this.pos.z);
+    const sameFloor = Math.abs(this.player.footY - this.footY) < 1.25;
+    // The attack starts only from a state that could plausibly launch one, at
+    // arm's length, on the same floor, with the player actually in sight.
+    if (this.attackCd <= 0 && sameFloor && pd < 1.95 && this.canSee &&
+        (this.state === 'stalk' || this.state === 'ambush' || this.state === 'observe')) {
+      this.startAttack();
+      this.stepAttack(game);
+      this.updateWeapon(dt);
+      this.placeBody(dt, game);
+      return;
+    }
+
+    switch (this.state) {
+      case 'observe': {
+        // It stands and looks. This is the one beat where the player is being
+        // watched rather than chased, and it lasts under a second.
+        this.observeT += dt;
+        this.speed = 0;
+        this.faceToward(this.player.pos.x, this.player.pos.z, dt, 2.4);
+        if (this.observeT > 0.9) this.state = 'stalk';
+        break;
+      }
+      case 'stalk': {
+        this.speed = 1.85;
+        this.repathT -= dt;
+        if (this.canSee && this.repathT <= 0) {
+          this.repathT = 0.6;
+          this.planToPoint({
+            x: this.player.pos.x, z: this.player.pos.z,
+            level: nearestLevel(this.player.footY).id,
+          });
+        }
+        if (!this.canSee && this.lostT > 0.9 && pd < 7.5) {
+          // It does not keep charging a corner it cannot see round. It holds
+          // the last one, which is what makes doubling back work.
+          this.state = 'ambush';
+          this.ambushT = 2.2;
+          this.forcePlan();
+          break;
+        }
+        this.followPath(dt, 1.85);
+        this.memory -= dt;
+        if (!this.canSee && this.memory <= 0) {
+          this.state = 'search';
+          this.searchT = 7;
+          this.checked.clear();
+          if (this.lastKnown) this.planToPoint(this.lastKnown);
+        }
+        break;
+      }
+      case 'ambush': {
+        this.speed = 0;
+        this.ambushT -= dt;
+        if (this.lastKnown) this.faceToward(this.lastKnown.x, this.lastKnown.z, dt, 2.0);
+        if (this.canSee) { this.state = 'stalk'; this.memory = 7; break; }
+        if (this.ambushT <= 0) {
+          this.state = 'search';
+          this.searchT = 6;
+          this.checked.clear();
+          if (this.lastKnown) this.planToPoint(this.lastKnown);
+        }
+        break;
+      }
+      case 'search': {
+        this.speed = 1.15;
+        this.searchT -= dt;
+        if (this.pathIdx < this.path.length) this.followPath(dt, 1.15);
+        else this.lookAround(dt);
+        if (this.canSee) { this.state = 'stalk'; this.memory = 7; break; }
+        if (this.searchT <= 0) {
+          this.searchT = 0;
+          this.state = 'return';
+          this.planToPoint(this.waypoints.f_hall);
+        }
+        break;
+      }
+      case 'return': {
+        this.speed = 0.95;
+        this.followPath(dt, 0.95);
+        if (this.pathIdx >= this.path.length) {
+          this.state = 'patrol';
+          this.routeIdx = 0;
+          this.wait = 0;
+        }
+        break;
+      }
+      case 'setTrap': {
+        // Crouched over the wire. If the player walks in on this, they watch
+        // it happen and can still back out of the corridor.
+        this.speed = 0;
+        this.setTrapT -= dt;
+        if (this.setTrapT <= 0) {
+          this.trapCd = TRAP.cooldown;
+          this.state = 'patrol';
+          game.traps?.place({
+            x: this.pos.x, z: this.pos.z, y: this.footY + 0.01,
+            yaw: this.yaw, level: this.level,
+          });
+          this.wait = 0.8;
+        }
+        break;
+      }
+      case 'investigate': {
+        this.searchT -= dt;
+        this.speed = 1.25;
+        if (this.pathIdx < this.path.length) this.followPath(dt, 1.25);
+        else this.lookAround(dt);
+        if (this.canSee) { this.state = 'stalk'; this.memory = 7; break; }
+        if (this.searchT <= 0) {
+          this.searchT = 0;
+          this.state = 'return';
+          this.routeIdx = 0;
+          this.wait = 0;
+          this.planToPoint(this.waypoints.f_hall);
+        }
+        break;
+      }
+      case 'patrol':
+      default: {
+        this.speed = 0.95;
+        // Leaving a trap is a patrol behaviour: only on the route, only with
+        // the player out of the room, and only once every half minute.
+        if (this.trapCd <= 0 && game.traps && game.traps.list.length < TRAP.max && pd > 9.0
+            && this.pathIdx >= this.path.length
+            && game.traps.valid(this.pos.x, this.pos.z, this.footY)) {
+          this.state = 'setTrap';
+          this.setTrapT = 1.5;
+          this.forcePlan();
+          break;
+        }
+        this.wait -= dt;
+        if (this.wait <= 0 && this.pathIdx >= this.path.length) {
+          const id = this.route[this.routeIdx % this.route.length];
+          const wp = this.waypoints[id];
+          if (wp) {
+            this.routeIdx++;
+            this.wait = 1.6 + Math.random() * 2.4;
+            this.planToPoint(wp);
+          }
+        }
+        this.followPath(dt, 0.95);
+        break;
+      }
+    }
+
+    this.placeBody(dt, game);
+  }
+
+  // Pose, footsteps and stuck recovery. Split out of update() so every state
+  // ends the frame the same way — including the ones that return early.
+  placeBody(dt, game) {
+    if (!game) return;
+    const moved = Math.hypot(this.pos.x - this.lastPos.x, this.pos.z - this.lastPos.y);
+    this.stepDist += moved;
+    // Weight on the boards, panned by which side of the player's head the
+    // body is on, so a player in a wardrobe can hear it cross the room.
+    if (this.stepDist > 0.82) {
+      this.stepDist = 0;
+      const dx = this.pos.x - this.player.pos.x, dz = this.pos.z - this.player.pos.z;
+      const dist = Math.hypot(dx, dz, this.footY - this.player.footY);
+      if (dist < 20) {
+        const inv = 1 / (Math.hypot(dx, dz) || 1);
+        const ry = this.player.yaw;
+        const rightX = Math.cos(ry), rightZ = -Math.sin(ry);
+        const pan = (dx * inv) * rightX + (dz * inv) * rightZ;
+        game.audio?.stalkerStep?.(Math.max(0.12, 1 - dist / 20), pan);
+      }
+    }
+    // Stuck recovery: a body with a path that has not moved is caught on a
+    // chair leg, a door frame or a landing edge. Re-plan instead of leaning
+    // into it for the rest of the night.
+    if (this.pathIdx < this.path.length && moved < 0.008) this.stuckT += dt;
+    else this.stuckT = 0;
+    this.lastPos.set(this.pos.x, this.pos.z);
+    if (this.stuckT > 1.4) {
+      this.stuckT = 0;
+      if (this.state === 'patrol' || this.state === 'return') {
+        this.wait = 0.4;
+        this.planToPoint(this.waypoints.f_hall);
+      } else if (this.lastKnown) {
+        this.planToPoint(this.lastKnown);
+      }
+    }
+
+    // The model is authored facing +Z. Rotating +Z by (yaw + PI) gives the
+    // movement direction (-sin yaw, -cos yaw), which is the way it walks.
+    const crouch = this.state === 'setTrap' ? -0.34 : 0;
+    this.group.position.set(this.pos.x, this.footY + crouch, this.pos.z);
+    this.group.rotation.y = this.yaw + Math.PI;
+    this.group.rotation.x = this.state === 'stalk' ? 0.07 : 0.02;
+    this.group.position.y += Math.sin(this.animT * 1.7) * 0.006;
+    this.level = nearestLevel(this.footY).id;
+  }
+

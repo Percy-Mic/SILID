@@ -1,0 +1,23 @@
+Editor node: {'user': 'Admin', 'machine': 'DESKTOP-BHH516J', 'engine_version': '5.4.4-35576357+++UE5+Release-5.4', 'engine_root': 'C:/Program Files/Epic Games/UE_5.4/Engine/', 'project_root': 'C:/Users/Admin/Downloads/SILID-main/ue5/', 'project_name': 'SILID', 'node_id': 'CDD05C654B33212BF28C10906CC7C9DB'}
+Probe ok: None
+PHASE START: ReplaceRoomWithGroundFloorPlan.py
+PHASE ReplaceRoomWithGroundFloorPlan.py: OK in 4.2s
+None
+PHASE START: PopulateGroundFloor.py
+PHASE PopulateGroundFloor.py: FAILED in 0.4s
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+
+  File "C:\Users\Admin\Downloads\SILID-main\ue5\Scripts\PopulateGroundFloor.py", line 506, in <module>
+    main()
+
+  File "C:\Users\Admin\Downloads\SILID-main\ue5\Scripts\PopulateGroundFloor.py", line 471, in main
+    meshes[key] = import_model_mesh(key, spec, index, tools)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "C:\Users\Admin\Downloads\SILID-main\ue5\Scripts\PopulateGroundFloor.py", line 156, in import_model_mesh
+    raise RuntimeError("Unreal did not produce a StaticMesh for " + folder)
+
+RuntimeError: Unreal did not produce a StaticMesh for wooden_bookshelf_worn
+

@@ -1,0 +1,48 @@
+  // Exact 2-D segment intersection. The sight test used to march the ray in
+  // 0.42 m steps and call a wall blocking only if a sample landed within 6 cm
+  // of it. A 2.2 m door crossed at an angle is missed by that: the first lamp
+  // it produced stood in front of the front door and the blade went through it.
+  // Two crossing segments either intersect or they do not, whatever the step.
+  sightBlocked(ax, az, bx, bz, eyeY, ignore = null) {
+    const crosses = (x1, z1, x2, z2) => {
+      const rx = bx - ax, rz = bz - az;
+      const sx = x2 - x1, sz = z2 - z1;
+      const den = rx * sz - rz * sx;
+      if (Math.abs(den) < 1e-9) return false;
+      const t = ((x1 - ax) * sz - (z1 - az) * sx) / den;
+      const u = ((x1 - ax) * rz - (z1 - az) * rx) / den;
+      return t > 0.001 && t < 0.999 && u >= -0.001 && u <= 1.001;
+    };
+    const inside = (c) => ax > c.x1 && ax < c.x2 && az > c.z1 && az < c.z2
+      || bx > c.x1 && bx < c.x2 && bz > c.z1 && bz < c.z2;
+
+    const list = architecture.colliders;
+    for (let i = 0; i < list.length; i++) {
+      const c = list[i];
+      if (!c || c.disabled) continue;
+      if (c.kind === 'rail') continue;
+      // A closed door blocks sight; an open one has its collider disabled and
+      // is skipped by that branch above.
+      if (c.y0 !== undefined && (eyeY < c.y0 || eyeY > c.y1)) continue;
+      if (this.isBox(c)) {
+        if (inside(c)) return true;
+        if (crosses(c.x1, c.z1, c.x2, c.z1) || crosses(c.x2, c.z1, c.x2, c.z2)
+          || crosses(c.x2, c.z2, c.x1, c.z2) || crosses(c.x1, c.z2, c.x1, c.z1)) return true;
+      } else if (crosses(c.x1, c.z1, c.x2, c.z2)) return true;
+    }
+
+    const boxes = props.colliders;
+    for (let i = 0; i < boxes.length; i++) {
+      const c = boxes[i];
+      if (c.y0 === undefined || c.y1 - c.y0 < 1.0) continue;
+      if (eyeY < c.y0 || eyeY > c.y1) continue;
+      // The armoire a peeking player is inside is the one object that must not
+      // block their view out of it. Every other piece still does.
+      if (ignore && Math.abs(c.x1 - ignore.x0) < 0.06 && Math.abs(c.z1 - ignore.z0) < 0.06) continue;
+      if (inside(c)) return true;
+      if (crosses(c.x1, c.z1, c.x2, c.z1) || crosses(c.x2, c.z1, c.x2, c.z2)
+        || crosses(c.x2, c.z2, c.x1, c.z2) || crosses(c.x1, c.z2, c.x1, c.z1)) return true;
+    }
+    return false;
+  }
+

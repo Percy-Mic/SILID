@@ -1,0 +1,457 @@
+{
+ "checks": [
+  {
+   "check": "master collection",
+   "status": "PASS",
+   "detail": "all 18 collections present",
+   "data": {
+    "WORLD_MASTER": 2,
+    "ROAD_ENVIRONMENT": 37,
+    "VEHICLE_BREAKDOWN": 7,
+    "FOREST_ENVIRONMENT": 3912,
+    "FOREST_VEGETATION": 0,
+    "MANSION_EXTERIOR": 9,
+    "UNDERGROUND_ENVIRONMENT": 22,
+    "MANSION_GROUND_FLOOR": 30,
+    "MANSION_SECOND_FLOOR": 23,
+    "MANSION_THIRD_FLOOR": 21,
+    "MANSION_FOURTH_FLOOR": 29,
+    "MANSION_ROOF": 12,
+    "MANSION_COURTYARD": 0,
+    "MANSION_STAIRS": 15,
+    "MANSION_DOORS_WINDOWS": 0,
+    "MANSION_FURNITURE": 572,
+    "MANSION_PROPS": 7,
+    "GAMEPLAY_OBJECTS": 4,
+    "LIGHTING": 145,
+    "CAMERAS": 14,
+    "ANIMATIONS": 0,
+    "COLLISION": 5,
+    "EXPORT_ASSETS": 0
+   }
+  },
+  {
+   "check": "stair reaches the fourth floor",
+   "status": "PASS",
+   "detail": "tread extremes 0.12 m .. 11.60 m (expected 0.10 .. 11.60)",
+   "data": null
+  },
+  {
+   "check": "stair head clearance",
+   "status": "PASS",
+   "detail": "minimum 3.55 m above the treads at (-2.87, 9.06, 8.0) (STAIR_Treads)",
+   "data": null
+  },
+  {
+   "check": "roof covers every closed pavilion",
+   "status": "PASS",
+   "detail": "7 of 7 pavilions covered",
+   "data": {
+    "covered": [
+     "FF4-01",
+     "FF4-02",
+     "FF4-03",
+     "FF4-04",
+     "FF4-05",
+     "FF4-06",
+     "FF4-07"
+    ],
+    "problems": []
+   }
+  },
+  {
+   "check": "ladder landing height",
+   "status": "PASS",
+   "detail": "landing top at 11.52 m (azotea 11.60)",
+   "data": null
+  },
+  {
+   "check": "ladder stands clear of the wall",
+   "status": "PASS",
+   "detail": "nothing obstructs the climb",
+   "data": null
+  },
+  {
+   "check": "hatch opening in the parapet",
+   "status": "PASS",
+   "detail": "through the gap: 11.82 m (F3_Ceiling); beside it: 12.84 m (DECK_BalustradeRail)",
+   "data": null
+  },
+  {
+   "check": "furniture stands on its floor",
+   "status": "PASS",
+   "detail": "280 pieces checked, 0 floating, 0 sunk",
+   "data": {
+    "floating": [],
+    "sunk": []
+   }
+  },
+  {
+   "check": "furniture stays inside its room",
+   "status": "PASS",
+   "detail": "0 outside room bounds",
+   "data": []
+  },
+  {
+   "check": "doorways are clear of furniture",
+   "status": "PASS",
+   "detail": "0 pieces in a door approach",
+   "data": []
+  },
+  {
+   "check": "surface props rest on their supports",
+   "status": "PASS",
+   "detail": "140 surface props checked, 0 floating or sunk",
+   "data": []
+  },
+  {
+   "check": "every visible mesh has a material",
+   "status": "PASS",
+   "detail": "0 without a material",
+   "data": []
+  },
+  {
+   "check": "no inverted closed shells",
+   "status": "PASS",
+   "detail": "0 meshes with negative volume",
+   "data": []
+  },
+  {
+   "check": "no empty meshes",
+   "status": "PASS",
+   "detail": "0 empty meshes",
+   "data": []
+  },
+  {
+   "check": "licensed PBR maps are packed",
+   "status": "PASS",
+   "detail": "367 image nodes, 195 unique maps, 0 unpacked",
+   "data": {
+    "maps": [
+     "Chandelier_01_diff.png",
+     "Chandelier_01_metallic.png",
+     "Chandelier_01_nor_gl.png",
+     "Chandelier_01_roughness.png",
+     "ClassicNightstand_01_diff",
+     "ClassicNightstand_01_metallic-ClassicNightstand_01_roughness",
+     "ClassicNightstand_01_nor_gl",
+     "GothicBed_01_diff",
+     "GothicBed_01_metallic-GothicBed_01_roughness",
+     "GothicBed_01_nor_gl",
+     "alarm_clock_01_diff.png",
+     "alarm_clock_01_metal.png-alarm_clock_01_rough.png",
+     "alarm_clock_01_nor_gl.png",
+     "antique_ceramic_vase_01_diff.png",
+     "antique_ceramic_vase_01_metal.png",
+     "antique_ceramic_vase_01_nor_gl.png",
+     "antique_ceramic_vase_01_rough.png",
+     "asphalt_02_diff_2k.jpg",
+     "asphalt_02_nor_gl_2k.jpg",
+     "asphalt_02_rough_2k.jpg",
+     "blue_plaster_weathered_diff_1k.jpg",
+     "blue_plaster_weathered_nor_gl_1k.jpg",
+     "blue_plaster_weathered_rough_1k.jpg",
+     "book_hardcover_01_cover06.jpg",
+     "book_hardcover_01_cover79.jpg",
+     "book_hardcover_01_cover80.jpg",
+     "book_hardcover_01_cover83.jpg",
+     "book_hardcover_01_cover85.png",
+     "book_hardcover_01_cover87.png",
+     "book_hardcover_01_diff.png",
+     "book_hardcover_01_mask01.png",
+     "book_hardcover_01_mask02.png",
+     "book_hardcover_01_mask03.png",
+     "book_hardcover_01_nor_gl.png",
+     "book_hardcover_01_roughness.png",
+     "brass_candleholders_01_diff.png",
+     "brass_candleholders_01_metal.png",
+     "brass_candleholders_01_nor_gl.png",
+     "brass_candleholders_01_rough.png",
+     "brass_candleholders_flame_diff.png",
+     "brick_wall_006_diff_1k.jpg",
+     "brick_wall_006_nor_gl_1k.jpg",
+     "brick_wall_006_rough_1k.jpg",
+     "chinese_armchair_diff",
+     "chinese_armchair_nor_gl",
+     "chinese_armchair_rough",
+     "chinese_chandelier_diff.png",
+     "chinese_chandelier_metal.png",
+     "chinese_chandelier_nor_gl.png",
+     "chinese_chandelier_rough.png",
+     "concrete_floor_worn_001_diff_1k.jpg",
+     "concrete_floor_worn_001_nor_gl_1k.jpg",
+     "concrete_floor_worn_001_rough_1k.jpg",
+     "concrete_wall_003_diff_1k.jpg",
+     "concrete_wall_003_nor_gl_1k.jpg",
+     "concrete_wall_003_rough_1k.jpg",
+     "concrete_wall_007_diff_1k.jpg",
+     "concrete_wall_007_nor_gl_1k.jpg",
+     "concrete_wall_007_rough_1k.jpg",
+     "corrugated_iron_02_diff_1k.jpg",
+     "corrugated_iron_02_nor_gl_1k.jpg",
+     "corrugated_iron_02_rough_1k.jpg",
+     "damaged_plaster_diff_1k.jpg",
+     "damaged_plaster_nor_gl_1k.jpg",
+     "damaged_plaster_rough_1k.jpg",
+     "decrepit_wallpaper_diff_1k.jpg",
+     "decrepit_wallpaper_nor_gl_1k.jpg",
+     "decrepit_wallpaper_rough_1k.jpg",
+     "dining_chair_02_diff.png",
+     "dining_chair_02_metal-dining_chair_02_rough.png",
+     "dining_chair_02_nor_gl.png",
+     "forrest_ground_01_diff_1k.jpg",
+     "forrest_ground_01_nor_gl_1k.jpg",
+     "forrest_ground_01_rough_1k.jpg",
+     "industrial_wall_sconce_bulb_diff.png",
+     "industrial_wall_sconce_diff.png",
+     "industrial_wall_sconce_metal.png",
+     "industrial_wall_sconce_nor_gl.png",
+     "industrial_wall_sconce_rough.png",
+     "island_tree_01_branches_diff.png",
+     "island_tree_01_branches_nor_gl.png",
+     "island_tree_01_branches_rough.png",
+     "island_tree_01_diff.png",
+     "island_tree_01_leaves_alpha.png",
+     "island_tree_01_leaves_diff.png",
+     "island_tree_01_leaves_nor_gl.png",
+     "island_tree_01_leaves_rough.png",
+     "island_tree_01_nor_gl.png",
+     "island_tree_01_rough.png",
+     "island_tree_02_branches_diff.png",
+     "island_tree_02_branches_nor_gl.png",
+     "island_tree_02_branches_rough.png",
+     "island_tree_02_diff.png",
+     "island_tree_02_leaves_alpha.png",
+     "island_tree_02_leaves_diff.png",
+     "island_tree_02_leaves_nor_gl.png",
+     "island_tree_02_leaves_rough.png",
+     "island_tree_02_nor_gl.png",
+     "island_tree_02_rough.png",
+     "mantel_clock_01_anisotropy_angle.png",
+     "mantel_clock_01_anisotropy_level.png",
+     "mantel_clock_01_diff.png",
+     "mantel_clock_01_metal.png",
+     "mantel_clock_01_nor_gl.png",
+     "mantel_clock_01_rough.png",
+     "old_wooden_floor_01_diff_1k.jpg",
+     "old_wooden_floor_01_nor_gl_1k.jpg",
+     "old_wooden_floor_01_rough_1k.jpg",
+     "ornate_mirror_01_diff.png",
+     "ornate_mirror_01_metallic.png",
+     "ornate_mirror_01_nor_gl.png",
+     "ornate_mirror_01_roughness.png",
+     "painted_wooden_nightstand_diff",
+     "painted_wooden_nightstand_nor_gl",
+     "painted_wooden_nightstand_rough",
+     "painted_wooden_sofa_diff",
+     "painted_wooden_sofa_nor_gl",
+     "painted_wooden_sofa_rough",
+     "painted_wooden_table_diff",
+     "painted_wooden_table_nor_gl",
+     "painted_wooden_table_rough",
+     "potted_plant_01_leaves_alpha.png",
+     "potted_plant_01_leaves_diff.png.001",
+     "potted_plant_01_leaves_nor_gl.png.001",
+     "potted_plant_01_leaves_rough.png.001",
+     "potted_plant_01_pot_diff.png",
+     "potted_plant_01_pot_nor_gl.png",
+     "potted_plant_01_pot_rough.png",
+     "roof_slates_03_diff_1k.jpg",
+     "roof_slates_03_nor_gl_1k.jpg",
+     "roof_slates_03_rough_1k.jpg",
+     "round_wooden_table_01_diff",
+     "round_wooden_table_01_metal-round_wooden_table_01_rough",
+     "round_wooden_table_01_nor_gl",
+     "rusty_metal_sheet_diff_1k.jpg",
+     "rusty_metal_sheet_nor_gl_1k.jpg",
+     "rusty_metal_sheet_rough_1k.jpg",
+     "tea_set_01_diff.png",
+     "tea_set_01_metal.png",
+     "tea_set_01_nor_gl.png",
+     "tea_set_01_rough.png",
+     "tree_bark_03_diff_1k.jpg",
+     "tree_bark_03_nor_gl_1k.jpg",
+     "tree_bark_03_rough_1k.jpg",
+     "vintage_electric_kettle_diff",
+     "vintage_electric_kettle_metal-vintage_electric_kettle_rough",
+     "vintage_electric_kettle_nor_gl",
+     "vintage_oil_lamp_diff",
+     "vintage_oil_lamp_flame_diff",
+     "vintage_oil_lamp_glass_diff-vintage_oil_lamp_glass_alpha",
+     "vintage_oil_lamp_glass_metal-vintage_oil_lamp_glass_rough",
+     "vintage_oil_lamp_glass_nor_gl",
+     "vintage_oil_lamp_metal-vintage_oil_lamp_rough",
+     "vintage_oil_lamp_nor_gl",
+     "wine_bottles_01_alpha.png",
+     "wine_bottles_01_diff.png",
+     "wine_bottles_01_label_clearwater_crystals_01_alpha.png",
+     "wine_bottles_01_label_clearwater_crystals_01_diff.png",
+     "wine_bottles_01_label_clearwater_crystals_01_metal.png",
+     "wine_bottles_01_label_clearwater_crystals_01_rough.png",
+     "wine_bottles_01_label_ftero_vinea_01_alpha.png",
+     "wine_bottles_01_label_ftero_vinea_01_diff.png",
+     "wine_bottles_01_label_ftero_vinea_01_metal.png",
+     "wine_bottles_01_label_ftero_vinea_01_rough.png",
+     "wine_bottles_01_label_ftero_vinea_02_alpha.png",
+     "wine_bottles_01_label_ftero_vinea_02_diff.png",
+     "wine_bottles_01_label_ftero_vinea_02_metal.png",
+     "wine_bottles_01_label_ftero_vinea_02_rough.png",
+     "wine_bottles_01_label_intertwine_01_alpha.png",
+     "wine_bottles_01_label_intertwine_01_diff.png",
+     "wine_bottles_01_label_intertwine_01_metal.png",
+     "wine_bottles_01_label_intertwine_01_rough.png",
+     "wine_bottles_01_metal.png",
+     "wine_bottles_01_nor_gl.png",
+     "wine_bottles_01_paper_nor_gl.png",
+     "wine_bottles_01_rough.png",
+     "wood_planks_dirt_diff_1k.jpg",
+     "wood_planks_dirt_nor_gl_1k.jpg",
+     "wood_planks_dirt_rough_1k.jpg",
+     "wood_planks_grey_diff_1k.jpg",
+     "wood_planks_grey_nor_gl_1k.jpg",
+     "wood_planks_grey_rough_1k.jpg",
+     "wooden_barrels_01_barrel01_diff.png",
+     "wooden_barrels_01_barrel01_metal.png",
+     "wooden_barrels_01_barrel01_nor_gl.png",
+     "wooden_barrels_01_barrel01_rough.png",
+     "wooden_bookshelf_worn_diff",
+     "wooden_bookshelf_worn_metal-wooden_bookshelf_worn_rough",
+     "wooden_bookshelf_worn_nor_gl",
+     "wooden_bowl_02_diff.png",
+     "wooden_bowl_02_nor_gl.png",
+     "wooden_bowl_02_rough.png",
+     "wooden_cutting_board_diff.png",
+     "wooden_cutting_board_nor_gl.png",
+     "wooden_cutting_board_rough.png"
+    ],
+    "unpacked": []
+   }
+  },
+  {
+   "check": "scene budget",
+   "status": "WARN",
+   "detail": "4866 objects, 6177363 polygons, 150 lights, 117 materials, 210 images",
+   "data": {
+    "objects": 4866,
+    "polygons": 6177363,
+    "lights": 150,
+    "materials": 117
+   }
+  },
+  {
+   "check": "car is on the carriageway shoulder",
+   "status": "PASS",
+   "detail": "car 3.58 m from the road centreline",
+   "data": null
+  },
+  {
+   "check": "present: terrain",
+   "status": "PASS",
+   "detail": "bounds x -200.0..200.0  y -190.0..210.0  z -1.6..0.0",
+   "data": null
+  },
+  {
+   "check": "present: carriageway",
+   "status": "PASS",
+   "detail": "bounds x -69.4..-55.1  y -175.0..215.0  z 0.1..0.1",
+   "data": null
+  },
+  {
+   "check": "present: drive",
+   "status": "PASS",
+   "detail": "bounds x -58.5..2.1  y 11.3..34.5  z 0.0..0.1",
+   "data": null
+  },
+  {
+   "check": "present: mansion shell",
+   "status": "PASS",
+   "detail": "bounds x -24.2..21.2  y -14.9..14.7  z 0.0..4.2",
+   "data": null
+  },
+  {
+   "check": "present: roof",
+   "status": "PASS",
+   "detail": "bounds x -24.1..16.2  y -12.1..12.1  z 14.6..18.5",
+   "data": null
+  },
+  {
+   "check": "present: ladder",
+   "status": "PASS",
+   "detail": "bounds x -12.9..-12.1  y -11.5..-11.0  z 0.1..12.9",
+   "data": null
+  },
+  {
+   "check": "present: stairs",
+   "status": "PASS",
+   "detail": "bounds x -5.0..-2.3  y 4.2..9.2  z 0.1..11.6",
+   "data": null
+  },
+  {
+   "check": "present: stair hall",
+   "status": "PASS",
+   "detail": "bounds x -24.0..20.5  y -11.1..11.1  z 0.0..4.2",
+   "data": null
+  },
+  {
+   "check": "basement-to-forest underground connector",
+   "status": "PASS",
+   "detail": "six connected sections, service door and both route endpoints present",
+   "data": {
+    "sections": [
+     "UNDERGROUND_BrickTunnel",
+     "UNDERGROUND_CaveLining",
+     "UNDERGROUND_TransitionMasonry",
+     "UNDERGROUND_VaultStairs",
+     "UNDERGROUND_CisternCourt",
+     "UNDERGROUND_ExitStairAndLanding"
+    ],
+    "x_bounds": {
+     "UNDERGROUND_BrickTunnel": [
+      16.0,
+      33.2
+     ],
+     "UNDERGROUND_CaveLining": [
+      33.0,
+      48.2
+     ],
+     "UNDERGROUND_TransitionMasonry": [
+      47.9,
+      49.0
+     ],
+     "UNDERGROUND_VaultStairs": [
+      49.0,
+      56.42
+     ],
+     "UNDERGROUND_CisternCourt": [
+      55.92,
+      62.28
+     ],
+     "UNDERGROUND_ExitStairAndLanding": [
+      61.8,
+      67.0
+     ]
+    }
+   }
+  },
+  {
+   "check": "basement has no daylight windows",
+   "status": "PASS",
+   "detail": "0 mesh(es)",
+   "data": null
+  },
+  {
+   "check": "every room has its floor slab",
+   "status": "PASS",
+   "detail": "0 rooms without a floor at their level",
+   "data": []
+  },
+  {
+   "check": "every room has head clearance",
+   "status": "PASS",
+   "detail": "0 rooms under 2.15 m to the ceiling",
+   "data": []
+  }
+ ],
+ "fail": 0,
+ "warn": 1
+}

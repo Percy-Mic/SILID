@@ -1,0 +1,51 @@
+Using bundled DotNet SDK version: 6.0.302
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" SILIDEditor Win64 Development -Project=C:\Users\Admin\Downloads\SILID-main\ue5\SILID.uproject -WaitMutex
+Log file: C:\Users\Admin\AppData\Local\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Admin\Downloads\SILID-main).
+Creating makefile for SILIDEditor (config setting changed)
+Parsing headers for SILIDEditor
+  Running Internal UnrealHeaderTool C:\Users\Admin\Downloads\SILID-main\ue5\SILID.uproject C:\Users\Admin\Downloads\SILID-main\ue5\Intermediate\Build\Win64\SILIDEditor\Development\SILIDEditor.uhtmanifest -WarningsAsErrors -installed
+Total of 81 written
+Reflection code generated for SILIDEditor in 32.7759838 seconds
+Building SILIDEditor...
+Using Visual Studio 2022 14.38.33145 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130) and Windows 10.0.26100.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from SILID unity file: SILID.cpp, SILIDResident.cpp, SILIDResidentController.cpp, SILIDPlayerController.cpp, SILIDBarrier.cpp, SILIDDoor.cpp, SILIDHideSpot.cpp, SILIDInspectableProp.cpp, SILIDLightSwitch.cpp, SILIDElectricalSystemSubsystem.cpp, SILIDFlashlightComponent.cpp, SILIDGameMode.cpp, SILIDInventoryComponent.cpp, SILIDItemData.cpp, SILIDObjectiveSubsystem.cpp, SILIDRepairComponent.cpp, SILIDSaveGame.cpp, SILIDSaveSubsystem.cpp, SILIDSolvabilityEvaluator.cpp, SILIDSolvabilityValidator.cpp, SILIDTags.cpp
+Determining max actions to execute in parallel (2 physical cores, 4 logical cores)
+  Executing up to 2 processes, one per physical core
+  Requested 1.5 GB memory per action, 2.92 GB available: limiting max parallel actions to 1
+Using Parallel executor to run 30 action(s)
+------ Building 30 action(s) started ------
+[1/30] Compile [x64] SharedPCH.UnrealEd.Project.ValApi.Cpp20.cpp
+[2/30] Resource Default.rc2
+[3/30] Compile [x64] Module.SILID.1.cpp
+[4/30] Compile [x64] Module.SILID.2.cpp
+[5/30] Compile [x64] Module.SILID.3.cpp
+[6/30] Compile [x64] Module.SILID.4.cpp
+[7/30] Compile [x64] SILID.cpp
+[8/30] Compile [x64] SILIDBarrier.cpp
+[9/30] Compile [x64] SILIDDoor.cpp
+[10/30] Compile [x64] SILIDElectricalSystemSubsystem.cpp
+[11/30] Compile [x64] SILIDFlashlightComponent.cpp
+[12/30] Compile [x64] SILIDGameMode.cpp
+[13/30] Compile [x64] SILIDHideSpot.cpp
+[14/30] Compile [x64] SILIDInspectableProp.cpp
+[15/30] Compile [x64] SILIDInventoryComponent.cpp
+[16/30] Compile [x64] SILIDItemData.cpp
+[17/30] Compile [x64] SILIDLightSwitch.cpp
+[18/30] Compile [x64] SILIDObjectiveSubsystem.cpp
+[19/30] Compile [x64] SILIDPlayerController.cpp
+[20/30] Compile [x64] SILIDRepairComponent.cpp
+[21/30] Compile [x64] SILIDResident.cpp
+[22/30] Compile [x64] SILIDResidentController.cpp
+[23/30] Compile [x64] SILIDSaveGame.cpp
+[24/30] Compile [x64] SILIDSaveSubsystem.cpp
+[25/30] Compile [x64] SILIDSolvabilityEvaluator.cpp
+[26/30] Compile [x64] SILIDSolvabilityValidator.cpp
+[27/30] Compile [x64] SILIDTags.cpp
+[28/30] Link [x64] UnrealEditor-SILID.dll
+   Creating library C:\Users\Admin\Downloads\SILID-main\ue5\Intermediate\Build\Win64\x64\UnrealEditor\Development\SILID\UnrealEditor-SILID.sup.lib and object C:\Users\Admin\Downloads\SILID-main\ue5\Intermediate\Build\Win64\x64\UnrealEditor\Development\SILID\UnrealEditor-SILID.sup.exp
+[29/30] Link [x64] UnrealEditor-SILID.lib
+   Creating library C:\Users\Admin\Downloads\SILID-main\ue5\Intermediate\Build\Win64\x64\UnrealEditor\Development\SILID\UnrealEditor-SILID.lib and object C:\Users\Admin\Downloads\SILID-main\ue5\Intermediate\Build\Win64\x64\UnrealEditor\Development\SILID\UnrealEditor-SILID.exp
+[30/30] WriteMetadata SILIDEditor.target
+Total time in Parallel executor: 200.40 seconds
+Total execution time: 252.59 seconds

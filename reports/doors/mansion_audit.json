@@ -1,0 +1,266 @@
+{
+ "metrics": {
+  "calls": 109,
+  "triangles": 691742,
+  "geometries": 98,
+  "textures": 31,
+  "programs": 37,
+  "fps": 60,
+  "objects": 345,
+  "doors": 67,
+  "props": 182,
+  "missingDoors": [],
+  "colliders": 902
+ },
+ "levels": [
+  {
+   "id": "B1",
+   "y": -3.4,
+   "h": 3.4,
+   "rooms": 8
+  },
+  {
+   "id": "GF",
+   "y": 0,
+   "h": 4.2,
+   "rooms": 17
+  },
+  {
+   "id": "F2",
+   "y": 4.2,
+   "h": 3.8,
+   "rooms": 13
+  },
+  {
+   "id": "F3",
+   "y": 8,
+   "h": 3.6,
+   "rooms": 11
+  },
+  {
+   "id": "F4",
+   "y": 11.6,
+   "h": 3,
+   "rooms": 8
+  }
+ ],
+ "missingDoors": [],
+ "doorCount": 67,
+ "archCount": 4,
+ "doorsWithoutCollider": [],
+ "ramps": [
+  {
+   "cx": -1.5,
+   "cz": 7.5,
+   "r0": 0.55,
+   "r1": 2.3,
+   "a0": 3.141592653589793,
+   "a1": 9.42477796076938,
+   "y0": 0,
+   "y1": 4.2,
+   "index": 0,
+   "steps": 26,
+   "rise": 4.2
+  },
+  {
+   "cx": -1.5,
+   "cz": 7.5,
+   "r0": 0.55,
+   "r1": 2.3,
+   "a0": 3.141592653589793,
+   "a1": 9.42477796076938,
+   "y0": 4.2,
+   "y1": 8,
+   "index": 1,
+   "steps": 26,
+   "rise": 3.8
+  },
+  {
+   "cx": -1.5,
+   "cz": 7.5,
+   "r0": 0.55,
+   "r1": 2.3,
+   "a0": 3.141592653589793,
+   "a1": 9.42477796076938,
+   "y0": 8,
+   "y1": 11.6,
+   "index": 2,
+   "steps": 26,
+   "rise": 3.6
+  },
+  {
+   "kind": "linear",
+   "x0": -16.9,
+   "x1": -14.5,
+   "z0": -10.45,
+   "z1": -6.05,
+   "y0": -3.4,
+   "y1": 0,
+   "steps": 17
+  }
+ ],
+ "floorHoles": [
+  "GF:rect 8..20 x -5..2",
+  "GF:rect -16.9..-14.5 x -10.9..-6.05",
+  "F2:rect 8..20 x -5..2",
+  "F2:circle@-1.5,7.5 r2.45",
+  "F3:rect 8..20 x -5..2",
+  "F3:circle@-1.5,7.5 r2.45",
+  "F4:rect 8..20 x -5..2",
+  "F4:circle@-1.5,7.5 r2.45"
+ ],
+ "colliders": 902,
+ "propColliders": 187,
+ "stairSamples": [
+  {
+   "y": 0,
+   "foot": 0
+  },
+  {
+   "y": 0.5,
+   "foot": 0
+  },
+  {
+   "y": 1,
+   "foot": 0
+  },
+  {
+   "y": 1.5,
+   "foot": 0
+  },
+  {
+   "y": 2,
+   "foot": 0
+  },
+  {
+   "y": 2.5,
+   "foot": 0
+  },
+  {
+   "y": 3,
+   "foot": 0
+  },
+  {
+   "y": 3.5,
+   "foot": 0
+  },
+  {
+   "y": 4,
+   "foot": 0
+  },
+  {
+   "y": 4.5,
+   "foot": 4.7846153846153845
+  },
+  {
+   "y": 5,
+   "foot": 4.930769230769231
+  },
+  {
+   "y": 5.5,
+   "foot": 5.076923076923077
+  },
+  {
+   "y": 6,
+   "foot": 5.223076923076923
+  },
+  {
+   "y": 6.5,
+   "foot": 5.36923076923077
+  },
+  {
+   "y": 7,
+   "foot": 0
+  },
+  {
+   "y": 7.5,
+   "foot": 0
+  },
+  {
+   "y": 8,
+   "foot": 0
+  },
+  {
+   "y": 8.5,
+   "foot": 0
+  },
+  {
+   "y": 9,
+   "foot": 0
+  },
+  {
+   "y": 9.5,
+   "foot": 0
+  },
+  {
+   "y": 10,
+   "foot": 10.215384615384615
+  },
+  {
+   "y": 10.5,
+   "foot": 10.353846153846153
+  },
+  {
+   "y": 11,
+   "foot": 10.492307692307692
+  },
+  {
+   "y": 11.5,
+   "foot": 10.63076923076923
+  },
+  {
+   "y": 12,
+   "foot": 0
+  }
+ ],
+ "levelUnderStairHead": [
+  "0:0->4.2",
+  "1:4.2->8",
+  "2:8->11.6",
+  "undefined:-3.4->0"
+ ],
+ "landings": 9,
+ "roomChecks": [
+  {
+   "id": "GF-14",
+   "level": "GF",
+   "name": "Foyer",
+   "floorOk": 8,
+   "freeOk": 9,
+   "sampled": 9
+  },
+  {
+   "id": "FF2-13",
+   "level": "F2",
+   "name": "Grand Stair Hall",
+   "floorOk": 5,
+   "freeOk": 7,
+   "sampled": 9
+  },
+  {
+   "id": "FF3-12",
+   "level": "F3",
+   "name": "Grand Stair Hall",
+   "floorOk": 3,
+   "freeOk": 7,
+   "sampled": 9
+  },
+  {
+   "id": "FF4-01",
+   "level": "F4",
+   "name": "Observation Gallery",
+   "floorOk": 5,
+   "freeOk": 8,
+   "sampled": 9
+  },
+  {
+   "id": "FF4-10",
+   "level": "F4",
+   "name": "Roof Deck",
+   "floorOk": 7,
+   "freeOk": 8,
+   "sampled": 9
+  }
+ ],
+ "errors": []
+}

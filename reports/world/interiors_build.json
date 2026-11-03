@@ -1,0 +1,1805 @@
+{
+ "placed": 256,
+ "skipped": [],
+ "rooms": 60,
+ "missing": [],
+ "detail": [
+  {
+   "room": "B-01",
+   "piece": "console",
+   "x": -14.26,
+   "z": -8.2,
+   "rot": 1.57
+  },
+  {
+   "room": "B-01",
+   "piece": "side_table",
+   "x": -18.69,
+   "z": -8.2,
+   "rot": -1.57
+  },
+  {
+   "room": "B-02",
+   "piece": "bookshelf",
+   "x": -13.5,
+   "z": 1.76,
+   "rot": 0.0
+  },
+  {
+   "room": "B-02",
+   "piece": "bookshelf",
+   "x": -13.5,
+   "z": -5.16,
+   "rot": 3.14
+  },
+  {
+   "room": "B-02",
+   "piece": "cabinet_base",
+   "x": -18.62,
+   "z": -1.7,
+   "rot": -1.57
+  },
+  {
+   "room": "B-02",
+   "piece": "dresser",
+   "x": -8.34,
+   "z": -0.26,
+   "rot": 1.57
+  },
+  {
+   "room": "B-03",
+   "piece": "bookshelf",
+   "x": -5.82,
+   "z": 1.76,
+   "rot": 0.0
+  },
+  {
+   "room": "B-03",
+   "piece": "bookshelf",
+   "x": -4.5,
+   "z": -5.16,
+   "rot": 3.14
+  },
+  {
+   "room": "B-03",
+   "piece": "cabinet_base",
+   "x": -7.62,
+   "z": -0.5,
+   "rot": -1.57
+  },
+  {
+   "room": "B-03",
+   "piece": "dresser",
+   "x": -1.34,
+   "z": -1.7,
+   "rot": 1.57
+  },
+  {
+   "room": "B-04",
+   "piece": "cabinet_base",
+   "x": 1.56,
+   "z": 1.62,
+   "rot": 0.0
+  },
+  {
+   "room": "B-05",
+   "piece": "cabinet_base",
+   "x": 9.04,
+   "z": 1.62,
+   "rot": 0.0
+  },
+  {
+   "room": "B-05",
+   "piece": "cabinet_base",
+   "x": 8.32,
+   "z": 1.62,
+   "rot": 0.0
+  },
+  {
+   "room": "B-05",
+   "piece": "bench",
+   "x": 10.0,
+   "z": -7.75,
+   "rot": 3.14
+  },
+  {
+   "room": "B-07",
+   "piece": "bookshelf",
+   "x": 2.5,
+   "z": 7.76,
+   "rot": 0.0
+  },
+  {
+   "room": "B-07",
+   "piece": "bookshelf",
+   "x": 1.18,
+   "z": 4.24,
+   "rot": 3.14
+  },
+  {
+   "room": "B-07",
+   "piece": "cabinet_base",
+   "x": -0.62,
+   "z": 6.0,
+   "rot": -1.57
+  },
+  {
+   "room": "B-07",
+   "piece": "dresser",
+   "x": 5.66,
+   "z": 6.0,
+   "rot": 1.57
+  },
+  {
+   "room": "B-08",
+   "piece": "console",
+   "x": 11.0,
+   "z": 7.74,
+   "rot": 0.0
+  },
+  {
+   "room": "B-08",
+   "piece": "side_table",
+   "x": 11.96,
+   "z": 4.31,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-00",
+   "piece": "console",
+   "x": -14.26,
+   "z": 2.4,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-00",
+   "piece": "side_table",
+   "x": -16.69,
+   "z": 0.0,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-01",
+   "piece": "counter_top",
+   "x": -20.5,
+   "z": -4.38,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-01",
+   "piece": "sink_unit",
+   "x": -21.7,
+   "z": -4.39,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-01",
+   "piece": "cooker",
+   "x": -19.42,
+   "z": -4.41,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-01",
+   "piece": "fridge",
+   "x": -17.42,
+   "z": -7.5,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-01",
+   "piece": "cabinet_base",
+   "x": -20.5,
+   "z": -10.62,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-01",
+   "piece": "wall_cabinet",
+   "x": -18.58,
+   "z": -4.25,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-01",
+   "piece": "wall_cabinet",
+   "x": -22.54,
+   "z": -4.25,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-01",
+   "piece": "hood",
+   "x": -23.38,
+   "z": -4.31,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-02",
+   "piece": "bookshelf",
+   "x": -20.5,
+   "z": -0.24,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-02",
+   "piece": "bookshelf",
+   "x": -20.5,
+   "z": -3.76,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-02",
+   "piece": "cabinet_base",
+   "x": -23.62,
+   "z": -2.0,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-02",
+   "piece": "dresser",
+   "x": -23.66,
+   "z": -3.08,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-03",
+   "piece": "washer",
+   "x": -20.5,
+   "z": 3.58,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-03",
+   "piece": "sink_unit",
+   "x": -23.61,
+   "z": 2.0,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-03",
+   "piece": "counter_top",
+   "x": -21.58,
+   "z": 3.62,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-04",
+   "piece": "bed",
+   "x": -20.5,
+   "z": 6.92,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-04",
+   "piece": "nightstand",
+   "x": -21.8,
+   "z": 7.47,
+   "rot": 0
+  },
+  {
+   "room": "GF-04",
+   "piece": "nightstand",
+   "x": -19.2,
+   "z": 7.47,
+   "rot": 0
+  },
+  {
+   "room": "GF-04",
+   "piece": "bench",
+   "x": -20.5,
+   "z": 5.5,
+   "rot": 0
+  },
+  {
+   "room": "GF-04",
+   "piece": "dresser",
+   "x": -20.5,
+   "z": 4.34,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-04",
+   "piece": "armchair",
+   "x": -21.82,
+   "z": 4.47,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-04",
+   "piece": "side_table",
+   "x": -17.31,
+   "z": 4.56,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-05",
+   "piece": "bed",
+   "x": -20.5,
+   "z": 9.92,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-05",
+   "piece": "nightstand",
+   "x": -21.8,
+   "z": 10.47,
+   "rot": 0
+  },
+  {
+   "room": "GF-05",
+   "piece": "nightstand",
+   "x": -19.2,
+   "z": 10.47,
+   "rot": 0
+  },
+  {
+   "room": "GF-05",
+   "piece": "bench",
+   "x": -20.5,
+   "z": 8.5,
+   "rot": 0
+  },
+  {
+   "room": "GF-05",
+   "piece": "dresser",
+   "x": -21.94,
+   "z": 8.34,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-05",
+   "piece": "armchair",
+   "x": -23.53,
+   "z": 9.5,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-05",
+   "piece": "side_table",
+   "x": -23.69,
+   "z": 8.66,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-06",
+   "piece": "desk",
+   "x": -12.04,
+   "z": -2.43,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-06",
+   "piece": "bookshelf",
+   "x": -13.76,
+   "z": -6.5,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-06",
+   "piece": "bookshelf",
+   "x": -6.24,
+   "z": -6.5,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-06",
+   "piece": "console",
+   "x": -10.0,
+   "z": -10.74,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-07",
+   "piece": "dining_table",
+   "x": -2.0,
+   "z": -6.5,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-07",
+   "piece": "dining_chair",
+   "x": -2.56,
+   "z": -5.52,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-07",
+   "piece": "dining_chair",
+   "x": -1.44,
+   "z": -5.52,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-07",
+   "piece": "dining_chair",
+   "x": -2.56,
+   "z": -7.48,
+   "rot": 0
+  },
+  {
+   "room": "GF-07",
+   "piece": "dining_chair",
+   "x": -1.44,
+   "z": -7.48,
+   "rot": 0
+  },
+  {
+   "room": "GF-07",
+   "piece": "dining_chair",
+   "x": -3.68,
+   "z": -6.5,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-07",
+   "piece": "dining_chair",
+   "x": -0.32,
+   "z": -6.5,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-07",
+   "piece": "aparador",
+   "x": 0.04,
+   "z": -2.39,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-07",
+   "piece": "console",
+   "x": -2.84,
+   "z": -10.74,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-08",
+   "piece": "coffee_table",
+   "x": 5.0,
+   "z": -7.05,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-08",
+   "piece": "armchair",
+   "x": 2.47,
+   "z": -6.5,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-08",
+   "piece": "armchair",
+   "x": 7.53,
+   "z": -6.5,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-08",
+   "piece": "console",
+   "x": 5.0,
+   "z": -10.74,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-08",
+   "piece": "bookshelf",
+   "x": 2.24,
+   "z": -7.82,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-08",
+   "piece": "side_table",
+   "x": 7.69,
+   "z": -7.34,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-09",
+   "piece": "bed",
+   "x": 9.44,
+   "z": -6.08,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-09",
+   "piece": "bench",
+   "x": 9.44,
+   "z": -7.5,
+   "rot": 0
+  },
+  {
+   "room": "GF-09",
+   "piece": "wardrobe",
+   "x": 13.59,
+   "z": -7.16,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-09",
+   "piece": "dresser",
+   "x": 11.0,
+   "z": -10.66,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-09",
+   "piece": "armchair",
+   "x": 9.68,
+   "z": -10.53,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-09",
+   "piece": "side_table",
+   "x": 13.69,
+   "z": -6.08,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-10",
+   "piece": "bookshelf",
+   "x": 18.82,
+   "z": -5.24,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-10",
+   "piece": "bookshelf",
+   "x": 17.5,
+   "z": -10.76,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-10",
+   "piece": "cabinet_base",
+   "x": 14.38,
+   "z": -7.52,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-10",
+   "piece": "dresser",
+   "x": 20.66,
+   "z": -8.0,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-11",
+   "piece": "bench",
+   "x": 13.16,
+   "z": 1.75,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-11",
+   "piece": "side_table",
+   "x": 19.69,
+   "z": -1.5,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-12",
+   "piece": "console",
+   "x": -3.0,
+   "z": 1.74,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-12",
+   "piece": "console",
+   "x": -4.56,
+   "z": -1.74,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-12",
+   "piece": "side_table",
+   "x": -1.8,
+   "z": 0.0,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-13",
+   "piece": "sofa",
+   "x": -9.5,
+   "z": 10.52,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-13",
+   "piece": "coffee_table",
+   "x": -9.5,
+   "z": 5.95,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-13",
+   "piece": "armchair",
+   "x": -13.53,
+   "z": 7.7,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-13",
+   "piece": "armchair",
+   "x": -5.47,
+   "z": 6.5,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-13",
+   "piece": "console",
+   "x": -8.06,
+   "z": 2.26,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-13",
+   "piece": "bookshelf",
+   "x": -13.76,
+   "z": 4.1,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-13",
+   "piece": "side_table",
+   "x": -5.31,
+   "z": 5.66,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-14",
+   "piece": "console",
+   "x": 3.74,
+   "z": 6.5,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-14",
+   "piece": "bench",
+   "x": -4.75,
+   "z": 6.5,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-14",
+   "piece": "side_table",
+   "x": -1.9,
+   "z": 7.5,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-15",
+   "piece": "coffee_table",
+   "x": 6.0,
+   "z": 5.95,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-15",
+   "piece": "armchair",
+   "x": 4.47,
+   "z": 6.5,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-15",
+   "piece": "armchair",
+   "x": 7.53,
+   "z": 6.38,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-15",
+   "piece": "bookshelf",
+   "x": 4.24,
+   "z": 5.18,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-15",
+   "piece": "side_table",
+   "x": 7.69,
+   "z": 5.54,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-16",
+   "piece": "bed",
+   "x": 12.82,
+   "z": 9.92,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-16",
+   "piece": "nightstand",
+   "x": 11.52,
+   "z": 10.47,
+   "rot": 0
+  },
+  {
+   "room": "GF-16",
+   "piece": "bench",
+   "x": 12.82,
+   "z": 8.5,
+   "rot": 0
+  },
+  {
+   "room": "GF-16",
+   "piece": "wardrobe",
+   "x": 8.41,
+   "z": 6.14,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-16",
+   "piece": "dresser",
+   "x": 13.18,
+   "z": 2.34,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-16",
+   "piece": "armchair",
+   "x": 8.47,
+   "z": 4.82,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-16",
+   "piece": "side_table",
+   "x": 20.69,
+   "z": 6.5,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-17",
+   "piece": "sofa",
+   "x": 17.0,
+   "z": 13.97,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-17",
+   "piece": "armchair",
+   "x": 14.02,
+   "z": 12.72,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-17",
+   "piece": "armchair",
+   "x": 19.98,
+   "z": 12.72,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-17",
+   "piece": "console",
+   "x": 18.2,
+   "z": 11.26,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-17",
+   "piece": "side_table",
+   "x": 20.14,
+   "z": 11.88,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-18",
+   "piece": "sofa",
+   "x": 6.78,
+   "z": 13.17,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-18",
+   "piece": "side_table",
+   "x": 7.69,
+   "z": 12.32,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-19",
+   "piece": "dining_table",
+   "x": -2.0,
+   "z": -12.85,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-19",
+   "piece": "dining_chair",
+   "x": -2.56,
+   "z": -11.87,
+   "rot": 3.14
+  },
+  {
+   "room": "GF-19",
+   "piece": "dining_chair",
+   "x": -2.56,
+   "z": -13.83,
+   "rot": 0
+  },
+  {
+   "room": "GF-19",
+   "piece": "dining_chair",
+   "x": -1.44,
+   "z": -13.83,
+   "rot": 0
+  },
+  {
+   "room": "GF-19",
+   "piece": "dining_chair",
+   "x": -3.68,
+   "z": -12.85,
+   "rot": -1.57
+  },
+  {
+   "room": "GF-19",
+   "piece": "dining_chair",
+   "x": -0.32,
+   "z": -12.85,
+   "rot": 1.57
+  },
+  {
+   "room": "GF-19",
+   "piece": "aparador",
+   "x": -4.04,
+   "z": -11.4,
+   "rot": 0.0
+  },
+  {
+   "room": "GF-19",
+   "piece": "console",
+   "x": -2.0,
+   "z": -14.44,
+   "rot": 3.14
+  },
+  {
+   "room": "FF2-01",
+   "piece": "console",
+   "x": -7.0,
+   "z": 1.74,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-01",
+   "piece": "side_table",
+   "x": -7.0,
+   "z": -1.69,
+   "rot": 3.14
+  },
+  {
+   "room": "FF2-03",
+   "piece": "bed",
+   "x": -4.16,
+   "z": -3.08,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-03",
+   "piece": "nightstand",
+   "x": -5.46,
+   "z": -2.53,
+   "rot": 0
+  },
+  {
+   "room": "FF2-03",
+   "piece": "bench",
+   "x": -4.16,
+   "z": -4.5,
+   "rot": 0
+  },
+  {
+   "room": "FF2-03",
+   "piece": "wardrobe",
+   "x": -5.59,
+   "z": -6.5,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-03",
+   "piece": "dresser",
+   "x": -2.0,
+   "z": -10.66,
+   "rot": 3.14
+  },
+  {
+   "room": "FF2-03",
+   "piece": "armchair",
+   "x": -5.53,
+   "z": -7.82,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-03",
+   "piece": "side_table",
+   "x": 1.69,
+   "z": -6.5,
+   "rot": 1.57
+  },
+  {
+   "room": "FF2-04",
+   "piece": "armoire_body",
+   "x": 3.05,
+   "z": -6.42,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-04",
+   "piece": "dresser",
+   "x": 2.34,
+   "z": -9.82,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-05",
+   "piece": "bath_tub",
+   "x": 6.98,
+   "z": -6.46,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-05",
+   "piece": "basin",
+   "x": 7.7,
+   "z": -8.5,
+   "rot": 1.57
+  },
+  {
+   "room": "FF2-05",
+   "piece": "wc",
+   "x": 5.39,
+   "z": -9.34,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-05",
+   "piece": "shower",
+   "x": 7.45,
+   "z": -10.45,
+   "rot": 0
+  },
+  {
+   "room": "FF2-06",
+   "piece": "bed",
+   "x": -12.54,
+   "z": -3.08,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-06",
+   "piece": "bench",
+   "x": -12.54,
+   "z": -4.5,
+   "rot": 0
+  },
+  {
+   "room": "FF2-06",
+   "piece": "wardrobe",
+   "x": -13.59,
+   "z": -6.5,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-06",
+   "piece": "dresser",
+   "x": -10.5,
+   "z": -10.66,
+   "rot": 3.14
+  },
+  {
+   "room": "FF2-06",
+   "piece": "armchair",
+   "x": -13.53,
+   "z": -7.82,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-06",
+   "piece": "side_table",
+   "x": -7.31,
+   "z": -6.5,
+   "rot": 1.57
+  },
+  {
+   "room": "FF2-07",
+   "piece": "console",
+   "x": -19.82,
+   "z": -2.26,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-07",
+   "piece": "bench",
+   "x": -18.5,
+   "z": -6.7,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-07",
+   "piece": "bench",
+   "x": -18.5,
+   "z": -8.0,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-08",
+   "piece": "bookshelf",
+   "x": 6.82,
+   "z": -5.76,
+   "rot": 3.14
+  },
+  {
+   "room": "FF2-08",
+   "piece": "cabinet_base",
+   "x": 3.38,
+   "z": -4.0,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-08",
+   "piece": "dresser",
+   "x": 7.66,
+   "z": -4.0,
+   "rot": 1.57
+  },
+  {
+   "room": "FF2-09",
+   "piece": "sofa",
+   "x": -17.5,
+   "z": 9.52,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-09",
+   "piece": "coffee_table",
+   "x": -17.5,
+   "z": 6.45,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-09",
+   "piece": "armchair",
+   "x": -21.53,
+   "z": 7.0,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-09",
+   "piece": "armchair",
+   "x": -13.47,
+   "z": 7.0,
+   "rot": 1.57
+  },
+  {
+   "room": "FF2-09",
+   "piece": "console",
+   "x": -18.82,
+   "z": 4.26,
+   "rot": 3.14
+  },
+  {
+   "room": "FF2-09",
+   "piece": "bookshelf",
+   "x": -21.76,
+   "z": 5.68,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-09",
+   "piece": "side_table",
+   "x": -13.31,
+   "z": 6.16,
+   "rot": 1.57
+  },
+  {
+   "room": "FF2-10",
+   "piece": "bed",
+   "x": -9.0,
+   "z": 8.92,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-10",
+   "piece": "nightstand",
+   "x": -10.3,
+   "z": 9.47,
+   "rot": 0
+  },
+  {
+   "room": "FF2-10",
+   "piece": "nightstand",
+   "x": -7.7,
+   "z": 9.47,
+   "rot": 0
+  },
+  {
+   "room": "FF2-10",
+   "piece": "bench",
+   "x": -9.0,
+   "z": 7.5,
+   "rot": 0
+  },
+  {
+   "room": "FF2-10",
+   "piece": "wardrobe",
+   "x": -11.59,
+   "z": 7.0,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-10",
+   "piece": "dresser",
+   "x": -10.8,
+   "z": 4.34,
+   "rot": 3.14
+  },
+  {
+   "room": "FF2-10",
+   "piece": "armchair",
+   "x": -11.53,
+   "z": 5.68,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-10",
+   "piece": "side_table",
+   "x": -6.31,
+   "z": 7.0,
+   "rot": 1.57
+  },
+  {
+   "room": "FF2-11",
+   "piece": "bed",
+   "x": 7.5,
+   "z": 8.92,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-11",
+   "piece": "nightstand",
+   "x": 6.2,
+   "z": 9.47,
+   "rot": 0
+  },
+  {
+   "room": "FF2-11",
+   "piece": "nightstand",
+   "x": 8.8,
+   "z": 9.47,
+   "rot": 0
+  },
+  {
+   "room": "FF2-11",
+   "piece": "bench",
+   "x": 7.5,
+   "z": 7.5,
+   "rot": 0
+  },
+  {
+   "room": "FF2-11",
+   "piece": "wardrobe",
+   "x": 5.41,
+   "z": 7.96,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-11",
+   "piece": "dresser",
+   "x": 8.82,
+   "z": 4.34,
+   "rot": 3.14
+  },
+  {
+   "room": "FF2-11",
+   "piece": "side_table",
+   "x": 9.69,
+   "z": 7.36,
+   "rot": 1.57
+  },
+  {
+   "room": "FF2-12",
+   "piece": "desk",
+   "x": 14.0,
+   "z": 9.56,
+   "rot": 0.0
+  },
+  {
+   "room": "FF2-12",
+   "piece": "bookshelf",
+   "x": 11.24,
+   "z": 7.0,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-12",
+   "piece": "bookshelf",
+   "x": 16.76,
+   "z": 7.0,
+   "rot": 1.57
+  },
+  {
+   "room": "FF2-12",
+   "piece": "console",
+   "x": 12.2,
+   "z": 4.26,
+   "rot": 3.14
+  },
+  {
+   "room": "FF2-13",
+   "piece": "console",
+   "x": 4.74,
+   "z": 7.98,
+   "rot": 1.57
+  },
+  {
+   "room": "FF2-13",
+   "piece": "bench",
+   "x": -5.75,
+   "z": 7.5,
+   "rot": -1.57
+  },
+  {
+   "room": "FF2-13",
+   "piece": "side_table",
+   "x": -1.9,
+   "z": 8.5,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-01",
+   "piece": "console",
+   "x": -7.0,
+   "z": 1.74,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-01",
+   "piece": "side_table",
+   "x": -7.0,
+   "z": -1.69,
+   "rot": 3.14
+  },
+  {
+   "room": "FF3-03",
+   "piece": "console",
+   "x": -2.0,
+   "z": -2.26,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-03",
+   "piece": "console",
+   "x": -2.0,
+   "z": -10.74,
+   "rot": 3.14
+  },
+  {
+   "room": "FF3-03",
+   "piece": "bench",
+   "x": -5.75,
+   "z": -6.5,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-03",
+   "piece": "side_table",
+   "x": -0.8,
+   "z": -6.5,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-04",
+   "piece": "armchair",
+   "x": -10.5,
+   "z": -10.53,
+   "rot": 3.14
+  },
+  {
+   "room": "FF3-04",
+   "piece": "side_table",
+   "x": -13.69,
+   "z": -6.5,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-04",
+   "piece": "console",
+   "x": -7.26,
+   "z": -6.5,
+   "rot": 1.57
+  },
+  {
+   "room": "FF3-05",
+   "piece": "bed",
+   "x": -18.5,
+   "z": -3.08,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-05",
+   "piece": "nightstand",
+   "x": -19.8,
+   "z": -2.53,
+   "rot": 0
+  },
+  {
+   "room": "FF3-05",
+   "piece": "nightstand",
+   "x": -17.2,
+   "z": -2.53,
+   "rot": 0
+  },
+  {
+   "room": "FF3-05",
+   "piece": "bench",
+   "x": -18.5,
+   "z": -4.5,
+   "rot": 0
+  },
+  {
+   "room": "FF3-05",
+   "piece": "wardrobe",
+   "x": -21.59,
+   "z": -6.5,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-05",
+   "piece": "dresser",
+   "x": -18.5,
+   "z": -10.66,
+   "rot": 3.14
+  },
+  {
+   "room": "FF3-05",
+   "piece": "armchair",
+   "x": -21.53,
+   "z": -7.82,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-05",
+   "piece": "side_table",
+   "x": -15.31,
+   "z": -6.5,
+   "rot": 1.57
+  },
+  {
+   "room": "FF3-06",
+   "piece": "bed",
+   "x": -18.0,
+   "z": 8.92,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-06",
+   "piece": "nightstand",
+   "x": -19.3,
+   "z": 9.47,
+   "rot": 0
+  },
+  {
+   "room": "FF3-06",
+   "piece": "nightstand",
+   "x": -16.7,
+   "z": 9.47,
+   "rot": 0
+  },
+  {
+   "room": "FF3-06",
+   "piece": "bench",
+   "x": -18.0,
+   "z": 7.5,
+   "rot": 0
+  },
+  {
+   "room": "FF3-06",
+   "piece": "wardrobe",
+   "x": -21.59,
+   "z": 7.0,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-06",
+   "piece": "dresser",
+   "x": -19.8,
+   "z": 4.34,
+   "rot": 3.14
+  },
+  {
+   "room": "FF3-06",
+   "piece": "armchair",
+   "x": -21.53,
+   "z": 5.68,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-06",
+   "piece": "side_table",
+   "x": -14.31,
+   "z": 7.0,
+   "rot": 1.57
+  },
+  {
+   "room": "FF3-07",
+   "piece": "sofa",
+   "x": -9.0,
+   "z": 9.52,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-07",
+   "piece": "coffee_table",
+   "x": -9.0,
+   "z": 6.45,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-07",
+   "piece": "armchair",
+   "x": -11.53,
+   "z": 7.0,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-07",
+   "piece": "armchair",
+   "x": -6.47,
+   "z": 7.0,
+   "rot": 1.57
+  },
+  {
+   "room": "FF3-07",
+   "piece": "console",
+   "x": -10.8,
+   "z": 4.26,
+   "rot": 3.14
+  },
+  {
+   "room": "FF3-07",
+   "piece": "bookshelf",
+   "x": -11.76,
+   "z": 5.68,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-07",
+   "piece": "side_table",
+   "x": -6.31,
+   "z": 6.16,
+   "rot": 1.57
+  },
+  {
+   "room": "FF3-08",
+   "piece": "cabinet_base",
+   "x": 5.0,
+   "z": -5.38,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-08",
+   "piece": "cabinet_base",
+   "x": 4.28,
+   "z": -5.38,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-08",
+   "piece": "bench",
+   "x": 5.0,
+   "z": -10.75,
+   "rot": 3.14
+  },
+  {
+   "room": "FF3-09",
+   "piece": "bed",
+   "x": 11.0,
+   "z": -6.08,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-09",
+   "piece": "nightstand",
+   "x": 9.7,
+   "z": -5.53,
+   "rot": 0
+  },
+  {
+   "room": "FF3-09",
+   "piece": "nightstand",
+   "x": 12.3,
+   "z": -5.53,
+   "rot": 0
+  },
+  {
+   "room": "FF3-09",
+   "piece": "bench",
+   "x": 11.0,
+   "z": -7.5,
+   "rot": 0
+  },
+  {
+   "room": "FF3-09",
+   "piece": "wardrobe",
+   "x": 8.41,
+   "z": -9.8,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-09",
+   "piece": "dresser",
+   "x": 11.0,
+   "z": -10.66,
+   "rot": 3.14
+  },
+  {
+   "room": "FF3-09",
+   "piece": "armchair",
+   "x": 8.47,
+   "z": -6.32,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-09",
+   "piece": "side_table",
+   "x": 13.69,
+   "z": -8.0,
+   "rot": 1.57
+  },
+  {
+   "room": "FF3-10",
+   "piece": "desk",
+   "x": 13.0,
+   "z": 9.56,
+   "rot": 0.0
+  },
+  {
+   "room": "FF3-10",
+   "piece": "bookshelf",
+   "x": 10.24,
+   "z": 7.0,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-10",
+   "piece": "bookshelf",
+   "x": 15.76,
+   "z": 7.0,
+   "rot": 1.57
+  },
+  {
+   "room": "FF3-10",
+   "piece": "console",
+   "x": 11.2,
+   "z": 4.26,
+   "rot": 3.14
+  },
+  {
+   "room": "FF3-12",
+   "piece": "console",
+   "x": 3.74,
+   "z": 7.5,
+   "rot": 1.57
+  },
+  {
+   "room": "FF3-12",
+   "piece": "bench",
+   "x": -4.75,
+   "z": 7.5,
+   "rot": -1.57
+  },
+  {
+   "room": "FF3-12",
+   "piece": "side_table",
+   "x": -1.9,
+   "z": 8.5,
+   "rot": 0.0
+  },
+  {
+   "room": "FF4-01",
+   "piece": "console",
+   "x": -0.5,
+   "z": 10.74,
+   "rot": 0.0
+  },
+  {
+   "room": "FF4-01",
+   "piece": "console",
+   "x": -0.5,
+   "z": 2.26,
+   "rot": 3.14
+  },
+  {
+   "room": "FF4-01",
+   "piece": "bench",
+   "x": -5.75,
+   "z": 7.82,
+   "rot": -1.57
+  },
+  {
+   "room": "FF4-01",
+   "piece": "side_table",
+   "x": 0.7,
+   "z": 6.5,
+   "rot": 0.0
+  },
+  {
+   "room": "FF4-02",
+   "piece": "desk",
+   "x": -19.92,
+   "z": -0.43,
+   "rot": 0.0
+  },
+  {
+   "room": "FF4-02",
+   "piece": "bookshelf",
+   "x": -21.76,
+   "z": -5.5,
+   "rot": -1.57
+  },
+  {
+   "room": "FF4-02",
+   "piece": "bookshelf",
+   "x": -14.24,
+   "z": -5.5,
+   "rot": 1.57
+  },
+  {
+   "room": "FF4-02",
+   "piece": "console",
+   "x": -18.0,
+   "z": -10.74,
+   "rot": 3.14
+  },
+  {
+   "room": "FF4-03",
+   "piece": "desk",
+   "x": -7.0,
+   "z": -10.56,
+   "rot": 3.14
+  },
+  {
+   "room": "FF4-03",
+   "piece": "side_table",
+   "x": -9.69,
+   "z": -8.0,
+   "rot": -1.57
+  },
+  {
+   "room": "FF4-04",
+   "piece": "cabinet_base",
+   "x": 8.38,
+   "z": 5.56,
+   "rot": -1.57
+  },
+  {
+   "room": "FF4-05",
+   "piece": "bookshelf",
+   "x": 0.2,
+   "z": -6.24,
+   "rot": 0.0
+  },
+  {
+   "room": "FF4-05",
+   "piece": "bookshelf",
+   "x": 2.0,
+   "z": -10.76,
+   "rot": 3.14
+  },
+  {
+   "room": "FF4-05",
+   "piece": "cabinet_base",
+   "x": -0.62,
+   "z": -8.5,
+   "rot": -1.57
+  },
+  {
+   "room": "FF4-05",
+   "piece": "dresser",
+   "x": 4.66,
+   "z": -8.5,
+   "rot": 1.57
+  },
+  {
+   "room": "FF4-06",
+   "piece": "cabinet_base",
+   "x": -18.0,
+   "z": 9.62,
+   "rot": 0.0
+  },
+  {
+   "room": "FF4-06",
+   "piece": "cabinet_base",
+   "x": -18.72,
+   "z": 9.62,
+   "rot": 0.0
+  },
+  {
+   "room": "FF4-06",
+   "piece": "bench",
+   "x": -19.8,
+   "z": 2.25,
+   "rot": 3.14
+  },
+  {
+   "room": "FF4-07",
+   "piece": "bed",
+   "x": -10.0,
+   "z": 8.92,
+   "rot": 0.0
+  },
+  {
+   "room": "FF4-07",
+   "piece": "nightstand",
+   "x": -11.3,
+   "z": 9.47,
+   "rot": 0
+  },
+  {
+   "room": "FF4-07",
+   "piece": "nightstand",
+   "x": -8.7,
+   "z": 9.47,
+   "rot": 0
+  },
+  {
+   "room": "FF4-07",
+   "piece": "bench",
+   "x": -10.0,
+   "z": 7.5,
+   "rot": 0
+  },
+  {
+   "room": "FF4-07",
+   "piece": "wardrobe",
+   "x": -12.59,
+   "z": 7.0,
+   "rot": -1.57
+  },
+  {
+   "room": "FF4-07",
+   "piece": "dresser",
+   "x": -11.8,
+   "z": 4.34,
+   "rot": 3.14
+  },
+  {
+   "room": "FF4-07",
+   "piece": "armchair",
+   "x": -12.53,
+   "z": 5.68,
+   "rot": -1.57
+  },
+  {
+   "room": "FF4-07",
+   "piece": "side_table",
+   "x": -7.31,
+   "z": 7.0,
+   "rot": 1.57
+  },
+  {
+   "room": "FF4-10",
+   "piece": "bench",
+   "x": -1.0,
+   "z": 10.75,
+   "rot": 0.0
+  },
+  {
+   "room": "FF4-10",
+   "piece": "side_table",
+   "x": 21.69,
+   "z": 0.0,
+   "rot": 1.57
+  }
+ ],
+ "clear_circulation": [
+  "B-06",
+  "FF2-02",
+  "FF3-02"
+ ]
+}

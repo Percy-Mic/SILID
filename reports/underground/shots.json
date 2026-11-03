@@ -1,0 +1,97 @@
+{
+ "shots": [
+  {
+   "name": "01_basement_corridor",
+   "note": "the basement, looking east down the service corridor",
+   "at": [
+    12,
+    6
+   ],
+   "footY": -3.4,
+   "surface": "dirt",
+   "prompt": null
+  },
+  {
+   "name": "02_basement_depth",
+   "note": "mid-basement: conduits, shelves and the far doorway",
+   "at": [
+    30,
+    6
+   ],
+   "footY": -3.4,
+   "surface": "stone",
+   "prompt": null
+  },
+  {
+   "name": "03_tunnel_entrance",
+   "note": "the tunnel mouth: the descending passage beyond the basement",
+   "at": [
+    46.5,
+    6
+   ],
+   "footY": -3.4,
+   "surface": "stone",
+   "prompt": null
+  },
+  {
+   "name": "04_tunnel_vault",
+   "note": "the vaulted passage, rising toward the chamber",
+   "at": [
+    51,
+    6
+   ],
+   "footY": -3,
+   "surface": "stone",
+   "prompt": null
+  },
+  {
+   "name": "05_court_lit",
+   "note": "the cistern court under its lantern",
+   "at": [
+    56.5,
+    6
+   ],
+   "footY": -1.95,
+   "surface": "stone",
+   "prompt": null
+  },
+  {
+   "name": "06_service_door",
+   "note": "the service door at the end of the route, with its prompt",
+   "at": [
+    54.4,
+    6
+   ],
+   "footY": -2.01,
+   "surface": "stone",
+   "prompt": "E open the service door"
+  },
+  {
+   "name": "07_forest_emergence",
+   "note": "standing in the forest, looking back at the concealed exit",
+   "at": [
+    70.4,
+    7.9
+   ],
+   "footY": 0.78,
+   "surface": "stone",
+   "prompt": null
+  }
+ ],
+ "metrics": {
+  "calls": 661,
+  "triangles": 1291058,
+  "geometries": 551,
+  "textures": 124,
+  "programs": 46,
+  "fps": 25,
+  "objects": 306,
+  "doors": 64,
+  "props": 181,
+  "missingDoors": [],
+  "colliders": 1127
+ },
+ "errors": [
+  "pageerror: A user gesture is required to request Pointer Lock."
+ ]
+}

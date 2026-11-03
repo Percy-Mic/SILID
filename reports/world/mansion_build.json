@@ -1,0 +1,38 @@
+{
+ "unmatched_doors": [],
+ "windows": 101,
+ "doors": 79,
+ "levels": [
+  {
+   "id": "B1",
+   "doors": 9,
+   "windows": 0,
+   "rooms": 8
+  },
+  {
+   "id": "GF",
+   "doors": 32,
+   "windows": 21,
+   "rooms": 20
+  },
+  {
+   "id": "F2",
+   "doors": 17,
+   "windows": 27,
+   "rooms": 13
+  },
+  {
+   "id": "F3",
+   "doors": 9,
+   "windows": 35,
+   "rooms": 11
+  },
+  {
+   "id": "F4",
+   "doors": 12,
+   "windows": 18,
+   "rooms": 8
+  }
+ ],
+ "rooms": 60
+}

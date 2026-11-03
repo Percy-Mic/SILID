@@ -1,0 +1,26 @@
+Editor node: {'user': 'Admin', 'machine': 'DESKTOP-BHH516J', 'engine_version': '5.4.4-35576357+++UE5+Release-5.4', 'engine_root': 'C:/Program Files/Epic Games/UE_5.4/Engine/', 'project_root': 'C:/Users/Admin/Downloads/SILID-main/ue5/', 'project_name': 'SILID', 'node_id': '9556C9DE43EFFCEC6ECBA4ADD003DEB1'}
+Probe ok: None
+PHASE START: ReplaceRoomWithGroundFloorPlan.py
+PHASE ReplaceRoomWithGroundFloorPlan.py: OK in 9.8s
+None
+PHASE START: PopulateGroundFloor.py
+PHASE PopulateGroundFloor.py: FAILED in 0.4s
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+
+  File "C:\Users\Admin\Downloads\SILID-main\ue5\Scripts\PopulateGroundFloor.py", line 506, in <module>
+    main()
+
+  File "C:\Users\Admin\Downloads\SILID-main\ue5\Scripts\PopulateGroundFloor.py", line 482, in main
+    spawn_furniture(subsystem, prop_class, mesh, entry)
+
+  File "C:\Users\Admin\Downloads\SILID-main\ue5\Scripts\PopulateGroundFloor.py", line 387, in spawn_furniture
+    low, high = setup_prop_collider(actor, component)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "C:\Users\Admin\Downloads\SILID-main\ue5\Scripts\PopulateGroundFloor.py", line 375, in setup_prop_collider
+    collider.set_relative_location(center)
+
+TypeError: set_relative_location() required argument 'sweep' (pos 2) not found
+
